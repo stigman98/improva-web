@@ -540,7 +540,7 @@ h2.titular{
       <span class="eyebrow">HABLAMOS</span>
       <h2>QUINCE MINUTOS<br>Y TE DIGO QUÉ<br>HARÍA CON TU<br>NEGOCIO.</h2>
       <p>Sin compromiso y sin coste. Si no lo ves claro, te llevas las ideas igual.</p>
-      <a class="wasap" href="https://wa.me/34614525458" target="_blank" rel="noopener">
+      <a class="wasap" href="https://wa.me/34614525458?text=%C2%A1Hola%20Ricardo%21%20%F0%9F%91%8B%20Vengo%20de%20improva.es.%20Tengo%20un%20negocio%20y%20me%20gustar%C3%ADa%20que%20le%20echaras%20un%20vistazo%20gratis%20a%20c%C3%B3mo%20sale%20en%20Google%20y%20en%20redes.%20Mi%20negocio%20es%3A%20" target="_blank" rel="noopener">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.91-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.8h-.02a9.8 9.8 0 0 1-4.99-1.37l-.36-.21-3.71.97.99-3.62-.23-.37a9.8 9.8 0 0 1-1.5-5.23c0-5.4 4.4-9.8 9.82-9.8 2.62 0 5.08 1.03 6.93 2.88a9.74 9.74 0 0 1 2.87 6.93c0 5.4-4.4 9.8-9.8 9.8M20.5 3.49A11.66 11.66 0 0 0 12.05 0C5.6 0 .35 5.25.35 11.7c0 2.06.54 4.08 1.56 5.85L.25 24l6.6-1.73a11.68 11.68 0 0 0 5.2 1.24h.01c6.45 0 11.7-5.25 11.7-11.7 0-3.13-1.22-6.07-3.43-8.28"/></svg>
         Escríbeme por WhatsApp
       </a>
@@ -591,7 +591,7 @@ h2.titular{
       <div class="pie-links">
         <a href="mailto:hola@improva.es">hola@improva.es</a>
         <a href="https://instagram.com/improva.es" target="_blank" rel="noopener">@improva.es</a>
-        <a href="https://wa.me/34614525458" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://wa.me/34614525458?text=%C2%A1Hola%20Ricardo%21%20%F0%9F%91%8B%20Vengo%20de%20improva.es.%20Tengo%20un%20negocio%20y%20me%20gustar%C3%ADa%20que%20le%20echaras%20un%20vistazo%20gratis%20a%20c%C3%B3mo%20sale%20en%20Google%20y%20en%20redes.%20Mi%20negocio%20es%3A%20" target="_blank" rel="noopener">WhatsApp</a>
         <a href="#contacto">Contacto</a>
       </div>
     </div>
@@ -626,7 +626,8 @@ document.getElementById('form-contacto').addEventListener('submit', function(ev)
     'Negocio: ' + d.get('negocio') + '\n' +
     'Teléfono: ' + d.get('telefono') + '\n' +
     'Necesito: ' + d.get('necesito') +
-    (d.get('mensaje') ? '\n\n' + d.get('mensaje') : '');
+    (d.get('mensaje') ? '\n\n' + d.get('mensaje') : '') +
+    '\n\n¿Cuándo te vendría bien pasarte para la auditoría gratis?';
   window.open('https://wa.me/' + TELEFONO + '?text=' + encodeURIComponent(texto), '_blank');
 });
 </script>
