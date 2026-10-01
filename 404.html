@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Improva — Página no encontrada</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22%23F0E8D8%22%2F%3E%3Crect%20x%3D%2210%22%20y%3D%224%22%20width%3D%2212%22%20height%3D%228%22%20fill%3D%22%23C0241A%22%2F%3E%3Crect%20x%3D%2210%22%20y%3D%2215%22%20width%3D%2212%22%20height%3D%2213%22%20fill%3D%22%23C0241A%22%2F%3E%3C%2Fsvg%3E">
+<meta name="theme-color" content="#C0241A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root{--beis:#F0E8D8;--rojo:#C0241A;--rojo-hover:#9C1C14;--tinta:#2C1810;--tinta-60:rgba(44,24,16,.62)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--beis);color:var(--tinta);
+    font-family:"DM Sans",system-ui,sans-serif;
+    min-height:100vh;display:flex;align-items:center;justify-content:center;
+    padding:40px clamp(20px,6vw,72px);
+  }
+  .caja{max-width:640px;width:100%}
+  .cuadro{width:clamp(20px,3vw,30px);aspect-ratio:1;background:var(--rojo);margin-bottom:16px}
+  .cifra{
+    font-family:"Bebas Neue",sans-serif;
+    font-size:clamp(96px,22vw,220px);line-height:.76;
+    color:var(--rojo);letter-spacing:.01em;
+  }
+  h1{
+    font-family:"Bebas Neue",sans-serif;
+    font-size:clamp(28px,5vw,52px);line-height:.98;
+    margin:22px 0 16px;
+  }
+  p{color:var(--tinta-60);max-width:46ch;line-height:1.6;margin-bottom:32px}
+  .acciones{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    display:inline-block;text-decoration:none;font-size:15px;font-weight:500;
+    padding:15px 28px;border:2px solid var(--rojo);transition:background .15s,color .15s;
+  }
+  .solido{background:var(--rojo);color:var(--beis)}
+  .solido:hover{background:var(--rojo-hover);border-color:var(--rojo-hover)}
+  .hueco{background:transparent;color:var(--rojo)}
+  .hueco:hover{background:var(--rojo);color:var(--beis)}
+  .pie{margin-top:44px;padding-top:20px;border-top:2px solid var(--tinta);font-size:13px;color:var(--tinta-60)}
+</style>
+</head>
+<body>
+  <div class="caja">
+    <div class="cuadro"></div>
+    <div class="cifra">404</div>
+    <h1>ESTA PÁGINA<br>YA NO EXISTE.</h1>
+    <p>Puede que llegaras desde un enlace antiguo. Improva es una agencia de digitalización para negocios locales, y todo lo que buscas está en la portada.</p>
+    <div class="acciones">
+      <a class="btn solido" href="/">Ir a la portada</a>
+      <a class="btn hueco" href="/#contacto">Hablar con Ricardo</a>
+    </div>
+    <div class="pie">Improva · improva.es · hola@improva.es</div>
+  </div>
+</body>
+</html>
