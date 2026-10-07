@@ -76,7 +76,9 @@
 <meta name="theme-color" content="#C0241A">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght,SOFT@1,9..144,700..900,0..100&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap" rel="stylesheet">
 <style>
 /* ============ TOKENS ============ */
 :root{
@@ -95,7 +97,7 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
   background:var(--beis);
   color:var(--tinta);
-  font-family:"DM Sans",system-ui,-apple-system,sans-serif;
+  font-family:"Switzer",system-ui,-apple-system,sans-serif;
   font-size:17px;
   line-height:1.6;
   overflow-x:hidden;
@@ -148,7 +150,9 @@ h2.titular{
   line-height:1.28;font-weight:500;
   max-width:18ch;margin:clamp(34px,5vw,58px) 0 22px;
 }
-.hero-frase em{font-style:normal;color:var(--rojo)}
+.hero-frase em{font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:800;font-variation-settings:"SOFT" 100,"opsz" 72;color:var(--rojo);font-size:1.08em;letter-spacing:-.01em}
+/* Firma Improva: titulares en Bebas y la palabra clave en cursiva roja de Fraunces */
+h2.titular em,.contacto-texto h2 em{font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:800;font-variation-settings:"SOFT" 100,"opsz" 144;text-transform:none;color:var(--rojo);font-size:.86em;letter-spacing:-.02em;line-height:.9}
 .hero-texto{max-width:52ch;color:var(--tinta-60);margin-bottom:34px}
 .hero-acciones{display:flex;gap:14px;flex-wrap:wrap;padding-bottom:clamp(44px,7vw,84px)}
 .btn{
@@ -298,6 +302,7 @@ h2.titular{
 /* ============ CONTACTO ============ */
 .contacto{background:var(--rojo);color:var(--beis);padding:clamp(60px,9vw,110px) 0}
 .contacto .eyebrow{color:var(--beis)}
+.contacto-texto h2 em{color:var(--tinta)}
 .contacto-rejilla{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,80px);align-items:start}
 .contacto-texto h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(38px,6vw,70px);line-height:.94}
 .contacto-texto p{color:rgba(240,232,216,.78);margin-top:20px;max-width:38ch}
@@ -335,7 +340,7 @@ h2.titular{
 .pie-marca{line-height:0}
 .pie-marca img{display:block;width:158px;height:auto}
 .pie-bajada{font-family:"Bebas Neue",sans-serif;font-size:11px;letter-spacing:.34em;color:var(--tinta-60);margin-top:4px}
-.pie-links{display:flex;gap:20px;font-size:14px;color:var(--tinta-60)}
+.pie-links{display:flex;flex-wrap:wrap;gap:12px 20px;font-size:14px;color:var(--tinta-60)}
 .pie-links a{text-decoration:none;border-bottom:1px solid var(--rojo)}
 .pie-legal{font-size:12px;color:var(--tinta-60);margin-top:26px}
 
@@ -396,7 +401,7 @@ h2.titular{
   <div class="contenedor dolor-rejilla">
     <div class="reveal">
       <span class="eyebrow">EL PROBLEMA</span>
-      <h2 class="titular">NO ES QUE NO<br>QUIERAS. ES QUE<br>NO TIENES TIEMPO.</h2>
+      <h2 class="titular">NO ES QUE NO<br>QUIERAS. ES QUE<br>NO TIENES <em>tiempo.</em></h2>
       <p>Llevas un negocio. Abres, atiendes, cierras, cuadras caja y vuelves a empezar. <strong>Nadie te ha enseñado a grabar un vídeo ni a responder una reseña,</strong> y tampoco tienes tres horas al día para aprenderlo.</p>
       <p>Mientras tanto, el de al lado sale en Instagram todas las semanas.</p>
     </div>
@@ -428,7 +433,7 @@ h2.titular{
   <div class="contenedor">
     <div class="servicios-cabecera reveal">
       <span class="eyebrow">QUÉ HACEMOS</span>
-      <h2 class="titular">NOS OCUPAMOS DE<br>TODO LO DIGITAL<br>DE TU NEGOCIO.</h2>
+      <h2 class="titular">NOS OCUPAMOS DE<br>TODO LO <em>digital</em><br>DE TU NEGOCIO.</h2>
       <p>Para que tú no tengas que aprenderlo. Vamos a tu local, vemos qué te falta y lo montamos. Desde la ficha de Google hasta la tienda online.</p>
     </div>
 
@@ -489,7 +494,7 @@ h2.titular{
   <div class="contenedor precio-in reveal">
     <div>
       <span class="eyebrow">CUÁNTO CUESTA</span>
-      <h2 class="titular">SIN PERMANENCIA<br>Y SIN SORPRESAS.</h2>
+      <h2 class="titular">SIN PERMANENCIA<br>Y SIN <em>sorpresas.</em></h2>
       <p>Presupuesto personalizado según lo que necesite tu negocio, con todo detallado por escrito antes de empezar. Te damos el precio en la primera visita, no después de tres reuniones.</p>
       <a class="btn btn-solido" href="#contacto" style="margin-top:24px">Pedir presupuesto</a>
     </div>
@@ -506,7 +511,7 @@ h2.titular{
   <div class="contenedor">
     <div class="reveal">
       <span class="eyebrow">CÓMO TRABAJAMOS</span>
-      <h2 class="titular">CUATRO PASOS<br>Y YA ESTÁ.</h2>
+      <h2 class="titular">CUATRO PASOS<br>Y <em>ya está.</em></h2>
     </div>
     <div class="pasos reveal">
       <div class="paso">
@@ -538,7 +543,7 @@ h2.titular{
   <div class="contenedor contacto-rejilla">
     <div class="contacto-texto reveal">
       <span class="eyebrow">HABLAMOS</span>
-      <h2>QUINCE MINUTOS<br>Y TE DIGO QUÉ<br>HARÍA CON TU<br>NEGOCIO.</h2>
+      <h2>QUINCE MINUTOS<br>Y TE DIGO QUÉ<br>HARÍA CON TU<br><em>negocio.</em></h2>
       <p>Sin compromiso y sin coste. Si no lo ves claro, te llevas las ideas igual.</p>
       <a class="wasap" href="https://wa.me/34614525458?text=%C2%A1Hola%20Ricardo%21%20%F0%9F%91%8B%20Vengo%20de%20improva.es.%20Tengo%20un%20negocio%20y%20me%20gustar%C3%ADa%20que%20le%20echaras%20un%20vistazo%20gratis%20a%20c%C3%B3mo%20sale%20en%20Google%20y%20en%20redes.%20Mi%20negocio%20es%3A%20" target="_blank" rel="noopener">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.91-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.8h-.02a9.8 9.8 0 0 1-4.99-1.37l-.36-.21-3.71.97.99-3.62-.23-.37a9.8 9.8 0 0 1-1.5-5.23c0-5.4 4.4-9.8 9.82-9.8 2.62 0 5.08 1.03 6.93 2.88a9.74 9.74 0 0 1 2.87 6.93c0 5.4-4.4 9.8-9.8 9.8M20.5 3.49A11.66 11.66 0 0 0 12.05 0C5.6 0 .35 5.25.35 11.7c0 2.06.54 4.08 1.56 5.85L.25 24l6.6-1.73a11.68 11.68 0 0 0 5.2 1.24h.01c6.45 0 11.7-5.25 11.7-11.7 0-3.13-1.22-6.07-3.43-8.28"/></svg>
