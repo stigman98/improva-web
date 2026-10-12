@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cuestionario de arranque · Improva</title>
+<meta name="description" content="Cuéntanos cómo es tu negocio para preparar una propuesta hecha a tu medida.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F0E8D8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22%23F0E8D8%22%2F%3E%3Crect%20x%3D%2210%22%20y%3D%224%22%20width%3D%2212%22%20height%3D%228%22%20fill%3D%22%23C0241A%22%2F%3E%3Crect%20x%3D%2210%22%20y%3D%2215%22%20width%3D%2212%22%20height%3D%2213%22%20fill%3D%22%23C0241A%22%2F%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:ital,opsz,wght@1,9..144,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --beis:#F0E8D8; --beis-2:#E6DBC5; --papel:#F8F3E8; --rojo:#C0241A; --rojo-hover:#9C1C14;
+  --tinta:#2C1810; --tinta-60:rgba(44,24,16,.64); --tinta-15:rgba(44,24,16,.15);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--beis);color:var(--tinta);font-family:Switzer,system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:500;font-size:17px;line-height:1.5}
+:focus-visible{outline:3px solid var(--rojo);outline-offset:3px}
+.wrap{max-width:680px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) 18px calc(120px + env(safe-area-inset-bottom))}
+.top{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid var(--tinta);padding-bottom:12px}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none}
+.logo i{width:15px;height:15px;background:var(--rojo);display:block}
+.logo span{font-family:"Bebas Neue",Impact,sans-serif;font-size:27px;letter-spacing:.03em;color:var(--rojo);line-height:1}
+.paso{font-size:13px;color:var(--tinta-60);font-variant-numeric:tabular-nums}
+.barra{height:5px;background:var(--tinta-15);margin-top:-3px}
+.barra i{display:block;height:100%;width:0;background:var(--rojo);transition:width .35s ease}
+h1{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:clamp(48px,13vw,76px);line-height:.9;margin:26px 0 10px;text-wrap:balance}
+h1 em,h2 em{font-family:Fraunces,Georgia,serif;font-style:italic;font-weight:700;color:var(--rojo);text-transform:lowercase;font-size:.86em}
+h2{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:clamp(38px,10vw,54px);line-height:.95;margin:26px 0 6px;text-wrap:balance}
+.lead{font-size:18px;max-width:56ch;margin:0 0 6px}
+.sub{color:var(--tinta-60);margin:0 0 6px;max-width:56ch}
+.datos{display:grid;gap:10px;margin:20px 0}
+.etapa{display:none}
+.etapa.on{display:block;animation:entra .35s ease}
+@keyframes entra{from{opacity:.4;transform:translateY(8px)}to{opacity:1;transform:none}}
+.preg{background:var(--papel);border:2px solid var(--tinta);border-radius:16px;padding:16px;margin:14px 0;box-shadow:5px 5px 0 var(--tinta)}
+.preg>label,.preg legend{display:block;font-weight:700;font-size:18px;line-height:1.3;margin-bottom:10px;padding:0}
+.preg fieldset{border:0;margin:0;padding:0;min-width:0}
+.ayuda{display:block;font-weight:500;font-size:14px;color:var(--tinta-60);margin-top:4px}
+input[type=text],input[type=tel],input[type=email],textarea{width:100%;font:inherit;font-size:17px;color:var(--tinta);background:var(--beis);border:1.5px solid var(--tinta-15);border-radius:12px;padding:12px 14px}
+textarea{min-height:96px;resize:vertical}
+input::placeholder,textarea::placeholder{color:var(--tinta-60)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative;cursor:pointer}
+.chips input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chips span{display:inline-block;padding:9px 14px;border:1.5px solid var(--tinta);border-radius:999px;background:var(--beis);font-size:15px;transition:background .15s,color .15s}
+.chips input:checked+span{background:var(--rojo);border-color:var(--rojo);color:#fff}
+.chips input:focus-visible+span{outline:3px solid var(--rojo);outline-offset:2px}
+.escala{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.escala small{color:var(--tinta-60);font-size:13px}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:15px;margin:18px 0}
+.consent input{width:22px;height:22px;margin-top:2px;accent-color:var(--rojo);flex:0 0 auto}
+.pie{position:fixed;left:0;right:0;bottom:0;background:var(--beis);border-top:2px solid var(--tinta);padding:12px 18px calc(12px + env(safe-area-inset-bottom))}
+.pie .in{max-width:680px;margin:0 auto;display:flex;gap:10px;justify-content:space-between;align-items:center}
+.btn{font:inherit;font-weight:700;font-size:17px;border:2px solid var(--tinta);border-radius:12px;padding:12px 20px;cursor:pointer;background:var(--rojo);border-color:var(--rojo);color:#fff}
+.btn:hover{background:var(--rojo-hover)}
+.btn.sec{background:transparent;color:var(--tinta);border-color:var(--tinta)}
+.btn[disabled]{opacity:.5;cursor:default}
+.guardado{font-size:13px;color:var(--tinta-60);text-align:center;flex:1}
+.fin{text-align:left}
+.fin .sello{display:inline-block;font-family:"Bebas Neue",sans-serif;letter-spacing:.2em;font-size:15px;color:var(--rojo);border:2px solid var(--rojo);padding:4px 10px;margin-top:28px}
+.error{background:#fff;border:2px solid var(--rojo);border-radius:12px;padding:12px 14px;margin:14px 0;color:var(--rojo);font-weight:700}
+.oculto{position:absolute;left:-9999px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="https://improva.es/" aria-label="Improva"><i></i><span>IMPROVA</span></a>
+    <span class="paso" id="paso">Bienvenida</span>
+  </header>
+  <div class="barra" aria-hidden="true"><i id="barra"></i></div>
+
+  <form name="cuestionario" method="POST" action="/cuestionario/gracias/" data-netlify="true" netlify-honeypot="bot-field" id="form" novalidate>
+    <input type="hidden" name="form-name" value="cuestionario">
+    <p class="oculto"><label>No rellenes esto: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+    <input type="hidden" name="negocio_ref" id="negocio_ref">
+
+    <!-- 0 · bienvenida -->
+    <section class="etapa on" data-titulo="Bienvenida">
+      <h1>Cuéntame cómo es <em>tu negocio</em></h1>
+      <p class="lead">Con tus respuestas preparo una propuesta hecha para ti, no una plantilla.</p>
+      <p class="sub">Son 7 bloques cortos y tardarás unos 10 minutos. Nada es obligatorio: contesta lo que sepas, con tus palabras, y lo que no, lo hablamos en persona. Si lo dejas a medias, se queda guardado en este móvil.</p>
+      <div class="datos">
+        <div class="preg"><label for="negocio">Nombre del negocio</label><input type="text" id="negocio" name="negocio" autocomplete="organization"></div>
+        <div class="preg"><label for="contacto">Tu nombre y quién más decide en el negocio</label><input type="text" id="contacto" name="contacto" autocomplete="name"></div>
+        <div class="preg"><label for="telefono">Teléfono o WhatsApp</label><input type="tel" id="telefono" name="telefono" autocomplete="tel" inputmode="tel"></div>
+      </div>
+    </section>
+
+    <!-- 1 · negocio -->
+    <section class="etapa" data-titulo="Tu negocio">
+      <h2>Tu <em>negocio</em></h2>
+      <p class="sub">Lo básico, para entenderlo bien.</p>
+      <div class="preg"><label for="historia">¿Cómo empezó y cuánto tiempo lleva abierto?<span class="ayuda">La historia de cómo nació es de lo que más conecta con la gente.</span></label><textarea id="historia" name="historia"></textarea></div>
+      <div class="preg"><label for="oferta">¿Qué vendes o qué servicios haces? ¿Qué es lo que más sale?</label><textarea id="oferta" name="oferta"></textarea></div>
+      <div class="preg"><label for="quieren_vender">¿Qué te gustaría vender más, aunque ahora no salga tanto?</label><textarea id="quieren_vender" name="quieren_vender"></textarea></div>
+      <div class="preg"><label for="ticket">¿Cuánto suele gastar un cliente cuando viene, más o menos?</label><input type="text" id="ticket" name="ticket" placeholder="Una cifra aproximada vale"></div>
+      <div class="preg"><label for="temporada">¿Hay épocas del año más fuertes o más flojas?</label><input type="text" id="temporada" name="temporada"></div>
+    </section>
+
+    <!-- 2 · clientes -->
+    <section class="etapa" data-titulo="Tus clientes">
+      <h2>Tus <em>clientes</em></h2>
+      <p class="sub">Quién te compra y cómo te encuentra.</p>
+      <div class="preg"><label for="cliente_actual">¿Cómo es tu cliente de siempre? Edad, de dónde es, qué busca…</label><textarea id="cliente_actual" name="cliente_actual"></textarea></div>
+      <div class="preg"><label for="cliente_ideal">¿A qué tipo de público te gustaría llegar más?</label><textarea id="cliente_ideal" name="cliente_ideal"></textarea></div>
+      <div class="preg"><fieldset><legend>¿Cómo te conocen los clientes nuevos?<span class="ayuda">Marca todas las que creas.</span></legend><div class="chips">
+        <label><input type="checkbox" name="origen" value="Boca a boca"><span>Boca a boca</span></label>
+        <label><input type="checkbox" name="origen" value="Pasan por delante"><span>Pasan por delante</span></label>
+        <label><input type="checkbox" name="origen" value="Google Maps"><span>Google Maps</span></label>
+        <label><input type="checkbox" name="origen" value="Instagram"><span>Instagram</span></label>
+        <label><input type="checkbox" name="origen" value="Facebook"><span>Facebook</span></label>
+        <label><input type="checkbox" name="origen" value="TikTok"><span>TikTok</span></label>
+        <label><input type="checkbox" name="origen" value="Web"><span>Web</span></label>
+        <label><input type="checkbox" name="origen" value="WhatsApp"><span>WhatsApp</span></label>
+        <label><input type="checkbox" name="origen" value="Recomendación de otro profesional"><span>Me recomienda otro profesional</span></label>
+        <label><input type="checkbox" name="origen" value="Folletos o carteles"><span>Folletos o carteles</span></label>
+        <label><input type="checkbox" name="origen" value="No lo sé"><span>No lo sé</span></label>
+      </div></fieldset></div>
+      <div class="preg"><label for="preguntas">¿Qué te preguntan siempre los clientes?</label><textarea id="preguntas" name="preguntas"></textarea></div>
+      <div class="preg"><label for="vuelven">¿Por qué crees que vuelven los que vuelven?</label><textarea id="vuelven" name="vuelven"></textarea></div>
+      <div class="preg"><label for="perdidos">¿Sientes que se te escapan clientes? ¿Dónde?<span class="ayuda">Por ejemplo: llaman y no reservan, preguntan el precio y no vuelven…</span></label><textarea id="perdidos" name="perdidos"></textarea></div>
+    </section>
+
+    <!-- 3 · diferencia -->
+    <section class="etapa" data-titulo="Lo que te hace único">
+      <h2>Lo que te hace <em>único</em></h2>
+      <p class="sub">Y con quién te comparas.</p>
+      <div class="preg"><label for="diferencia">¿En qué crees que te diferencias de los demás?</label><textarea id="diferencia" name="diferencia"></textarea></div>
+      <div class="preg"><label for="elogios">¿Qué es lo que más te dicen los clientes que les gusta?</label><textarea id="elogios" name="elogios"></textarea></div>
+      <div class="preg"><label for="competencia">¿Quién es tu competencia por la zona?</label><textarea id="competencia" name="competencia"></textarea></div>
+      <div class="preg"><label for="referentes">¿Hay algún negocio, de aquí o de fuera, que te guste cómo lo hace?<span class="ayuda">Puedes poner su nombre o su Instagram.</span></label><textarea id="referentes" name="referentes"></textarea></div>
+      <div class="preg"><label for="no_parecer">¿A qué no quieres parecerte de ninguna manera?</label><textarea id="no_parecer" name="no_parecer"></textarea></div>
+    </section>
+
+    <!-- 4 · lo que tienen -->
+    <section class="etapa" data-titulo="Lo que ya tienes">
+      <h2>Lo que ya <em>tienes</em></h2>
+      <p class="sub">Para no empezar de cero. Aquí no pongas nunca contraseñas.</p>
+      <div class="preg"><fieldset><legend>Tu web</legend><div class="chips">
+        <label><input type="checkbox" name="web" value="No tienen"><span>No tengo</span></label>
+        <label><input type="checkbox" name="web" value="Tienen y funciona"><span>Tengo y funciona</span></label>
+        <label><input type="checkbox" name="web" value="Tienen pero está anticuada"><span>Está anticuada</span></label>
+        <label><input type="checkbox" name="web" value="Rota o caducada"><span>No funciona</span></label>
+        <label><input type="checkbox" name="web" value="La lleva otra persona"><span>Me la lleva otra persona</span></label>
+      </div></fieldset>
+      <input type="text" id="web_notas" name="web_notas" placeholder="Dirección de la web o quién te la hizo" style="margin-top:10px"></div>
+      <div class="preg"><fieldset><legend>Tu ficha de Google Maps</legend><div class="chips">
+        <label><input type="checkbox" name="google" value="No tienen"><span>No tengo</span></label>
+        <label><input type="checkbox" name="google" value="Tienen y la controlan"><span>Tengo y sé entrar</span></label>
+        <label><input type="checkbox" name="google" value="Existe pero no saben entrar"><span>Existe pero no sé entrar</span></label>
+        <label><input type="checkbox" name="google" value="No lo sé"><span>No lo sé</span></label>
+      </div></fieldset></div>
+      <div class="preg"><fieldset><legend>Redes que usas</legend><div class="chips">
+        <label><input type="checkbox" name="redes" value="Instagram"><span>Instagram</span></label>
+        <label><input type="checkbox" name="redes" value="Facebook"><span>Facebook</span></label>
+        <label><input type="checkbox" name="redes" value="TikTok"><span>TikTok</span></label>
+        <label><input type="checkbox" name="redes" value="Ninguna"><span>Ninguna</span></label>
+      </div></fieldset>
+      <input type="text" id="redes_quien" name="redes_quien" placeholder="¿Quién publica y cada cuánto?" style="margin-top:10px"></div>
+      <div class="preg"><fieldset><legend>¿Cómo te piden cita o reservan ahora?</legend><div class="chips">
+        <label><input type="checkbox" name="reservas" value="Teléfono"><span>Teléfono</span></label>
+        <label><input type="checkbox" name="reservas" value="WhatsApp"><span>WhatsApp</span></label>
+        <label><input type="checkbox" name="reservas" value="En persona"><span>En persona</span></label>
+        <label><input type="checkbox" name="reservas" value="Agenda de papel"><span>Agenda de papel</span></label>
+        <label><input type="checkbox" name="reservas" value="App de reservas"><span>Una app</span></label>
+        <label><input type="checkbox" name="reservas" value="No hay citas"><span>No trabajo con citas</span></label>
+      </div></fieldset></div>
+      <div class="preg"><label for="herramientas">¿Usas algún programa para cobrar, facturar o enviar emails?</label><input type="text" id="herramientas" name="herramientas"></div>
+    </section>
+
+    <!-- 5 · día a día -->
+    <section class="etapa" data-titulo="Tu día a día">
+      <h2>Tu <em>día a día</em></h2>
+      <p class="sub">Aquí es donde más tiempo te puedo ahorrar.</p>
+      <div class="preg"><label for="repetitivo">¿Qué tareas repites cada día o cada semana que te quitan tiempo?</label><textarea id="repetitivo" name="repetitivo"></textarea></div>
+      <div class="preg"><label for="mensajes">¿Qué mensajes contestas siempre igual?<span class="ayuda">Horario, precios, cómo llegar, si queda sitio…</span></label><textarea id="mensajes" name="mensajes"></textarea></div>
+      <div class="preg"><label for="nunca_mas">Si pudieras no volver a hacer una cosa nunca más, ¿cuál sería?</label><textarea id="nunca_mas" name="nunca_mas"></textarea></div>
+      <div class="preg"><fieldset><legend>¿Cuánto tiempo a la semana puedes dedicar a redes?</legend><div class="chips">
+        <label><input type="radio" name="tiempo_redes" value="Nada"><span>Nada</span></label>
+        <label><input type="radio" name="tiempo_redes" value="Menos de 1 hora"><span>Menos de 1 hora</span></label>
+        <label><input type="radio" name="tiempo_redes" value="1 a 3 horas"><span>1 a 3 horas</span></label>
+        <label><input type="radio" name="tiempo_redes" value="Más de 3 horas"><span>Más de 3 horas</span></label>
+      </div></fieldset></div>
+      <div class="preg"><fieldset><legend>¿Qué tal te llevas con el móvil y la tecnología?</legend><div class="escala"><small>Nada</small><div class="chips">
+        <label><input type="radio" name="tecnologia" value="1"><span>1</span></label>
+        <label><input type="radio" name="tecnologia" value="2"><span>2</span></label>
+        <label><input type="radio" name="tecnologia" value="3"><span>3</span></label>
+        <label><input type="radio" name="tecnologia" value="4"><span>4</span></label>
+        <label><input type="radio" name="tecnologia" value="5"><span>5</span></label>
+      </div><small>Muy bien</small></div></fieldset></div>
+    </section>
+
+    <!-- 6 · estilo -->
+    <section class="etapa" data-titulo="Tu estilo">
+      <h2>Tu <em>estilo</em></h2>
+      <p class="sub">Para que lo que hagamos, además de funcionar, te encante.</p>
+      <div class="preg"><label for="tres_palabras">Si tu negocio fuera una persona, ¿cómo sería en tres palabras?</label><input type="text" id="tres_palabras" name="tres_palabras"></div>
+      <div class="preg"><fieldset><legend>¿Qué estilo te gusta?</legend><div class="chips">
+        <label><input type="checkbox" name="estilo" value="Cálido y cercano"><span>Cálido y cercano</span></label>
+        <label><input type="checkbox" name="estilo" value="Natural"><span>Natural</span></label>
+        <label><input type="checkbox" name="estilo" value="Elegante"><span>Elegante</span></label>
+        <label><input type="checkbox" name="estilo" value="Moderno"><span>Moderno</span></label>
+        <label><input type="checkbox" name="estilo" value="Divertido"><span>Divertido</span></label>
+        <label><input type="checkbox" name="estilo" value="Minimalista"><span>Minimalista</span></label>
+        <label><input type="checkbox" name="estilo" value="Tradicional"><span>Tradicional</span></label>
+        <label><input type="checkbox" name="estilo" value="Atrevido"><span>Atrevido</span></label>
+      </div></fieldset></div>
+      <div class="preg"><label for="colores">¿Colores que te gustan o que son de tu marca? ¿Alguno que no soportes?</label><input type="text" id="colores" name="colores"></div>
+      <div class="preg"><fieldset><legend>¿Te apetece salir en los vídeos?</legend><div class="chips">
+        <label><input type="checkbox" name="camara" value="Sí, sin problema"><span>Sí, sin problema</span></label>
+        <label><input type="checkbox" name="camara" value="Solo voz"><span>Solo la voz</span></label>
+        <label><input type="checkbox" name="camara" value="Solo manos o de espaldas"><span>Solo manos o de espaldas</span></label>
+        <label><input type="checkbox" name="camara" value="Mejor no salir"><span>Prefiero no salir</span></label>
+      </div></fieldset><span class="ayuda" style="margin-top:8px">Si sois varios, cada uno puede decidir lo suyo. Lo respetamos siempre.</span></div>
+      <div class="preg"><fieldset><legend>¿Cómo quieres hablar a tus clientes?</legend><div class="chips">
+        <label><input type="checkbox" name="tono" value="De tú"><span>De tú</span></label>
+        <label><input type="checkbox" name="tono" value="De usted"><span>De usted</span></label>
+        <label><input type="checkbox" name="tono" value="Cercano"><span>Cercano</span></label>
+        <label><input type="checkbox" name="tono" value="Profesional"><span>Profesional</span></label>
+        <label><input type="checkbox" name="tono" value="Con humor"><span>Con humor</span></label>
+      </div></fieldset></div>
+      <div class="preg"><label for="no_hacer">¿Hay algo que no quieras hacer en redes de ninguna manera?</label><textarea id="no_hacer" name="no_hacer"></textarea></div>
+    </section>
+
+    <!-- 7 · objetivos -->
+    <section class="etapa" data-titulo="Lo que quieres conseguir">
+      <h2>Lo que quieres <em>conseguir</em></h2>
+      <p class="sub">El último bloque.</p>
+      <div class="preg"><fieldset><legend>¿Qué te gustaría conseguir en los próximos 6 meses?</legend><div class="chips">
+        <label><input type="checkbox" name="objetivo" value="Más clientes nuevos"><span>Más clientes nuevos</span></label>
+        <label><input type="checkbox" name="objetivo" value="Que vuelvan más"><span>Que vuelvan más</span></label>
+        <label><input type="checkbox" name="objetivo" value="Vender más un servicio concreto"><span>Vender más un servicio concreto</span></label>
+        <label><input type="checkbox" name="objetivo" value="Llenar clases o huecos"><span>Llenar huecos o clases</span></label>
+        <label><input type="checkbox" name="objetivo" value="Menos tiempo con el móvil"><span>Pasar menos tiempo con el móvil</span></label>
+        <label><input type="checkbox" name="objetivo" value="Imagen más profesional"><span>Una imagen más profesional</span></label>
+        <label><input type="checkbox" name="objetivo" value="Vender por internet"><span>Vender por internet</span></label>
+      </div></fieldset></div>
+      <div class="preg"><label for="exito">¿Cómo sabrías que ha funcionado?<span class="ayuda">Por ejemplo: 10 reservas más al mes, llenar los martes…</span></label><input type="text" id="exito" name="exito"></div>
+      <div class="preg"><label for="probado">¿Has probado algo antes? ¿Qué tal fue?</label><textarea id="probado" name="probado"></textarea></div>
+      <div class="preg"><label for="fechas">¿Tienes alguna fecha importante pronto? Aniversario, campaña, apertura…</label><input type="text" id="fechas" name="fechas"></div>
+      <div class="preg"><label for="algo_mas">¿Algo más que quieras contarme?</label><textarea id="algo_mas" name="algo_mas"></textarea></div>
+      <label class="consent"><input type="checkbox" id="acepto" name="acepto" value="Sí"><span>Acepto que Improva use estas respuestas solo para preparar mi propuesta. No se comparten con nadie y puedo pedir que se borren cuando quiera escribiendo a hola@improva.es.</span></label>
+      <div class="error" id="error" hidden></div>
+    </section>
+
+    <!-- fin -->
+    <section class="etapa fin" data-titulo="Enviado" id="fin">
+      <h2>¡Gracias, <em>de verdad</em>!</h2>
+      <p class="lead">Ya tengo tus respuestas. Las reviso con calma y te escribo con una propuesta pensada para tu negocio.</p>
+      <p class="sub">Si te acuerdas de algo más, escríbeme por WhatsApp al 614 525 458.</p>
+      <span class="sello">IMPROVA · TU NEGOCIO MERECE SER VISTO</span>
+    </section>
+  </form>
+</div>
+
+<nav class="pie" id="pie">
+  <div class="in">
+    <button class="btn sec" type="button" id="atras" disabled>Atrás</button>
+    <span class="guardado" id="guardado"></span>
+    <button class="btn" type="button" id="sigue">Empezar</button>
+  </div>
+</nav>
+
+<script>
+(function(){
+  var form=document.getElementById('form');
+  var etapas=[].slice.call(document.querySelectorAll('.etapa'));
+  var ULTIMA=etapas.length-2, FIN=etapas.length-1, i=0;
+  var KEY='improva-cuestionario';
+  // nombre del negocio desde el enlace: improva.es/cuestionario/?n=Herbolario%20CuidaT
+  var n=new URLSearchParams(location.search).get('n');
+  if(n){document.getElementById('negocio_ref').value=n;var neg=document.getElementById('negocio');if(!neg.value)neg.value=n}
+
+  function datos(){var o={};new FormData(form).forEach(function(v,k){if(k==='bot-field'||k==='form-name')return;o[k]=o[k]?o[k]+' · '+v:v});return o}
+  function guardar(){try{localStorage.setItem(KEY,JSON.stringify({i:i,d:datos()}));document.getElementById('guardado').textContent='Guardado en este móvil'}catch(e){}}
+  function cargar(){try{var s=JSON.parse(localStorage.getItem(KEY)||'null');if(!s)return;var d=s.d||{};
+    Object.keys(d).forEach(function(k){var els=form.querySelectorAll('[name="'+k+'"]');if(!els.length)return;
+      if(els[0].type==='checkbox'||els[0].type==='radio'){var vals=String(d[k]).split(' · ');els.forEach(function(e){e.checked=vals.indexOf(e.value)>-1})}
+      else if(k!=='negocio_ref'){els[0].value=d[k]}});
+    if(s.i>0&&s.i<=ULTIMA){i=s.i}}catch(e){}}
+  function pinta(){
+    etapas.forEach(function(e,k){e.classList.toggle('on',k===i)});
+    var total=ULTIMA;document.getElementById('barra').style.width=(Math.min(i,total)/total*100)+'%';
+    document.getElementById('paso').textContent=i===0?'Bienvenida':i===FIN?'Enviado':('Bloque '+i+' de '+ULTIMA);
+    var at=document.getElementById('atras'),si=document.getElementById('sigue');
+    at.disabled=i===0;si.textContent=i===0?'Empezar':i===ULTIMA?'Enviar':'Siguiente';
+    if(i===FIN){document.getElementById('pie').hidden=true}
+    window.scrollTo(0,0);
+  }
+  form.addEventListener('input',guardar);form.addEventListener('change',guardar);
+  document.getElementById('atras').addEventListener('click',function(){if(i>0){i--;pinta();guardar()}});
+  document.getElementById('sigue').addEventListener('click',function(){
+    if(i<ULTIMA){i++;pinta();guardar();return}
+    var err=document.getElementById('error');
+    if(!document.getElementById('acepto').checked){err.hidden=false;err.textContent='Marca la casilla de arriba para poder enviarlo.';return}
+    err.hidden=true;var b=this;b.disabled=true;b.textContent='Enviando…';
+    var body=new URLSearchParams();body.append('form-name','cuestionario');
+    var d=datos();Object.keys(d).forEach(function(k){body.append(k,d[k])});
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body.toString()})
+      .then(function(r){if(!r.ok)throw new Error(r.status);try{localStorage.removeItem(KEY)}catch(e){}i=FIN;pinta()})
+      .catch(function(){b.disabled=false;b.textContent='Enviar';err.hidden=false;err.textContent='No se ha podido enviar. Revisa la conexión y vuelve a pulsar «Enviar». Tus respuestas siguen guardadas.'});
+  });
+  cargar();pinta();
+})();
+</script>
+</body>
+</html>
