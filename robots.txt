@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /cuestionario/
+Disallow: /demos/
+Disallow: /r/
 
 Sitemap: https://improva.es/sitemap.xml

@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="description" content="Recorrido por Herbolario CuidaT en Parla Este: la tienda, la sala de clases, el vestuario y el gabinete.">
+<style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>CuidaT por dentro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500;1,600&family=Jost:wght@400;500;600&display=swap">
+<style>
+/* Layout: a scroll-driven walk from the street into each room (sticky canvas, chapters fade over it), then a calm paper page with hours, services and how to get there. Single warm look on purpose. */
+:root{
+  --papel:#FAF7EF; --papel-2:#F3EEE1; --salvia:#E2EBE6; --tinta:#1E1B16; --tinta-2:#5B544A; --oro:#D9BC4E; --oro-texto:#7E6210; --hoja:#4F6B57; --linea:rgba(30,27,22,.14);
+  --serif:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --sans:'Jost', 'Futura', 'Century Gothic', system-ui, sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--papel);color:var(--tinta);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--oro);outline-offset:3px}
+
+/* barra */
+.barra{position:fixed;left:0;right:0;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:calc(10px + env(safe-area-inset-top,0px)) 16px 10px;transition:background .3s,box-shadow .3s}
+.barra img{height:40px;width:auto;display:block}
+.barra .claro{display:block}.barra .oscuro{display:none}
+.barra.solida{background:rgba(250,247,239,.94);box-shadow:0 1px 0 var(--linea);backdrop-filter:blur(8px)}
+.barra.solida .claro{display:none}.barra.solida .oscuro{display:block}
+.reservar{font:600 15px var(--sans);text-decoration:none;background:var(--oro);color:var(--tinta);padding:10px 16px;border-radius:999px;white-space:nowrap}
+
+/* recorrido */
+.recorrido{position:relative;height:900svh;background:#14110d}
+.escena{position:sticky;top:0;height:100svh;overflow:hidden}
+#fondo,#lienzo{position:absolute;inset:0;width:100%;height:100%}
+#fondo{filter:blur(28px) brightness(.55) saturate(1.1);transform:scale(1.15)}
+.sombra{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,11,8,.82) 0%,rgba(14,11,8,.35) 34%,rgba(14,11,8,0) 58%),linear-gradient(to bottom,rgba(14,11,8,.55),rgba(14,11,8,0) 22%);pointer-events:none}
+.capitulo{position:absolute;left:0;right:0;bottom:calc(9svh + env(safe-area-inset-bottom,0px));padding-inline:22px;color:#fff;opacity:0;transform:translateY(24px);transition:opacity .45s ease,transform .45s ease;pointer-events:none;max-width:560px}
+.capitulo.on{opacity:1;transform:none;pointer-events:auto}
+.capitulo .k{font:600 13px var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--oro);display:flex;align-items:center;gap:12px}
+.capitulo .k:before{content:"";width:34px;height:2px;background:var(--oro)}
+.capitulo h2{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(46px,12vw,84px);line-height:.95;margin:10px 0 12px;text-wrap:balance;text-shadow:0 4px 30px rgba(0,0,0,.35)}
+.capitulo h2 b{font-weight:600;color:var(--oro)}
+.capitulo p{margin:0;font-size:18px;max-width:34ch;color:rgba(255,255,255,.92)}
+.capitulo .acc{margin-top:18px;display:inline-block}
+.pista{position:absolute;left:50%;bottom:calc(2.4svh + env(safe-area-inset-bottom,0px));transform:translateX(-50%);color:rgba(255,255,255,.8);font:500 13px var(--sans);letter-spacing:.2em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:6px;transition:opacity .3s}
+.pista i{width:2px;height:28px;background:linear-gradient(var(--oro),transparent);animation:baja 1.6s ease-in-out infinite}
+@keyframes baja{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.progreso{position:absolute;right:12px;top:50%;transform:translateY(-50%);display:grid;gap:10px}
+.progreso span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.35);transition:background .3s,transform .3s}
+.progreso span.on{background:var(--oro);transform:scale(1.5)}
+.carga{position:absolute;left:0;top:0;height:2px;background:var(--oro);width:0;transition:width .2s;z-index:3}
+@media (min-width:900px){
+  .capitulo{left:max(48px,6vw);bottom:auto;top:50%;transform:translateY(calc(-50% + 24px));padding:0;max-width:440px}
+  .capitulo.on{transform:translateY(-50%)}
+  .sombra{background:linear-gradient(to right,rgba(14,11,8,.75),rgba(14,11,8,.15) 55%,rgba(14,11,8,0))}
+  .barra img{height:46px}
+}
+
+/* páginas normales */
+.wrap{max-width:1100px;margin:0 auto;padding-inline:20px}
+.seccion{padding-block:clamp(56px,9vw,110px)}
+.k2{font:600 13px var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--oro-texto)}
+h3.t{font-family:var(--serif);font-weight:600;font-size:clamp(38px,7vw,62px);line-height:1;margin:10px 0 14px;text-wrap:balance}
+h3.t em{font-style:italic;color:var(--hoja)}
+.lead{max-width:56ch;color:var(--tinta-2);margin:0}
+
+.horario{background:var(--tinta);color:var(--papel)}
+.horario .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px 30px;padding-block:20px}
+.estado{display:flex;align-items:center;gap:10px;font-weight:600}
+.estado i{width:10px;height:10px;border-radius:50%;background:#9a9285;position:relative}
+.estado.abierto i{background:#6FCF8E}
+.estado.abierto i:after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid #6FCF8E;animation:late 1.8s ease-out infinite}
+@keyframes late{from{transform:scale(.6);opacity:.9}to{transform:scale(1.6);opacity:0}}
+.horas{display:flex;flex-wrap:wrap;gap:6px 26px;font-size:15px;color:rgba(250,247,239,.85)}
+.horas b{color:var(--papel);font-weight:600;margin-right:8px}
+
+.cosas{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+.cosa{background:var(--papel-2);border:1px solid var(--linea);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.cosa h4{font-family:var(--serif);font-size:32px;font-weight:600;margin:0;line-height:1}
+.cosa p{margin:0;color:var(--tinta-2);font-size:16px}
+.cosa ul{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.cosa li{font-size:14px;background:var(--papel);border:1px solid var(--linea);border-radius:999px;padding:4px 11px}
+.cosa a{margin-top:auto;font-weight:600;text-decoration:none;color:var(--hoja)}
+.cosa a:after{content:" →"}
+@media (max-width:820px){.cosas{grid-template-columns:1fr}}
+
+.visita{background:var(--salvia)}
+.visita .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:center}
+@media (max-width:820px){.visita .wrap{grid-template-columns:1fr}}
+.dir{font-size:20px;margin:6px 0 20px}
+.botones{display:flex;flex-wrap:wrap;gap:10px}
+.btn{font:600 16px var(--sans);text-decoration:none;padding:13px 20px;border-radius:999px;border:2px solid var(--tinta);display:inline-flex;align-items:center;gap:8px}
+.btn.oro{background:var(--oro);border-color:var(--oro);color:var(--tinta)}
+.btn.linea{background:transparent}
+.tabla{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.tabla td{padding:9px 0;border-bottom:1px solid var(--linea)}
+.tabla td:last-child{text-align:right}
+.tabla tr.hoy td{font-weight:600;color:var(--hoja)}
+.aviso{font-size:13px;color:var(--tinta-2);margin-top:22px;max-width:70ch}
+footer{padding-block:28px;font-size:14px;color:var(--tinta-2);border-top:1px solid var(--linea)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+
+<header class="barra" id="barra">
+  <a href="#inicio" aria-label="CuidaT, inicio"><img class="claro" src="logo_claro.webp" alt="CuidaT"><img class="oscuro" src="logo.webp" alt=""></a>
+  <a class="reservar" href="https://wa.me/34604815133?text=Hola%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n" target="_blank" rel="noopener">Reservar</a>
+</header>
+
+<section class="recorrido" id="inicio" aria-label="Recorrido por el local">
+  <div class="escena">
+    <canvas id="fondo" aria-hidden="true"></canvas>
+    <canvas id="lienzo" role="img" aria-label="Vídeo del recorrido desde la calle hasta las salas de CuidaT"></canvas>
+    <div class="sombra"></div>
+    <div class="carga" id="carga"></div>
+
+    <div class="capitulo on" data-a="0" data-b="0.07">
+      <div class="k">Parla Este</div>
+      <h2>Herbolario <b>CuidaT</b></h2>
+      <p>Pasa, que te lo enseñamos todo.</p>
+    </div>
+    <div class="capitulo" data-a="0.10" data-b="0.36">
+      <div class="k">La tienda</div>
+      <h2>Por fuera, <b>un herbolario.</b></h2>
+      <p>Productos naturales y asesoramiento personalizado. Cuéntanos qué buscas y te ayudamos a elegir.</p>
+    </div>
+    <div class="capitulo" data-a="0.40" data-b="0.55">
+      <div class="k">La sala</div>
+      <h2>Por dentro, <b>un espacio para ti.</b></h2>
+      <p>Yoga, pilates, meditación y baños de gong. Clases cada semana y talleres.</p>
+    </div>
+    <div class="capitulo" data-a="0.57" data-b="0.61">
+      <div class="k">CuidaT</div>
+      <h2>Cuidarte <b>también es esto.</b></h2>
+    </div>
+    <div class="capitulo" data-a="0.62" data-b="0.68">
+      <div class="k">Vestuario</div>
+      <h2>Todo <b>listo</b> para tu clase.</h2>
+      <p>Esterillas, cojines y un sitio tranquilo para cambiarte.</p>
+    </div>
+    <div class="capitulo" data-a="0.71" data-b="1.01">
+      <div class="k">El gabinete</div>
+      <h2>Con cita, <b>a tu ritmo.</b></h2>
+      <p>Consulta de dietista y cabina para masajes, acupuntura y reiki.</p>
+      <a class="reservar acc" href="https://wa.me/34604815133?text=Hola%2C%20quiero%20pedir%20cita%20en%20el%20gabinete" target="_blank" rel="noopener">Pedir cita por WhatsApp</a>
+    </div>
+
+    <div class="progreso" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="pista" id="pista"><span>Desliza</span><i></i></div>
+  </div>
+</section>
+
+<div class="horario" aria-label="Horario">
+  <div class="wrap">
+    <div class="estado" id="estado"><i></i><span>Horario de la tienda</span></div>
+    <div class="horas"><span><b>Lunes a viernes</b>9:30 – 13:30 · 17:15 – 20:30</span><span><b>Sábados</b>9:30 – 13:30</span></div>
+  </div>
+</div>
+
+<section class="seccion">
+  <div class="wrap">
+    <div class="k2">Todo en un mismo sitio</div>
+    <h3 class="t">Lo que puedes hacer <em>en CuidaT</em></h3>
+    <p class="lead">Un herbolario de barrio con mucho más dentro de lo que parece desde la calle.</p>
+    <div class="cosas">
+      <article class="cosa">
+        <h4>Herbolario</h4>
+        <p>Productos naturales con asesoramiento personalizado. Si no sabes qué elegir, te ayudamos según tu caso.</p>
+        <ul><li>Infusiones</li><li>Complementos</li><li>Aceites esenciales</li><li>Cosmética natural</li></ul>
+        <a href="https://wa.me/34604815133?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20un%20producto" target="_blank" rel="noopener">Pregúntanos por WhatsApp</a>
+      </article>
+      <article class="cosa">
+        <h4>Clases</h4>
+        <p>En la sala grande, con grupos reducidos y todo el material incluido.</p>
+        <ul><li>Yoga</li><li>Pilates</li><li>Meditación</li><li>Baños de gong</li><li>Talleres</li></ul>
+        <a href="https://wa.me/34604815133?text=Hola%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n%20sobre%20las%20clases" target="_blank" rel="noopener">Reservar una clase</a>
+      </article>
+      <article class="cosa">
+        <h4>Gabinete</h4>
+        <p>Sesiones individuales con cita previa, en una cabina tranquila.</p>
+        <ul><li>Dietista</li><li>Acupuntura</li><li>Masajes</li><li>Reiki</li></ul>
+        <a href="https://wa.me/34604815133?text=Hola%2C%20quiero%20pedir%20cita%20en%20el%20gabinete" target="_blank" rel="noopener">Pedir cita</a>
+      </article>
+    </div>
+    <p class="aviso">Nuestros productos y terapias acompañan tu bienestar y no sustituyen el consejo de un profesional sanitario.</p>
+  </div>
+</section>
+
+<section class="seccion visita" id="visita">
+  <div class="wrap">
+    <div>
+      <div class="k2">Visítanos</div>
+      <h3 class="t">Te esperamos <em>en Parla Este</em></h3>
+      <p class="dir">Avenida de las Estrellas, 49 · Parla</p>
+      <div class="botones">
+        <a class="btn oro" href="https://wa.me/34604815133?text=Hola%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+        <a class="btn linea" href="https://maps.app.goo.gl/EDicUhem7B7Yi2yWA" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+      <p style="margin-top:14px;font-size:15px;color:var(--tinta-2)">WhatsApp y teléfono: <span style="user-select:all">604 815 133</span></p>
+    </div>
+    <table class="tabla" aria-label="Horario de apertura">
+      <tbody id="tabla">
+        <tr data-d="1"><td>Lunes</td><td>9:30 – 13:30 · 17:15 – 20:30</td></tr>
+        <tr data-d="2"><td>Martes</td><td>9:30 – 13:30 · 17:15 – 20:30</td></tr>
+        <tr data-d="3"><td>Miércoles</td><td>9:30 – 13:30 · 17:15 – 20:30</td></tr>
+        <tr data-d="4"><td>Jueves</td><td>9:30 – 13:30 · 17:15 – 20:30</td></tr>
+        <tr data-d="5"><td>Viernes</td><td>9:30 – 13:30 · 17:15 – 20:30</td></tr>
+        <tr data-d="6"><td>Sábado</td><td>9:30 – 13:30</td></tr>
+        <tr data-d="0"><td>Domingo</td><td>Cerrado</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>Herbolario CuidaT · Parla Este</span><span>Web de demostración hecha por Improva</span></div></footer>
+
+<script>
+(function(){
+  const N=193, STARTS=[0,75,108,118,133];
+  const frames=new Array(N); let loaded=0;
+  const cv=document.getElementById('lienzo'), ctx=cv.getContext('2d');
+  const bg=document.getElementById('fondo'), bctx=bg.getContext('2d');
+  const sec=document.querySelector('.recorrido');
+  const caps=[...document.querySelectorAll('.capitulo')];
+  const dots=[...document.querySelectorAll('.progreso span')];
+  let cur=-1, want=0, raf=0;
+  const wide=()=>innerWidth>=900;
+
+  function size(){
+    const d=Math.min(devicePixelRatio||1,2);
+    [cv,bg].forEach(c=>{c.width=Math.round(innerWidth*d);c.height=Math.round(innerHeight*d)});
+    cur=-1;draw();
+  }
+  function nearest(i){ if(frames[i]&&frames[i].complete&&frames[i].naturalWidth)return frames[i];
+    for(let k=1;k<N;k++){const a=frames[i-k],b=frames[i+k];if(a&&a.complete&&a.naturalWidth)return a;if(b&&b.complete&&b.naturalWidth)return b}return null}
+  function draw(){
+    raf=0;const i=want;if(i===cur&&cur!==-1)return;
+    const img=nearest(i);if(!img)return;cur=(img===frames[i])?i:-1;
+    const W=cv.width,H=cv.height,iw=img.naturalWidth,ih=img.naturalHeight;
+    ctx.clearRect(0,0,W,H);
+    if(wide()){
+      // vídeo vertical a la derecha, a pantalla alta, con el mismo fotograma desenfocado de fondo
+      const h=H*0.9, w=h*iw/ih, x=W*0.95-w, y=(H-h)/2;
+      bctx.drawImage(img,0,0,bg.width,bg.height);
+      ctx.save();const r=24*(W/innerWidth);ctx.beginPath();ctx.roundRect?ctx.roundRect(x,y,w,h,r):ctx.rect(x,y,w,h);ctx.clip();ctx.drawImage(img,x,y,w,h);ctx.restore();
+    }else{
+      const s=Math.max(W/iw,H/ih),w=iw*s,h=ih*s;ctx.drawImage(img,(W-w)/2,(H-h)/2,w,h);
+    }
+  }
+  function onScroll(){
+    const r=sec.getBoundingClientRect(), total=sec.offsetHeight-innerHeight;
+    const p=Math.min(1,Math.max(0,-r.top/total));
+    want=Math.min(N-1,Math.round(p*(N-1)));
+    caps.forEach(c=>c.classList.toggle('on',p>=+c.dataset.a&&p<+c.dataset.b));
+    let ch=0;STARTS.forEach((s,k)=>{if(want>=s)ch=k});dots.forEach((d,k)=>d.classList.toggle('on',k===ch));
+    document.getElementById('pista').style.opacity=p>0.02?0:1;
+    document.getElementById('barra').classList.toggle('solida',r.bottom<70);
+    if(!raf)raf=requestAnimationFrame(draw);
+  }
+  // carga: primero el inicio y un fotograma de cada sala, luego el resto en orden
+  const order=[0,...STARTS.slice(1)];for(let i=1;i<N;i++)if(!order.includes(i))order.push(i);
+  let q=0;
+  function next(){ if(q>=order.length)return; const i=order[q++]; const im=new Image(); im.decoding='async';
+    im.onload=im.onerror=()=>{loaded++;document.getElementById('carga').style.width=(loaded/N*100)+'%';if(loaded===N)setTimeout(()=>document.getElementById('carga').style.opacity=0,400);if(i===want||cur===-1){cur=-1;if(!raf)raf=requestAnimationFrame(draw)}next()};
+    im.src='f/'+String(i).padStart(3,'0')+'.webp'; frames[i]=im; }
+  for(let k=0;k<6;k++)next();
+  addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',size);
+  size();onScroll();
+
+  // horario en vivo
+  const H={1:[[570,810],[1035,1230]],2:[[570,810],[1035,1230]],3:[[570,810],[1035,1230]],4:[[570,810],[1035,1230]],5:[[570,810],[1035,1230]],6:[[570,810]],0:[]};
+  function estado(){
+    const now=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Madrid'}));
+    const d=now.getDay(), m=now.getHours()*60+now.getMinutes(), e=document.getElementById('estado');
+    const open=(H[d]||[]).some(([a,b])=>m>=a&&m<b);
+    e.classList.toggle('abierto',open);e.querySelector('span').textContent=open?'Abierto ahora':'Cerrado ahora';
+    document.querySelectorAll('#tabla tr').forEach(tr=>tr.classList.toggle('hoy',+tr.dataset.d===d));
+  }
+  estado();setInterval(estado,60000);
+})();
+</script>
+
+</body>
+</html>
