@@ -3,5 +3,6 @@ Allow: /
 Disallow: /cuestionario/
 Disallow: /demos/
 Disallow: /r/
+Disallow: /firma/
 
 Sitemap: https://improva.es/sitemap.xml

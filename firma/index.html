@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Firma de correo · Improva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root{--tinta:#2C1810;--rojo:#C0241A;--beis:#F0E8D8;--beis2:#E6DBC5}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--beis);color:var(--tinta);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+  main{max-width:720px;margin:0 auto;padding:40px 16px 64px}
+  h1{font:400 clamp(40px,8vw,64px)/.95 "Bebas Neue",Impact,sans-serif;letter-spacing:.01em;margin:0 0 6px}
+  h1 em{font-family:Georgia,serif;font-style:italic;color:var(--rojo);text-transform:none}
+  p.lead{margin:0 0 28px;opacity:.8}
+  .hoja{background:#fff;border-radius:14px;padding:28px 22px;box-shadow:0 1px 0 rgba(44,24,16,.08),0 12px 30px -18px rgba(44,24,16,.35);overflow-x:auto}
+  .acciones{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 34px}
+  button{font:600 15px system-ui,sans-serif;border:0;border-radius:999px;padding:12px 20px;cursor:pointer;background:var(--rojo);color:#fff}
+  button.sec{background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 1.5px var(--tinta)}
+  #ok{align-self:center;font-weight:600;color:var(--rojo);opacity:0;transition:opacity .2s}
+  #ok.on{opacity:1}
+  details{border-top:1px solid var(--beis2);padding:14px 0}
+  summary{cursor:pointer;font-weight:650}
+  ol{margin:10px 0 0;padding-left:20px}
+  li{margin:4px 0}
+</style>
+</head>
+<body>
+<main>
+  <h1>Firma de <em>correo</em></h1>
+  <p class="lead">Pulsa «Copiar firma» y pégala en los ajustes de tu correo. Los iconos y el logo se cargan desde improva.es, así que se ven igual en cualquier móvil u ordenador.</p>
+
+  <div class="hoja" id="firma"><!--FIRMA--><table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;color:#2C1810;white-space:nowrap;">
+  <tr>
+    <td valign="middle" style="padding:0 18px 0 0;border-right:2px solid #C0241A;">
+      <a href="https://improva.es" target="_blank" style="text-decoration:none;"><img src="https://improva.es/firma/img/logo.png" width="150" height="50" alt="Improva" style="display:block;width:150px;height:auto;border:0;"></a>
+    </td>
+    <td valign="middle" style="padding:0 0 0 18px;">
+      <div style="font-family:Georgia,'Times New Roman',serif;font-size:20px;line-height:24px;font-style:italic;font-weight:bold;color:#2C1810;">Ricardo</div>
+      <div style="font-size:12px;line-height:18px;letter-spacing:.08em;text-transform:uppercase;color:#C0241A;font-weight:bold;padding:2px 0 8px;">Fundador · Improva, estudio digital</div>
+      <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;font-size:13px;line-height:20px;">
+        <tr>
+          <td style="padding:2px 6px 2px 0;" valign="middle"><a href="https://wa.me/34614525458" target="_blank"><img src="https://improva.es/firma/img/wa.png" width="18" height="18" alt="WhatsApp" style="display:block;border:0;"></a></td>
+          <td style="padding:2px 14px 2px 0;" valign="middle"><a href="https://wa.me/34614525458" target="_blank" style="color:#2C1810;text-decoration:none;">614 52 54 58</a></td>
+          <td style="padding:2px 6px 2px 0;" valign="middle"><a href="mailto:hola@improva.es"><img src="https://improva.es/firma/img/mail.png" width="18" height="18" alt="Email" style="display:block;border:0;"></a></td>
+          <td style="padding:2px 0;" valign="middle"><a href="mailto:hola@improva.es" style="color:#2C1810;text-decoration:none;">hola@improva.es</a></td>
+        </tr>
+        <tr>
+          <td style="padding:2px 6px 2px 0;" valign="middle"><a href="https://improva.es" target="_blank"><img src="https://improva.es/firma/img/web.png" width="18" height="18" alt="Web" style="display:block;border:0;"></a></td>
+          <td style="padding:2px 14px 2px 0;" valign="middle"><a href="https://improva.es" target="_blank" style="color:#2C1810;text-decoration:none;">improva.es</a></td>
+          <td style="padding:2px 6px 2px 0;" valign="middle"><a href="https://www.instagram.com/improva.es/" target="_blank"><img src="https://improva.es/firma/img/ig.png" width="18" height="18" alt="Instagram" style="display:block;border:0;"></a></td>
+          <td style="padding:2px 0;" valign="middle"><a href="https://www.instagram.com/improva.es/" target="_blank" style="color:#2C1810;text-decoration:none;">@improva.es</a></td>
+        </tr>
+      </table>
+      <div style="font-family:Georgia,'Times New Roman',serif;font-size:13px;line-height:18px;font-style:italic;color:#2C1810;opacity:.75;padding-top:8px;">Tu negocio merece ser <span style="color:#C0241A;">visto</span>.</div>
+    </td>
+  </tr>
+</table><!--/FIRMA--></div>
+
+  <div class="acciones">
+    <button id="copiar">Copiar firma</button>
+    <button class="sec" id="copiarHtml">Copiar código HTML</button>
+    <span id="ok">¡Copiada!</span>
+  </div>
+
+  <details open>
+    <summary>Gmail (ordenador)</summary>
+    <ol>
+      <li>Rueda ⚙️ → <b>Ver todos los ajustes</b> → pestaña <b>General</b>.</li>
+      <li>Baja a <b>Firma</b> → <b>Crear nueva</b> → ponle «Improva».</li>
+      <li>Pega en el cuadro (Ctrl/Cmd + V) y elígela en «Para correos nuevos» y «Para respuestas».</li>
+      <li>Abajo del todo: <b>Guardar cambios</b>.</li>
+    </ol>
+  </details>
+  <details>
+    <summary>Outlook</summary>
+    <ol>
+      <li>Ajustes → <b>Cuentas</b> → <b>Firmas</b> → nueva firma.</li>
+      <li>Pega, elige que se use por defecto y guarda.</li>
+    </ol>
+  </details>
+  <details>
+    <summary>iPhone (app Mail)</summary>
+    <ol>
+      <li>Abre esta página en el iPhone y pulsa «Copiar firma».</li>
+      <li>Ajustes → Apps → Mail → <b>Firma</b> → pega.</li>
+      <li>Si se descoloca, agita el iPhone y pulsa «Deshacer»: Mail a veces quita el formato; pegarla de nuevo suele arreglarlo.</li>
+    </ol>
+  </details>
+  <details>
+    <summary>Gmail en el móvil</summary>
+    <ol>
+      <li>La app de Gmail solo admite firmas de texto. Configúrala desde el ordenador (arriba) y la verás también en los correos que mandes desde el móvil si desactivas la «Firma móvil».</li>
+    </ol>
+  </details>
+</main>
+<script>
+  var box=document.getElementById('firma'), ok=document.getElementById('ok');
+  function aviso(t){ok.textContent=t||'¡Copiada!';ok.classList.add('on');setTimeout(function(){ok.classList.remove('on')},1800)}
+  function seleccionarYCopiar(){var r=document.createRange();r.selectNodeContents(box);var s=getSelection();s.removeAllRanges();s.addRange(r);var ok=document.execCommand('copy');s.removeAllRanges();return ok}
+  document.getElementById('copiar').onclick=function(){
+    var html=box.innerHTML;
+    if(window.ClipboardItem&&navigator.clipboard&&navigator.clipboard.write){
+      navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([html],{type:'text/html'}),'text/plain':new Blob([box.innerText],{type:'text/plain'})})]).then(function(){aviso()},function(){seleccionarYCopiar();aviso()});
+    }else{seleccionarYCopiar();aviso()}
+  };
+  document.getElementById('copiarHtml').onclick=function(){
+    var html=box.innerHTML.trim();
+    (navigator.clipboard?navigator.clipboard.writeText(html):Promise.reject()).then(function(){aviso('¡Código copiado!')},function(){prompt('Copia el código:',html)});
+  };
+</script>
+</body>
+</html>
