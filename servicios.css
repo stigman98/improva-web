@@ -1,0 +1,127 @@
+/* Páginas de servicio de improva.es · misma identidad que la portada */
+:root{
+  --beis:#F0E8D8;--beis-2:#E6DBC5;--rojo:#C0241A;--rojo-hover:#9C1C14;
+  --tinta:#2C1810;--tinta-60:rgba(44,24,16,.66);--tinta-25:rgba(44,24,16,.25);
+  --gutter:clamp(16px,5vw,72px);--regla:3px solid var(--tinta);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--beis);color:var(--tinta);font-family:"Switzer",system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--rojo);outline-offset:3px}
+.contenedor{max-width:1120px;margin:0 auto;padding-inline:var(--gutter)}
+.eyebrow{font-family:"Bebas Neue",sans-serif;font-size:14px;letter-spacing:.32em;color:var(--rojo);display:block;margin-bottom:16px}
+.titular{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(34px,5.4vw,64px);line-height:.96;letter-spacing:.005em}
+.titular em{font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:800;font-variation-settings:"SOFT" 100,"opsz" 144;color:var(--rojo);font-size:.86em;letter-spacing:-.02em;text-transform:none}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:60;background:var(--beis);border-bottom:2px solid var(--tinta)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:62px}
+.nav-logo img{display:block;height:22px;width:auto}
+.nav-links{display:flex;gap:22px;font-size:14px}
+.nav-links a{text-decoration:none;border-bottom:2px solid transparent;padding-bottom:2px}
+.nav-links a:hover,.nav-links a[aria-current]{border-bottom-color:var(--rojo)}
+.nav-cta{background:var(--rojo);color:var(--beis);text-decoration:none;font-size:14px;font-weight:500;padding:9px 16px;white-space:nowrap}
+.nav-cta:hover{background:var(--rojo-hover)}
+@media(max-width:860px){.nav-links{display:none}}
+
+/* migas */
+.migas{font-size:13px;color:var(--tinta-60);padding-top:22px}
+.migas a{text-decoration:none;border-bottom:1px solid var(--tinta-25)}
+
+/* cabecera */
+.cabecera{padding:clamp(28px,5vw,60px) 0 clamp(44px,6vw,80px);border-bottom:var(--regla)}
+.cabecera h1{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(42px,7.4vw,92px);line-height:.92;max-width:16ch}
+.cabecera h1 em{font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:800;font-variation-settings:"SOFT" 100,"opsz" 144;color:var(--rojo);font-size:.84em;letter-spacing:-.02em;text-transform:none}
+.definicion{font-size:clamp(18px,2.1vw,22px);line-height:1.5;max-width:60ch;margin-top:26px}
+.definicion strong{font-weight:600}
+.acciones{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-block;text-decoration:none;font-size:15px;font-weight:500;padding:14px 24px;border:2px solid var(--rojo)}
+.btn-solido{background:var(--rojo);color:var(--beis)}
+.btn-solido:hover{background:var(--rojo-hover);border-color:var(--rojo-hover)}
+.btn-hueco{color:var(--rojo)}
+.btn-hueco:hover{background:var(--rojo);color:var(--beis)}
+
+/* bloques */
+.bloque{padding:clamp(56px,8vw,100px) 0}
+.bloque + .bloque{border-top:1px solid var(--tinta-25)}
+.bloque-intro{max-width:60ch;margin-bottom:clamp(28px,4vw,44px)}
+.bloque-intro p{color:var(--tinta-60);margin-top:16px}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,80px);align-items:start}
+@media(max-width:820px){.dos{grid-template-columns:1fr}}
+.texto p{color:var(--tinta-60);margin-top:16px;max-width:52ch}
+.texto p strong{color:var(--tinta);font-weight:600}
+
+.lista{list-style:none;border-top:1px solid var(--tinta-25)}
+.lista li{padding:15px 0 15px 30px;border-bottom:1px solid var(--tinta-25);position:relative}
+.lista li::before{content:"";position:absolute;left:2px;top:24px;width:12px;height:12px;background:var(--rojo)}
+.lista b{display:block;font-weight:600}
+.lista span{font-size:15px;color:var(--tinta-60)}
+
+.tarjetas{display:grid;grid-template-columns:repeat(2,1fr);border:var(--regla)}
+.tarjeta{padding:26px 24px 30px;border-right:var(--regla);border-bottom:var(--regla)}
+.tarjeta:nth-child(2n){border-right:none}
+.tarjeta:nth-last-child(-n+2){border-bottom:none}
+.tarjeta h3{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(24px,2.6vw,32px);line-height:1;margin-bottom:10px}
+.tarjeta p{font-size:15.5px;color:var(--tinta-60)}
+@media(max-width:760px){
+  .tarjetas{grid-template-columns:1fr}
+  .tarjeta,.tarjeta:nth-child(2n){border-right:none}
+  .tarjeta:nth-last-child(-n+2){border-bottom:var(--regla)}
+  .tarjeta:last-child{border-bottom:none}
+}
+
+.pasos{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:0 18px;border-top:var(--regla);counter-reset:p}
+.pasos li{padding:22px 20px 26px 0;counter-increment:p}
+.pasos li::before{content:counter(p,decimal-leading-zero);font-family:"Bebas Neue",sans-serif;font-size:40px;color:var(--rojo);line-height:1;display:block}
+.pasos b{display:block;font-weight:600;margin:6px 0 4px}
+.pasos span{font-size:15px;color:var(--tinta-60);display:block}
+@media(max-width:900px){.pasos{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.pasos{grid-template-columns:1fr}}
+
+.oscuro{background:var(--tinta);color:var(--beis)}
+.oscuro .eyebrow{color:#F08A7E}
+.oscuro .titular em{color:#E8473A}
+.oscuro .texto p,.oscuro .bloque-intro p{color:rgba(240,232,216,.82)}
+.oscuro .lista,.oscuro .lista li{border-color:rgba(240,232,216,.25)}
+.oscuro .lista li::before{background:#E8473A}
+.oscuro .pasos{border-top-color:var(--beis)}
+.oscuro .pasos span{color:rgba(240,232,216,.75)}
+.oscuro .lista span{color:rgba(240,232,216,.75)}
+
+.precio{background:var(--beis-2);border-block:var(--regla)}
+.precio .dos{align-items:center}
+.cifra{font-family:"Bebas Neue",sans-serif;line-height:.85;color:var(--rojo);font-size:clamp(72px,12vw,150px)}
+.cifra small{display:block;font-size:15px;letter-spacing:.14em;color:var(--tinta-60);margin-top:10px;line-height:1.3}
+
+.faq{border-top:var(--regla)}
+.faq details{border-bottom:1px solid var(--tinta-25)}
+.faq summary{cursor:pointer;list-style:none;padding:18px 40px 18px 0;font-weight:600;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:12px;font-size:26px;color:var(--rojo);font-weight:400}
+.faq details[open] summary::after{content:"–"}
+.faq details p{color:var(--tinta-60);padding:0 0 20px;max-width:70ch}
+
+.otros{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border:var(--regla)}
+.otros a{display:block;text-decoration:none;padding:22px 22px 24px;border-right:1px solid var(--tinta-25)}
+.otros a:last-child{border-right:none}
+.otros a:hover{background:var(--beis-2)}
+.otros b{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:26px;line-height:1;display:block}
+.otros span{font-size:14.5px;color:var(--tinta-60)}
+@media(max-width:760px){.otros a{border-right:none;border-bottom:1px solid var(--tinta-25)}.otros a:last-child{border-bottom:none}}
+
+.contacto{background:var(--rojo);color:var(--beis)}
+.contacto .eyebrow{color:var(--beis)}
+.contacto .titular em{color:var(--tinta)}
+.contacto p{color:rgba(240,232,216,.86);margin-top:18px;max-width:46ch}
+.wasap{display:inline-block;margin-top:26px;background:var(--beis);color:var(--rojo);text-decoration:none;font-weight:600;padding:16px 26px}
+.wasap:hover{background:#fff}
+.contacto .mail{font-size:15px;margin-top:14px}
+.contacto .mail a{color:var(--beis)}
+
+.pie{padding:34px 0 42px;border-top:2px solid var(--tinta)}
+.pie-in{display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap;align-items:flex-end}
+.pie img{display:block;width:140px;height:auto}
+.pie-links{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:14px;color:var(--tinta-60)}
+.pie-links a{text-decoration:none;border-bottom:1px solid var(--rojo)}
+.pie-legal{font-size:12.5px;color:var(--tinta-60);margin-top:22px}
