@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tienda · Herbolario CuidaT, Parla</title>
+<meta name="description" content="Compra en Herbolario CuidaT (Parla): plantas e infusiones, complementos, cosmética natural, aceites esenciales y alimentación. Envío a península o recogida en tienda.">
+<meta name="theme-color" content="#FAF7EF">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preload" href="fuentes/cormorant-garamond-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fuentes/jost-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="tienda.css">
+<script src="tienda.js" defer></script>
+</head>
+<body>
+<div class="demo" id="aviso-demo" hidden>Versión de prueba: no se cobra nada y los precios de envío son de ejemplo.</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="../cuidat/" aria-label="Herbolario CuidaT, inicio"><img src="img/cuidat-logo.webp" alt="Herbolario CuidaT" width="92" height="34"></a>
+    <a class="volver" href="../cuidat/">← Volver a la web</a>
+  </div>
+</header>
+
+<main>
+  <section class="cabecera wrap">
+    <h1>La tienda de <em>CuidaT</em></h1>
+    <p>Lo que encuentras en nuestras estanterías de Parla, para que lo pidas desde casa. Si tienes dudas sobre qué elegir, escríbenos antes y te aconsejamos.</p>
+    <div class="ventajas"><span id="v-envio">Envío a península</span><span>Recogida gratis en tienda</span><span>Pago seguro con tarjeta</span></div>
+  </section>
+
+  <div class="filtros">
+    <div class="wrap">
+      <div class="buscar">
+        <label class="sr" for="q">Buscar productos</label>
+        <input id="q" type="search" placeholder="Busca: valeriana, magnesio, aloe…" autocomplete="off">
+        <label class="solo"><input type="checkbox" id="solo" checked> Solo disponibles</label>
+      </div>
+      <div class="chips" id="chips" role="group" aria-label="Categorías"></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <p class="resumen" id="resumen" aria-live="polite">Cargando productos…</p>
+    <div class="rejilla" id="rejilla"></div>
+    <div class="mas"><button class="btn btn-line" id="ver-mas" hidden>Ver más productos</button></div>
+  </div>
+</main>
+
+<footer class="pie-web">
+  <div class="wrap">
+    <nav aria-label="Información legal">
+      <a href="condiciones.html">Condiciones de venta</a>
+      <a href="envios.html">Envíos y devoluciones</a>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="aviso-legal.html">Aviso legal</a>
+      <a href="cookies.html">Cookies</a>
+    </nav>
+    <p>HERBORISAN SL (Herbolario CuidaT) · NIF B26746974 · Avenida de las Estrellas 49, 28983 Parla (Madrid) · WhatsApp 604 81 51 33</p>
+    <p>Los complementos alimenticios no deben utilizarse como sustitutos de una dieta variada y equilibrada ni de un modo de vida sano. La información de esta tienda no sustituye el consejo de un profesional sanitario.</p>
+    <p id="actualizado"></p>
+  </div>
+</footer>
+
+<button class="cesta-btn" id="cesta-btn" hidden aria-haspopup="dialog">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+  Tu cesta <span class="num" id="cesta-num">0</span>
+</button>
+
+<div class="velo" id="velo" hidden></div>
+<aside class="panel" id="panel" hidden role="dialog" aria-modal="true" aria-labelledby="panel-t">
+  <header><h2 id="panel-t">Tu cesta</h2><button class="cerrar" id="cerrar" aria-label="Cerrar la cesta">×</button></header>
+  <div class="lineas" id="lineas"></div>
+  <div class="totales">
+    <div class="modo" role="radiogroup" aria-label="Cómo quieres recibirlo">
+      <label><input type="radio" name="modo" value="envio" checked> <span><b>Envío a casa</b><br><small id="txt-envio">Península</small></span></label>
+      <label><input type="radio" name="modo" value="tienda"> <span><b>Recoger en tienda</b><br><small>Gratis · Parla</small></span></label>
+    </div>
+    <div class="fila"><span>Productos</span><span id="t-sub">0,00 €</span></div>
+    <div class="fila"><span>Envío</span><span id="t-env">0,00 €</span></div>
+    <div class="fila total"><span>Total</span><span id="t-tot">0,00 €</span></div>
+    <p class="nota" id="nota-envio"></p>
+    <label class="acepto"><input type="checkbox" id="acepto"> <span>He leído y acepto las <a href="condiciones.html" target="_blank">condiciones de venta</a> y la <a href="privacidad.html" target="_blank">política de privacidad</a>.</span></label>
+    <div class="acciones">
+      <button class="btn btn-dark" id="pagar" disabled>Pagar con tarjeta</button>
+      <button class="btn btn-line" id="whatsapp" hidden disabled>Reservar por WhatsApp y pagar al recoger</button>
+    </div>
+    <p class="nota">Tienes 14 días para devolver tu pedido. <a href="envios.html" target="_blank">Envíos y devoluciones</a>.</p>
+  </div>
+</aside>
+
+<div class="dialogo" id="dialogo" hidden role="alertdialog" aria-modal="true" aria-labelledby="dlg-t">
+  <div class="caja">
+    <h2 id="dlg-t">Aquí se paga</h2>
+    <p id="dlg-p">En la tienda real, este botón abre el pago seguro con tarjeta de Stripe. En esta versión de prueba no se cobra nada.</p>
+    <button class="btn btn-dark" id="dlg-ok">Entendido</button>
+  </div>
+</div>
+</body>
+</html>

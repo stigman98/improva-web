@@ -125,3 +125,17 @@ a{color:inherit}
 .pie-links{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:14px;color:var(--tinta-60)}
 .pie-links a{text-decoration:none;border-bottom:1px solid var(--rojo)}
 .pie-legal{font-size:12.5px;color:var(--tinta-60);margin-top:22px}
+
+/* páginas legales */
+.legal{max-width:760px;margin:0 auto;padding:clamp(28px,5vw,56px) var(--gutter) 80px}
+.legal h1{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:clamp(40px,7vw,72px);line-height:.95}
+.legal h2{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:28px;letter-spacing:.01em;margin:32px 0 6px}
+.legal p,.legal li{color:var(--tinta)}
+.legal .act{font-size:14px;color:var(--tinta-60)}
+.legal table{width:100%;border-collapse:collapse;font-size:15px;margin:12px 0}
+.legal th,.legal td{border-bottom:1px solid var(--tinta-25);padding:9px 6px;text-align:left;vertical-align:top}
+.legal th{font-weight:600}
+@media(max-width:600px){.legal table,.legal tbody,.legal tr,.legal td,.legal th{display:block}.legal tr{border-bottom:1px solid var(--tinta-25);padding:8px 0}.legal td,.legal th{border:0;padding:2px 0}.legal tr:first-child{display:none}}
+mark.falta{background:#FBE7A1;padding:0 4px}
+.legal h1{margin-bottom:10px}
+@media(max-width:600px){.legal td{padding:1px 0}.legal td:first-child{font-weight:600;padding-top:4px}.legal td:nth-child(2)::before{content:"Datos: ";color:var(--tinta-60)}.legal td:nth-child(3)::before{content:"Base legal: ";color:var(--tinta-60)}.legal td:nth-child(4)::before{content:"Plazo: ";color:var(--tinta-60)}}
