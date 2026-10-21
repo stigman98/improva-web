@@ -10,7 +10,7 @@
 
   function leer() {
     try { var e = JSON.parse(localStorage.getItem(CLAVE) || "null"); if (e && e.m) return e; } catch (x) {}
-    return { m: {}, n: [], quien: "" };
+    return { m: {}, n: [], quien: "", nuevo: true };
   }
   function guardar() { try { localStorage.setItem(CLAVE, JSON.stringify(estado)); } catch (x) {} contar(); }
   function sinAcentos(s) { return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase(); }
@@ -21,6 +21,8 @@
     .then(function (d) {
       datos = d;
       d.productos.forEach(function (p) { p._b = sinAcentos(p.n); });
+      // primera vez: salen marcados los que tienen stock; ellas quitan lo que no quieran vender online
+      if (estado.nuevo) { d.productos.forEach(function (p) { if (p.s > 0) estado.m[p.c] = 1; }); delete estado.nuevo; guardar(); }
       var nombres = {}; d.categorias.forEach(function (c) { nombres[c[0]] = c[1]; });
       $("chips").innerHTML = [["", "Todo"]].concat(d.categorias.filter(function (c) {
         return d.productos.some(function (p) { return p.k === c[0]; });
