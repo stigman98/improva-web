@@ -28,10 +28,16 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1;margin:0}
 .demo::before{content:"Prueba ·";font-weight:600;margin-right:6px;color:var(--toldo)}
 
 /* barra con el toldo */
-.top{position:sticky;top:0;z-index:30;background:var(--papel);border-bottom:10px solid var(--toldo)}
+.top{position:sticky;top:0;z-index:30;background:var(--papel);border-bottom:1px solid var(--tinta)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:60px}
 .top .logo img{height:34px;width:auto;display:block}
 .top .volver{font-size:14px;color:var(--tinta-2)}
+
+/* el toldo de la fachada: faldón con pliegues y remate ondulado; baja al cargar */
+.toldo{position:relative;z-index:25;height:clamp(40px,6vw,64px);margin-top:-1px;transform-origin:top;animation:baja .9s cubic-bezier(.3,1.3,.5,1) .15s both}
+.toldo svg{display:block;width:100%;height:100%}
+@keyframes baja{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@media(prefers-reduced-motion:reduce){.toldo{animation:none}}
 
 /* cabecera */
 .cabecera{padding:40px 16px 28px;display:grid;grid-template-columns:1fr;gap:6px}
@@ -43,7 +49,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1;margin:0}
 @media(min-width:860px){.cabecera{grid-template-columns:1.4fr 1fr;align-items:end;column-gap:48px}.cabecera .rotulo{grid-column:1/-1}.cabecera .intro{margin:0 0 6px;padding-left:20px;border-left:1px solid var(--filete)}}
 
 /* buscador e índice */
-.filtros{position:sticky;top:70px;z-index:20;background:var(--papel);border-top:1px solid var(--tinta);border-bottom:1px solid var(--filete)}
+.filtros{position:sticky;top:61px;z-index:20;background:var(--papel);border-top:1px solid var(--tinta);border-bottom:1px solid var(--filete)}
 .buscar{display:flex;gap:14px;align-items:center;padding-top:10px}
 .buscar input{flex:1;min-width:0;font:400 17px var(--sans);padding:8px 0;border:0;border-bottom:1.5px solid var(--tinta);border-radius:0;background:transparent}
 .buscar input:focus{outline:none;border-bottom-width:3px}
