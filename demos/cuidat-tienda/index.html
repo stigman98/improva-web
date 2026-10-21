@@ -13,7 +13,7 @@
 <script src="tienda.js" defer></script>
 </head>
 <body>
-<div class="demo" id="aviso-demo" hidden>Versión de prueba: no se cobra nada y los precios de envío son de ejemplo.</div>
+<div class="demo" id="aviso-demo" hidden>No se cobra nada y los precios de envío son de ejemplo.</div>
 
 <header class="top">
   <div class="wrap">
@@ -24,16 +24,16 @@
 
 <main>
   <section class="cabecera wrap">
-    <h1>La tienda de <em>CuidaT</em></h1>
-    <p>Lo que encuentras en nuestras estanterías de Parla, para que lo pidas desde casa. Si tienes dudas sobre qué elegir, escríbenos antes y te aconsejamos.</p>
-    <div class="ventajas"><span id="v-envio">Envío a península</span><span>Recogida gratis en tienda</span><span>Pago seguro con tarjeta</span></div>
+    <p class="rotulo">Herbolario</p>
+    <h1>Lo de nuestras estanterías, <span class="trazo">en tu casa<svg viewBox="0 0 300 40" preserveAspectRatio="none" aria-hidden="true"><path d="M4 26c40-14 92-17 150-13 52 3 98 1 142-9-30 15-86 24-146 24C92 28 46 32 8 34Z"/></svg></span></h1>
+    <p class="intro" id="v-envio">Te lo enviamos a península o lo recoges en Parla sin coste. Si dudas qué elegir, pregúntanos antes por WhatsApp.</p>
   </section>
 
   <div class="filtros">
     <div class="wrap">
       <div class="buscar">
         <label class="sr" for="q">Buscar productos</label>
-        <input id="q" type="search" placeholder="Busca: valeriana, magnesio, aloe…" autocomplete="off">
+        <input id="q" type="search" placeholder="Busca: valeriana, magnesio…" autocomplete="off">
         <label class="solo"><input type="checkbox" id="solo" checked> Solo disponibles</label>
       </div>
       <div class="chips" id="chips" role="group" aria-label="Categorías"></div>
@@ -43,7 +43,7 @@
   <div class="wrap">
     <p class="resumen" id="resumen" aria-live="polite">Cargando productos…</p>
     <div class="rejilla" id="rejilla"></div>
-    <div class="mas"><button class="btn btn-line" id="ver-mas" hidden>Ver más productos</button></div>
+    <div class="mas"><button class="mas-btn" id="ver-mas" hidden>Seguir viendo el catálogo ↓</button></div>
   </div>
 </main>
 
@@ -64,12 +64,12 @@
 
 <button class="cesta-btn" id="cesta-btn" hidden aria-haspopup="dialog">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
-  Tu cesta <span class="num" id="cesta-num">0</span>
+  Tu pedido <span class="num" id="cesta-num">0</span>
 </button>
 
 <div class="velo" id="velo" hidden></div>
 <aside class="panel" id="panel" hidden role="dialog" aria-modal="true" aria-labelledby="panel-t">
-  <header><h2 id="panel-t">Tu cesta</h2><button class="cerrar" id="cerrar" aria-label="Cerrar la cesta">×</button></header>
+  <header><h2 id="panel-t">Nota de pedido</h2><button class="cerrar" id="cerrar" aria-label="Cerrar la nota de pedido">Cerrar</button></header>
   <div class="lineas" id="lineas"></div>
   <div class="totales">
     <div class="modo" role="radiogroup" aria-label="Cómo quieres recibirlo">
