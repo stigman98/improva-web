@@ -1,0 +1,31 @@
+.cabecera h1{font-style:normal}
+.intro p{margin:0 0 8px}
+.bloque-acc{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:baseline;padding:0 0 10px;font-size:14px}
+.enlace{border:0;background:none;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:4px;font-weight:500}
+.enlace:hover{text-decoration-thickness:2px}
+.cuenta{margin-left:auto;font:600 20px var(--serif)}
+.sel{display:grid;grid-template-columns:28px 1fr auto;gap:2px 12px;align-items:start;padding:11px 0;border-bottom:1px solid var(--filete);cursor:pointer}
+.sel input{width:22px;height:22px;margin:1px 0 0;accent-color:var(--tinta)}
+.sel .nom{font-size:16px}
+.sel .det{grid-column:2/-1;font-size:12.5px;color:var(--tinta-2)}
+.sel .precio{font:600 19px var(--serif)}
+.sel{border-left:4px solid transparent;padding-left:8px}
+.sel:has(input:checked){border-left-color:var(--toldo)}
+.sel:has(input:checked) .nom{font-weight:500}
+.nuevo{border-top:1px solid var(--tinta);margin:30px 0 140px;padding-top:14px}
+.nuevo h2{font-size:34px;margin-bottom:6px}
+.nuevo p{color:var(--tinta-2);margin:0 0 14px}
+.form-nuevo{display:grid;grid-template-columns:2fr 1fr;gap:12px 18px;align-items:end}
+.form-nuevo label{display:grid;gap:4px;font-size:13.5px;color:var(--tinta-2)}
+.form-nuevo .ancho{grid-column:1/-1}
+.form-nuevo input{font:400 16px var(--sans);padding:8px 0;border:0;border-bottom:1.5px solid var(--tinta);border-radius:0;background:transparent;color:var(--tinta)}
+.form-nuevo input:focus{outline:none;border-bottom-width:3px}
+.form-nuevo .btn{grid-column:1/-1;width:auto;justify-self:start}
+.nuevos{margin:16px 0 0;padding-left:20px}
+.nuevos li{padding:6px 0;border-bottom:1px dashed var(--filete)}
+.nuevos button{margin-left:10px}
+.envio{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--papel);border-top:1px solid var(--tinta);padding:10px 0}
+.envio .wrap{display:flex;gap:12px;align-items:center}
+.envio input{flex:1;min-width:0;font:400 16px var(--sans);padding:10px 0;border:0;border-bottom:1.5px solid var(--tinta);border-radius:0;background:transparent}
+.envio .btn{width:auto;white-space:nowrap}
+@media(max-width:600px){.form-nuevo{grid-template-columns:1fr}.cuenta{margin-left:0;width:100%}}

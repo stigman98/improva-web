@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selección para la tienda online · CuidaT</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FAF7EF">
+<link rel="stylesheet" href="../tienda.css">
+<link rel="stylesheet" href="seleccion.css">
+<script src="seleccion.js" defer></script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <span class="logo"><img src="../img/cuidat-logo.webp" alt="Herbolario CuidaT" width="92" height="34"></span>
+    <span class="volver">Solo para CuidaT</span>
+  </div>
+</header>
+
+<main>
+  <section class="cabecera wrap">
+    <p class="rotulo">Selección</p>
+    <h1>Qué vendemos <span class="trazo">en la web<svg viewBox="0 0 300 40" preserveAspectRatio="none" aria-hidden="true"><path d="M4 26c40-14 92-17 150-13 52 3 98 1 142-9-30 15-86 24-146 24C92 28 46 32 8 34Z"/></svg></span></h1>
+    <div class="intro">
+      <p>Marcad los productos que queréis tener en la tienda online. Se guarda solo en este dispositivo, así que podéis dejarlo a medias y seguir otro día.</p>
+      <p>Cuando terminéis, poned vuestro nombre abajo y pulsad <b>Enviar a Improva</b>.</p>
+    </div>
+  </section>
+
+  <div class="filtros">
+    <div class="wrap">
+      <div class="buscar">
+        <label class="sr" for="q">Buscar productos</label>
+        <input id="q" type="search" placeholder="Busca un producto…" autocomplete="off">
+        <label class="solo"><input type="checkbox" id="solo-stock"> Con stock</label>
+        <label class="solo"><input type="checkbox" id="solo-marcados"> Marcados</label>
+      </div>
+      <div class="chips" id="chips" role="group" aria-label="Categorías"></div>
+      <div class="bloque-acc">
+        <button class="enlace" id="marcar-vis">Marcar todo lo que se ve</button>
+        <button class="enlace" id="desmarcar-vis">Desmarcar todo lo que se ve</button>
+        <span class="cuenta" id="cuenta" aria-live="polite"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <p class="resumen" id="resumen">Cargando productos…</p>
+    <div id="lista"></div>
+    <div class="mas"><button class="mas-btn" id="ver-mas" hidden>Ver más ↓</button></div>
+
+    <section class="nuevo" aria-labelledby="nuevo-t">
+      <h2 id="nuevo-t">¿Falta algún producto?</h2>
+      <p>Si queréis vender algo que no sale en la lista, apuntadlo aquí.</p>
+      <form id="form-nuevo" class="form-nuevo">
+        <label>Nombre del producto<input name="n" required maxlength="120"></label>
+        <label>Precio (€)<input name="p" inputmode="decimal" maxlength="10" placeholder="12,95"></label>
+        <label class="ancho">Nota (opcional)<input name="nota" maxlength="200" placeholder="Marca, formato, proveedor…"></label>
+        <button class="btn btn-line" type="submit">Añadir a la selección</button>
+      </form>
+      <ol class="nuevos" id="nuevos"></ol>
+    </section>
+  </div>
+</main>
+
+<!-- Formulario que recoge Netlify (los envíos de formularios no gastan créditos) -->
+<form name="seleccion-cuidat" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input name="bot-field"><input name="quien"><input name="total"><textarea name="codigos"></textarea><textarea name="nuevos"></textarea>
+</form>
+
+<div class="envio">
+  <div class="wrap">
+    <label class="sr" for="quien">Quién envía la selección</label>
+    <input id="quien" placeholder="Vuestro nombre" maxlength="60">
+    <button class="btn btn-dark" id="enviar" disabled>Enviar a Improva</button>
+  </div>
+</div>
+
+<div class="dialogo" id="dialogo" hidden role="alertdialog" aria-modal="true" aria-labelledby="dlg-t">
+  <div class="caja">
+    <h2 id="dlg-t"></h2>
+    <p id="dlg-p"></p>
+    <button class="btn btn-dark" id="dlg-ok">Vale</button>
+  </div>
+</div>
+</body>
+</html>
