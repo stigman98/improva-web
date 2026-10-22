@@ -2,32 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://improva.es/</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://improva.es/creacion-de-contenido-madrid/</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://improva.es/edicion-de-video/</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-22</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://improva.es/video-para-empresas/</loc>
+    <lastmod>2026-10-22</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://improva.es/automatizaciones-con-ia/</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://improva.es/herramientas-ia-a-medida/</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://improva.es/semilla/</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <priority>0.4</priority>
   </url>
 </urlset>
