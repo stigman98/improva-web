@@ -48,6 +48,16 @@
   $("atras").addEventListener("click", function () { pista.scrollBy({ left: -paso(), behavior: "smooth" }); });
   $("sig").addEventListener("click", function () { pista.scrollBy({ left: paso(), behavior: "smooth" }); });
 
+  // vídeos de trabajos: se cargan y reproducen solo cuando se ven
+  var vids = document.querySelectorAll("video[data-auto]");
+  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) e.target.play().catch(function () {}); else e.target.pause(); });
+    }, { threshold: .4 });
+    vids.forEach(function (v) { io.observe(v); });
+  }
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { var r = document.querySelector("#reel video"); if (r) { r.removeAttribute("autoplay"); r.pause(); r.controls = true; } }
+
   // diagnóstico
   var NEG = { comercio: "comercio", hosteleria: "negocio de hostelería", cita: "negocio de estética o salud", empresa: "empresa" };
   var REC = {
