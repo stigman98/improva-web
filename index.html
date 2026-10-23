@@ -171,7 +171,7 @@
   </div>
 </nav>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="contorno" x="-5%" y="-15%" width="110%" height="130%" color-interpolation-filters="sRGB"><feMorphology in="SourceAlpha" operator="dilate" radius="6" result="grueso"/><feFlood flood-color="#F0E8D8"/><feComposite in2="grueso" operator="in" result="borde"/><feMerge><feMergeNode in="borde"/><feMergeNode in="SourceGraphic"/></feMerge></filter></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="troquel" x="-10%" y="-20%" width="120%" height="140%" color-interpolation-filters="sRGB"><feMorphology in="SourceAlpha" operator="dilate" radius="13" result="grueso"/><feGaussianBlur in="grueso" stdDeviation="5" result="suave"/><feComponentTransfer in="suave" result="forma"><feFuncA type="discrete" tableValues="0 1"/></feComponentTransfer><feFlood flood-color="#F0E8D8"/><feComposite in2="forma" operator="in" result="pegatina"/><feMerge><feMergeNode in="pegatina"/><feMergeNode in="SourceGraphic"/></feMerge></filter></svg>
 <header class="hero">
   <div class="caja">
     <div>

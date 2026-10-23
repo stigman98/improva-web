@@ -75,9 +75,9 @@ img,video{display:block;max-width:100%}
   /* móvil: el vídeo ocupa el ancho y el claim va arriba en tiras de papel; una persiana sube al cargar */
   .hero .caja{grid-template-columns:1fr;grid-template-areas:"escena" "bajo";gap:0;padding-top:0}
   .hero .caja>div:first-child{display:contents}
-  .hero .claim{grid-area:escena;align-self:start;position:relative;z-index:2;color:var(--tinta);padding-top:22px;font-size:clamp(70px,20vw,140px);line-height:.86}
-  /* cada línea lleva un contorno de papel que sigue la forma de las letras, como vinilo recortado; entra de izquierda a derecha cuando sube la persiana */
-  .hero .claim .l{width:max-content;max-width:100%;padding:.07em .1em 0 .06em;margin-bottom:.02em;opacity:1;transform:none;filter:url(#contorno);animation:tira .55s cubic-bezier(.7,0,.2,1) both}
+  .hero .claim{grid-area:escena;align-self:start;position:relative;z-index:2;color:var(--tinta);padding-top:22px;font-size:clamp(70px,20vw,140px);line-height:.86;filter:url(#troquel)}
+  /* el claim entero es una pegatina troquelada: el beige del fondo baja y rodea las letras sobre el vídeo; cada línea entra de izquierda a derecha cuando sube la persiana */
+  .hero .claim .l{width:max-content;max-width:100%;padding:.07em .1em 0 .06em;margin-bottom:.02em;opacity:1;transform:none;animation:tira .55s cubic-bezier(.7,0,.2,1) both}
   .hero .claim .l:nth-child(1){animation-delay:1s;rotate:-1deg}
   .hero .claim .l:nth-child(2){animation-delay:1.15s;rotate:1.2deg;margin-left:.12em}
   .hero .claim .l:nth-child(3){animation-delay:1.3s;rotate:-.6deg}
