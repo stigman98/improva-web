@@ -68,6 +68,18 @@
     iop.observe(peg);
   }
 
+  // sonido opcional en los vídeos con audio: uno cada vez
+  var botones = document.querySelectorAll(".sonido");
+  botones.forEach(function (b) {
+    var v = b.parentNode.querySelector("video");
+    b.addEventListener("click", function () {
+      var activar = b.getAttribute("aria-pressed") !== "true";
+      botones.forEach(function (o) { var ov = o.parentNode.querySelector("video"); ov.muted = true; o.setAttribute("aria-pressed", "false"); o.textContent = "Escuchar"; });
+      if (activar) { v.muted = false; v.currentTime = 0; v.play().catch(function () {}); b.setAttribute("aria-pressed", "true"); b.textContent = "Silenciar"; }
+    });
+    v.addEventListener("pause", function () { if (!v.muted) { v.muted = true; b.setAttribute("aria-pressed", "false"); b.textContent = "Escuchar"; } });
+  });
+
   // diagnóstico
   var NEG = { comercio: "comercio", hosteleria: "negocio de hostelería", cita: "negocio de estética o salud", empresa: "empresa" };
   var REC = {

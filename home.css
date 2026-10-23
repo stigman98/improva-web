@@ -169,6 +169,10 @@ img,video{display:block;max-width:100%}
 .trabajo{scroll-snap-align:start;border-top:2px solid currentColor;padding-top:10px}
 .trabajo .marco{aspect-ratio:9/16;background:rgba(240,232,216,.08);display:grid;place-items:center;text-align:center;padding:18px;font-size:13px;color:rgba(240,232,216,.6);overflow:hidden}
 .trabajo .marco video,.trabajo .marco img{width:100%;height:100%;object-fit:cover}
+.trabajo .marco{position:relative}
+.sonido{position:absolute;left:10px;bottom:10px;background:var(--papel);color:var(--tinta);border:0;border-radius:0;padding:7px 10px 6px;font:600 13px/1 var(--texto);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.sonido[aria-pressed="true"]{background:var(--rojo);color:var(--blanco)}
+.sonido:focus-visible{outline:2px solid var(--papel);outline-offset:2px}
 .trabajo h3{font:400 28px/.95 var(--display);text-transform:uppercase;margin:12px 0 4px}
 .trabajo p{font-size:14px;color:rgba(240,232,216,.7)}
 .trabajo a{color:var(--papel)}
