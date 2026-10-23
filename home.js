@@ -58,6 +58,16 @@
   }
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { var r = document.querySelector("#reel video"); if (r) { r.removeAttribute("autoplay"); r.pause(); r.controls = true; } }
 
+  // foto de Ricardo: se pega como una pegatina al entrar en pantalla
+  var peg = document.querySelector(".foto-proc img");
+  if (peg && "IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    peg.classList.add("espera");
+    var iop = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { peg.classList.add("pegada"); peg.classList.remove("espera"); iop.disconnect(); } });
+    }, { threshold: .35 });
+    iop.observe(peg);
+  }
+
   // diagnóstico
   var NEG = { comercio: "comercio", hosteleria: "negocio de hostelería", cita: "negocio de estética o salud", empresa: "empresa" };
   var REC = {
