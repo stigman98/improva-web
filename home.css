@@ -82,7 +82,8 @@ img,video{display:block;max-width:100%}
   .hero .claim .l:nth-child(2){animation-delay:1.15s;rotate:1.2deg;margin-left:.12em}
   .hero .claim .l:nth-child(3){animation-delay:1.3s;rotate:-.6deg}
   .bajo{grid-area:bajo;grid-template-columns:1fr;gap:18px;margin-top:22px}
-  .reel{grid-area:escena;aspect-ratio:auto;width:auto;height:min(80svh,700px);min-height:460px;max-height:none;margin:0 calc(-1 * var(--m));justify-self:stretch;align-self:stretch}
+  /* el vídeo empieza por debajo de las dos primeras líneas: solo «CUESTA.» se pega encima, sobre la pared, y la cabeza queda libre */
+  .reel{grid-area:escena;aspect-ratio:auto;width:auto;height:min(72svh,640px);min-height:420px;max-height:none;margin:calc(clamp(70px,20vw,140px) * 1.86 + 22px) calc(-1 * var(--m)) 0;justify-self:stretch;align-self:start}
   .reel figcaption{left:auto;right:0;padding:8px 12px;font-size:12px;letter-spacing:.02em}
   .reel::after{content:"";position:absolute;inset:0;background:var(--tinta);transform:scaleY(0);transform-origin:50% 0;animation:persiana 1s .45s cubic-bezier(.7,0,.2,1) both;pointer-events:none}
 }
