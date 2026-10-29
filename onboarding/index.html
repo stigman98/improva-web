@@ -49,6 +49,7 @@ main{max-width:720px;margin:0 auto;padding:28px 20px calc(130px + env(safe-area-
 .reglas{list-style:none;border-top:1px solid var(--filete);margin:22px 0 0;max-width:52ch}
 .reglas li{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--filete);align-items:baseline}
 .reglas .d{font-size:30px;color:var(--rojo)}
+.reglas .inf{font-family:Switzer,system-ui,sans-serif;font-weight:500;font-size:28px;line-height:1}
 
 /* pregunta */
 .bloque{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--tinta-2);display:flex;gap:10px;align-items:baseline;border-bottom:1px solid var(--filete);padding-bottom:10px;margin-bottom:22px}
@@ -121,7 +122,7 @@ textarea{min-height:140px;resize:vertical;line-height:1.5}
       <li><span class="d" id="r-preg">20</span><span>preguntas cortas, una cada vez.</span></li>
       <li><span class="d" id="r-min">12</span><span>minutos, más o menos. Arriba ves siempre lo que te queda.</span></li>
       <li><span class="d">0</span><span>obligatorias. Si no sabes algo, pulsa «Saltar» y lo hablamos en persona.</span></li>
-      <li><span class="d">∞</span><span>pausas. Se guarda solo en este móvil; puedes cerrar y seguir luego.</span></li>
+      <li><span class="d inf">∞</span><span>pausas. Se guarda solo en este móvil; puedes cerrar y seguir luego.</span></li>
     </ul>
   </section>
 
@@ -200,7 +201,7 @@ textarea{min-height:140px;resize:vertical;line-height:1.5}
   <section class="etapa" data-bloque="El equipo" data-peso="45">
     <label class="q" for="q_equipo">¿Quién del equipo saldría en los vídeos, y cómo?</label>
     <p class="ayuda">Un nombre por línea: si sale con cara, solo con las manos o de espaldas, o si prefiere no salir. Se respeta siempre.</p>
-    <textarea id="q_equipo" name="equipo_videos" placeholder="Mina — sí, habla a cámara&#10;Dan — sí, mejor sin hablar&#10;…"></textarea>
+    <textarea id="q_equipo" name="equipo_videos" placeholder="Mina — sí, habla a cámara&#10;Almudena — sí, en sus clases de pilates&#10;Dan — sí, mejor sin hablar&#10;…"></textarea>
   </section>
 
   <section class="etapa" data-bloque="El equipo" data-peso="25">
@@ -241,8 +242,8 @@ textarea{min-height:140px;resize:vertical;line-height:1.5}
 
   <!-- 5 · rodajes -->
   <section class="etapa" data-bloque="Los rodajes" data-peso="20">
-    <label class="q" for="q_franja">¿Qué día y hora os viene mejor para grabar?</label>
-    <p class="ayuda">Una vez al mes, unas 2 horas. Mejor en un rato con poco movimiento.</p>
+    <label class="q" for="q_franja">¿Qué días y horas os vienen mejor para grabar?</label>
+    <p class="ayuda">Por ejemplo: martes por la mañana o viernes a primera hora. Con eso organizamos los rodajes para molestar lo menos posible.</p>
     <input type="text" id="q_franja" name="franja_rodaje">
   </section>
 
