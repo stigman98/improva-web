@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /cuestionario/
+Disallow: /onboarding/
 Disallow: /demos/
 Disallow: /r/
 Disallow: /firma/

@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arrancamos · Improva</title>
+<meta name="description" content="Unas preguntas para preparar el contenido de tu negocio.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F0E8D8">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&display=swap" rel="stylesheet">
+<style>
+:root{--papel:#F0E8D8;--papel-2:#E6DBC5;--blanco:#FBF7EF;--rojo:#C0241A;--rojo-2:#9C1C14;--tinta:#2C1810;--tinta-2:rgba(44,24,16,.64);--filete:rgba(44,24,16,.22)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--papel);color:var(--tinta);font:400 17px/1.5 Switzer,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100svh}
+:focus-visible{outline:3px solid var(--rojo);outline-offset:3px}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:3px;text-decoration-color:var(--rojo)}
+.d{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;line-height:.9;letter-spacing:.005em}
+
+/* cabecera: logo, cliente y contador */
+.top{position:sticky;top:0;z-index:5;background:var(--papel);border-bottom:2px solid var(--tinta)}
+.top .in{max-width:720px;margin:0 auto;padding:max(14px,env(safe-area-inset-top)) 20px 12px;display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.logo i{width:12px;height:12px;background:var(--rojo);display:block}
+.logo span{font-family:"Bebas Neue",Impact,sans-serif;font-size:24px;letter-spacing:.03em;color:var(--rojo);line-height:1}
+.cuenta{font-size:13px;color:var(--tinta-2);font-variant-numeric:tabular-nums;text-align:right}
+.cuenta b{color:var(--tinta);font-weight:600}
+.barra{height:4px;background:var(--papel-2)}
+.barra i{display:block;height:100%;width:0;background:var(--rojo);transition:width .4s ease}
+
+main{max-width:720px;margin:0 auto;padding:28px 20px calc(130px + env(safe-area-inset-bottom))}
+.etapa{display:none}
+.etapa.on{display:block;animation:entra .3s ease}
+@keyframes entra{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* portada */
+.hola h1{font-size:clamp(56px,15vw,104px);text-transform:uppercase;margin:6px 0 18px}
+.hola .para{font-size:13px;color:var(--tinta-2);text-transform:uppercase;letter-spacing:.08em}
+.hola .para b{color:var(--tinta);font-weight:600;letter-spacing:0;text-transform:none;font-size:15px}
+.hola p{max-width:52ch;margin-bottom:12px}
+.reglas{list-style:none;border-top:1px solid var(--filete);margin:22px 0 0;max-width:52ch}
+.reglas li{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--filete);align-items:baseline}
+.reglas .d{font-size:30px;color:var(--rojo)}
+.reglas .inf{font-family:Switzer,system-ui,sans-serif;font-weight:500;font-size:28px;line-height:1}
+
+/* pregunta */
+.bloque{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--tinta-2);display:flex;gap:10px;align-items:baseline;border-bottom:1px solid var(--filete);padding-bottom:10px;margin-bottom:22px}
+.bloque .n{font-family:"Bebas Neue",sans-serif;font-size:20px;letter-spacing:.02em;color:var(--rojo)}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend{padding:0}
+.q{display:block;font-size:clamp(25px,5.4vw,34px);line-height:1.18;font-weight:600;letter-spacing:-.01em;max-width:26ch;margin-bottom:10px}
+.ayuda{color:var(--tinta-2);max-width:52ch;margin-bottom:20px}
+input[type=text],input[type=tel],textarea{width:100%;font:inherit;font-size:18px;color:var(--tinta);background:var(--blanco);border:0;border-bottom:2px solid var(--tinta);border-radius:0;padding:14px 2px 12px}
+input[type=text]:focus,input[type=tel]:focus,textarea:focus{outline:0;border-bottom-color:var(--rojo);background:#fff}
+textarea{min-height:140px;resize:vertical;line-height:1.5}
+::placeholder{color:rgba(44,24,16,.4)}
+.opciones{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));border-top:1px solid var(--filete);margin-bottom:16px}
+.opciones label{position:relative;display:flex;gap:12px;align-items:center;padding:13px 4px;border-bottom:1px solid var(--filete);cursor:pointer}
+.opciones input{position:absolute;opacity:0;width:1px;height:1px}
+.opciones .caja{width:20px;height:20px;border:2px solid var(--tinta);flex:0 0 auto;display:grid;place-items:center}
+.opciones input[type=radio]+.caja{border-radius:50%}
+.opciones input:checked+.caja{background:var(--tinta)}
+.opciones input:checked+.caja::after{content:"";width:8px;height:8px;background:var(--papel)}
+.opciones input[type=radio]:checked+.caja::after{border-radius:50%}
+.opciones input:focus-visible+.caja{outline:3px solid var(--rojo);outline-offset:2px}
+.opciones label:hover .caja{border-color:var(--rojo)}
+.consent{display:flex;gap:12px;align-items:flex-start;font-size:15px;margin-top:24px;max-width:56ch}
+.consent input{width:22px;height:22px;accent-color:var(--rojo);flex:0 0 auto;margin-top:2px}
+.error{border-left:4px solid var(--rojo);padding:10px 14px;margin-top:18px;color:var(--rojo);font-weight:600;background:var(--blanco)}
+.oculto{position:absolute;left:-9999px}
+
+/* final */
+.fin h2{font-size:clamp(52px,14vw,92px);text-transform:uppercase;margin:6px 0 18px}
+.fin p{max-width:50ch;margin-bottom:12px}
+.sello{display:inline-block;margin-top:26px;font-family:"Bebas Neue",sans-serif;font-size:16px;letter-spacing:.18em;color:var(--rojo);border:2px solid var(--rojo);padding:5px 12px;transform:rotate(-2deg)}
+
+/* pie */
+.pie{position:fixed;left:0;right:0;bottom:0;background:var(--papel);border-top:2px solid var(--tinta);z-index:5}
+.pie .in{max-width:720px;margin:0 auto;padding:12px 20px calc(12px + env(safe-area-inset-bottom));display:flex;gap:14px;align-items:center}
+.btn{font:inherit;font-weight:600;font-size:17px;border:2px solid var(--tinta);border-radius:0;padding:13px 22px;cursor:pointer;background:var(--tinta);color:var(--papel)}
+.btn:hover{background:var(--rojo);border-color:var(--rojo);color:#fff}
+.btn[disabled]{opacity:.5;cursor:default}
+.enlace{font:inherit;font-size:15px;background:none;border:0;color:var(--tinta);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:6px 2px}
+.enlace:hover{text-decoration-thickness:3px;text-decoration-color:var(--rojo)}
+.enlace[hidden]{display:none}
+.estado{flex:1;font-size:13px;color:var(--tinta-2);text-align:right}
+.tecla{font-size:12px;color:var(--tinta-2);margin-top:12px}
+@media (max-width:520px){.tecla{display:none}.btn{padding:13px 18px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="in">
+    <a class="logo" href="https://improva.es/" aria-label="Improva"><i></i><span>IMPROVA</span></a>
+    <span class="cuenta" id="cuenta" aria-live="polite"></span>
+  </div>
+  <div class="barra" aria-hidden="true"><i id="barra"></i></div>
+</header>
+
+<main>
+<form name="onboarding" method="POST" action="/onboarding/" data-netlify="true" netlify-honeypot="bot-field" id="form" novalidate>
+  <input type="hidden" name="form-name" value="onboarding">
+  <p class="oculto"><label>No rellenes esto: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+  <input type="hidden" name="cliente" id="cliente">
+
+  <!-- portada -->
+  <section class="etapa hola on" data-tipo="portada">
+    <p class="para">Para <b id="para-nombre">ti</b></p>
+    <h1 class="d">Arrancamos</h1>
+    <p>Ya trabajamos juntos. Antes del primer rodaje necesito conocer tu negocio por dentro: lo que te preguntan, cómo habláis, qué queréis llenar.</p>
+    <p>Con tus respuestas preparo el contenido de los primeros meses.</p>
+    <ul class="reglas">
+      <li><span class="d" id="r-preg">20</span><span>preguntas cortas, una cada vez.</span></li>
+      <li><span class="d" id="r-min">12</span><span>minutos, más o menos. Arriba ves siempre lo que te queda.</span></li>
+      <li><span class="d">0</span><span>obligatorias. Si no sabes algo, pulsa «Saltar» y lo hablamos en persona.</span></li>
+      <li><span class="d inf">∞</span><span>pausas. Se guarda solo en este móvil; puedes cerrar y seguir luego.</span></li>
+    </ul>
+  </section>
+
+  <!-- 1 · lo que queréis llenar -->
+  <section class="etapa" data-bloque="Lo que queréis llenar" data-peso="20">
+    <label class="q" for="q_tu" style="margin-bottom:20px">¿Cómo te llamas?</label>
+    <input type="text" id="q_tu" name="tu_nombre" autocomplete="name">
+  </section>
+
+  <section class="etapa" data-bloque="Lo que queréis llenar" data-peso="40">
+    <label class="q" for="q_llenar">¿Qué servicio quieres llenar primero?</label>
+    <p class="ayuda">El que más te interesa que se note en la agenda en los próximos meses. Si son varios, ponlos por orden.</p>
+    <textarea id="q_llenar" name="servicio_prioritario"></textarea>
+  </section>
+
+  <section class="etapa" data-bloque="Lo que queréis llenar" data-peso="30">
+    <label class="q" for="q_huecos">¿Qué días u horas tenéis más huecos por llenar?</label>
+    <p class="ayuda">Por ejemplo: martes por la mañana, pilates de las 19:00, los viernes por la tarde.</p>
+    <textarea id="q_huecos" name="huecos"></textarea>
+  </section>
+
+  <section class="etapa" data-bloque="Lo que queréis llenar" data-peso="20">
+    <fieldset><legend class="q">¿A quién te gustaría atraer más?</legend>
+    <p class="ayuda">Marca todos los que quieras.</p>
+    <div class="opciones">
+      <label><input type="checkbox" name="publico" value="Gente de mi barrio o pueblo"><span class="caja"></span>Gente del barrio o del pueblo</label>
+      <label><input type="checkbox" name="publico" value="Deportistas"><span class="caja"></span>Deportistas</label>
+      <label><input type="checkbox" name="publico" value="Personas mayores"><span class="caja"></span>Personas mayores</label>
+      <label><input type="checkbox" name="publico" value="Gente joven"><span class="caja"></span>Gente joven</label>
+      <label><input type="checkbox" name="publico" value="Familias y niños"><span class="caja"></span>Familias y niños</label>
+      <label><input type="checkbox" name="publico" value="Embarazadas y posparto"><span class="caja"></span>Embarazadas y posparto</label>
+      <label><input type="checkbox" name="publico" value="Gente que trabaja sentada"><span class="caja"></span>Gente que trabaja sentada</label>
+      <label><input type="checkbox" name="publico" value="Empresas"><span class="caja"></span>Empresas</label>
+    </div></fieldset>
+    <input type="text" name="publico_otro" placeholder="Otro, o un matiz" aria-label="Otro público">
+  </section>
+
+  <section class="etapa" data-bloque="Lo que queréis llenar" data-peso="30">
+    <label class="q" for="q_oferta">¿Qué le ofrecéis a alguien que viene por primera vez?</label>
+    <p class="ayuda">Primera visita, bono, clase de prueba… y si el precio se puede decir en redes o mejor no.</p>
+    <textarea id="q_oferta" name="oferta_nuevos"></textarea>
+  </section>
+
+  <!-- 2 · tus clientes -->
+  <section class="etapa" data-bloque="Lo que te preguntan" data-peso="45">
+    <label class="q" for="q_preguntas">¿Qué es lo que más os preguntan por teléfono o en el mostrador?</label>
+    <p class="ayuda">Cada pregunta que se repite es un vídeo. Cuantas más, mejor.</p>
+    <textarea id="q_preguntas" name="preguntas_frecuentes"></textarea>
+  </section>
+
+  <section class="etapa" data-bloque="Lo que te preguntan" data-peso="35">
+    <label class="q" for="q_miedos">¿Qué dudas o miedos trae la gente la primera vez?</label>
+    <p class="ayuda">Por ejemplo: si va a doler, cuántas sesiones hacen falta, si es caro.</p>
+    <textarea id="q_miedos" name="miedos"></textarea>
+  </section>
+
+  <section class="etapa" data-bloque="Lo que te preguntan" data-peso="35">
+    <label class="q" for="q_mitos">¿Qué mito o idea equivocada te toca desmentir a menudo?</label>
+    <textarea id="q_mitos" name="mitos"></textarea>
+  </section>
+
+  <section class="etapa" data-bloque="Lo que te preguntan" data-peso="30">
+    <label class="q" for="q_consejo">¿Qué consejo das siempre?</label>
+    <p class="ayuda">Ese que repites a casi todo el mundo antes de que se vaya.</p>
+    <textarea id="q_consejo" name="consejo"></textarea>
+  </section>
+
+  <section class="etapa" data-bloque="Lo que te preguntan" data-peso="30">
+    <label class="q" for="q_contentos">¿Qué dicen los clientes contentos? ¿Por qué vuelven?</label>
+    <p class="ayuda">Con sus palabras, si te acuerdas de alguna frase.</p>
+    <textarea id="q_contentos" name="por_que_vuelven"></textarea>
+  </section>
+
+  <!-- 3 · equipo -->
+  <section class="etapa" data-bloque="El equipo" data-peso="45">
+    <label class="q" for="q_equipo">¿Quién del equipo saldría en los vídeos, y cómo?</label>
+    <p class="ayuda">Un nombre por línea: si sale con cara, solo con las manos o de espaldas, o si prefiere no salir. Se respeta siempre.</p>
+    <textarea id="q_equipo" name="equipo_videos" placeholder="Mina — sí, habla a cámara&#10;Almudena — sí, en osteopatía y pilates&#10;Dan — sí, mejor sin hablar&#10;…"></textarea>
+  </section>
+
+  <section class="etapa" data-bloque="El equipo" data-peso="25">
+    <label class="q" for="q_historia">¿Cómo empezó todo?</label>
+    <p class="ayuda">Cómo nació el negocio y qué ha cambiado desde entonces. Es lo que más conecta con la gente.</p>
+    <textarea id="q_historia" name="historia"></textarea>
+  </section>
+
+  <!-- 4 · estilo -->
+  <section class="etapa" data-bloque="Vuestro estilo" data-peso="15">
+    <fieldset><legend class="q">¿Cómo queréis hablar en redes?</legend>
+    <div class="opciones">
+      <label><input type="checkbox" name="tono" value="De tú"><span class="caja"></span>De tú</label>
+      <label><input type="checkbox" name="tono" value="De usted"><span class="caja"></span>De usted</label>
+      <label><input type="checkbox" name="tono" value="Cercano"><span class="caja"></span>Cercano</label>
+      <label><input type="checkbox" name="tono" value="Profesional y técnico"><span class="caja"></span>Profesional y técnico</label>
+      <label><input type="checkbox" name="tono" value="Con algo de humor"><span class="caja"></span>Con algo de humor</label>
+    </div></fieldset>
+  </section>
+
+  <section class="etapa" data-bloque="Vuestro estilo" data-peso="15">
+    <fieldset><legend class="q">¿Hay algo que no queráis hacer nunca?</legend>
+    <div class="opciones">
+      <label><input type="checkbox" name="no_hacer" value="Bailes"><span class="caja"></span>Bailes</label>
+      <label><input type="checkbox" name="no_hacer" value="Tendencias o retos"><span class="caja"></span>Tendencias o retos</label>
+      <label><input type="checkbox" name="no_hacer" value="Humor"><span class="caja"></span>Humor</label>
+      <label><input type="checkbox" name="no_hacer" value="Precios en redes"><span class="caja"></span>Poner precios</label>
+      <label><input type="checkbox" name="no_hacer" value="Que salgan clientes"><span class="caja"></span>Que salgan clientes</label>
+    </div></fieldset>
+    <input type="text" name="no_hacer_otro" placeholder="Otra cosa" aria-label="Otra cosa que no queréis hacer">
+  </section>
+
+  <section class="etapa" data-bloque="Vuestro estilo" data-peso="30">
+    <label class="q" for="q_referentes">¿Qué cuentas de Instagram os gustan? ¿Y cuáles no?</label>
+    <p class="ayuda">Del sector o de cualquier cosa. Vale con el nombre o el @.</p>
+    <textarea id="q_referentes" name="referentes"></textarea>
+  </section>
+
+  <!-- 5 · rodajes -->
+  <section class="etapa" data-bloque="Los rodajes" data-peso="20">
+    <label class="q" for="q_franja">¿Qué días y horas os vienen mejor para grabar?</label>
+    <p class="ayuda">Por ejemplo: martes por la mañana o viernes a primera hora. Con eso organizamos los rodajes para molestar lo menos posible.</p>
+    <input type="text" id="q_franja" name="franja_rodaje">
+  </section>
+
+  <section class="etapa" data-bloque="Los rodajes" data-peso="25">
+    <label class="q" for="q_privado">¿Qué no se puede grabar nunca?</label>
+    <p class="ayuda">Zonas, documentos, pantallas o momentos que deben quedar fuera.</p>
+    <textarea id="q_privado" name="no_grabar"></textarea>
+  </section>
+
+  <!-- 6 · barrio y fechas -->
+  <section class="etapa" data-bloque="Tu barrio" data-peso="30">
+    <label class="q" for="q_fechas">¿Hay alguna fecha importante pronto? ¿Os apetece celebrarla?</label>
+    <p class="ayuda">Un aniversario, una campaña, una apertura. Y si queréis hacer algo: un sorteo, una jornada de puertas abiertas, una clase gratis…</p>
+    <textarea id="q_fechas" name="fechas"></textarea>
+  </section>
+
+  <section class="etapa" data-bloque="Tu barrio" data-peso="25">
+    <label class="q" for="q_barrio">¿Con qué negocios, clubes o asociaciones de la zona os llevaríais bien?</label>
+    <p class="ayuda">Los que ya conocéis o con los que os gustaría colaborar.</p>
+    <textarea id="q_barrio" name="colaboraciones"></textarea>
+  </section>
+
+  <!-- 7 · cómo trabajamos -->
+  <section class="etapa" data-bloque="Cómo trabajamos" data-peso="25">
+    <label class="q" for="q_contacto">¿Con quién hablo en el día a día, y por dónde?</label>
+    <p class="ayuda">Nombre y teléfono, y quién da el visto bueno a las publicaciones.</p>
+    <textarea id="q_contacto" name="contacto_dia_a_dia"></textarea>
+  </section>
+
+  <section class="etapa" data-bloque="Cómo trabajamos" data-peso="25">
+    <label class="q" for="q_mas">¿Algo más que quieras contarme?</label>
+    <p class="ayuda">Lo que se te haya quedado en el tintero. Si no, déjalo en blanco.</p>
+    <textarea id="q_mas" name="algo_mas"></textarea>
+    <label class="consent"><input type="checkbox" id="acepto" name="acepto" value="Sí"><span>Acepto que Improva use estas respuestas para preparar nuestro contenido. No se comparten con nadie y puedo pedir que se borren escribiendo a hola@improva.es. <a href="/privacidad/" target="_blank">Política de privacidad</a>.</span></label>
+    <div class="error" id="error" hidden></div>
+  </section>
+
+  <!-- fin -->
+  <section class="etapa fin" data-tipo="fin" id="fin">
+    <h2 class="d">Hecho. Gracias.</h2>
+    <p>Ya tengo tus respuestas. Con ellas preparo el plan de contenido y la lista del primer rodaje, y te lo mando para que lo veas antes.</p>
+    <p>Si te acuerdas de algo más, escríbeme por WhatsApp al 614 525 458.</p>
+    <span class="sello">IMPROVA · ESTUDIO DIGITAL</span>
+  </section>
+</form>
+</main>
+
+<nav class="pie" id="pie">
+  <div class="in">
+    <button class="enlace" type="button" id="atras" hidden>Atrás</button>
+    <span class="estado" id="estado"></span>
+    <button class="enlace" type="button" id="saltar" hidden>Saltar</button>
+    <button class="btn" type="button" id="sigue">Empezar</button>
+  </div>
+</nav>
+
+<script>
+(function(){
+  var form=document.getElementById('form');
+  var etapas=[].slice.call(document.querySelectorAll('.etapa'));
+  var preguntas=etapas.filter(function(e){return !e.dataset.tipo});
+  var TOTAL=preguntas.length, FIN=etapas.length-1, i=0;
+  var KEY='improva-onboarding';
+  var segTotal=preguntas.reduce(function(s,e){return s+(+e.dataset.peso||30)},0);
+  document.getElementById('r-preg').textContent=TOTAL;
+  document.getElementById('r-min').textContent=Math.max(1,Math.round(segTotal/60));
+
+  // nombre del cliente desde el enlace: improva.es/onboarding/?n=Fisio'S%20%26%20Wellness
+  var n=new URLSearchParams(location.search).get('n');
+  if(n){document.getElementById('cliente').value=n;document.getElementById('para-nombre').textContent=n;KEY+='-'+n}
+
+  function datos(){var o={};new FormData(form).forEach(function(v,k){if(k==='bot-field'||k==='form-name'||v==='')return;o[k]=o[k]?o[k]+' · '+v:v});return o}
+  function guardar(){try{localStorage.setItem(KEY,JSON.stringify({i:i,d:datos()}));document.getElementById('estado').textContent='Guardado'}catch(e){}}
+  function cargar(){try{var s=JSON.parse(localStorage.getItem(KEY)||'null');if(!s)return;var d=s.d||{};
+    Object.keys(d).forEach(function(k){if(k==='cliente')return;var els=form.querySelectorAll('[name="'+k+'"]');if(!els.length)return;
+      if(els[0].type==='checkbox'||els[0].type==='radio'){var vals=String(d[k]).split(' · ');els.forEach(function(e){e.checked=vals.indexOf(e.value)>-1})}
+      else{els[0].value=d[k]}});
+    if(s.i>0&&s.i<FIN){i=s.i}}catch(e){}}
+  function restante(){var s=0;for(var k=Math.max(i,1);k<=TOTAL;k++){s+=(+etapas[k].dataset.peso||30)}return s}
+  function pinta(){
+    etapas.forEach(function(e,k){e.classList.toggle('on',k===i)});
+    var cuenta=document.getElementById('cuenta'),barra=document.getElementById('barra');
+    var at=document.getElementById('atras'),sa=document.getElementById('saltar'),si=document.getElementById('sigue');
+    if(i===0){cuenta.innerHTML=TOTAL+' preguntas · unos '+Math.round(segTotal/60)+' min';barra.style.width='0'}
+    else if(i===FIN){cuenta.textContent='Enviado';barra.style.width='100%';document.getElementById('pie').hidden=true}
+    else{var min=Math.max(1,Math.round(restante()/60));
+      cuenta.innerHTML='<b>'+i+'</b> de '+TOTAL+' · '+(i===TOTAL?'la última':'quedan unos '+min+' min');
+      barra.style.width=((i-1)/TOTAL*100)+'%';
+      var bl=etapas[i].dataset.bloque;var cab=etapas[i].querySelector('.bloque');
+      if(!cab){cab=document.createElement('p');cab.className='bloque';cab.innerHTML='<span class="n">'+String(i).padStart(2,'0')+'</span>'+bl;etapas[i].insertBefore(cab,etapas[i].firstChild)}}
+    at.hidden=i===0||i===FIN;sa.hidden=i===0||i>=TOTAL;
+    si.textContent=i===0?'Empezar':i===TOTAL?'Enviar':'Siguiente';
+    window.scrollTo(0,0);
+    var campo=etapas[i].querySelector('textarea,input[type=text]');
+    if(campo&&i>0&&i<FIN&&window.matchMedia('(min-width:700px)').matches){setTimeout(function(){campo.focus({preventScroll:true})},50)}
+  }
+  function avanza(){if(i<TOTAL){i++;pinta();guardar();return}enviar()}
+  function enviar(){
+    var err=document.getElementById('error'),b=document.getElementById('sigue');
+    if(!document.getElementById('acepto').checked){err.hidden=false;err.textContent='Marca la casilla para poder enviarlo.';return}
+    err.hidden=true;b.disabled=true;b.textContent='Enviando…';
+    var body=new URLSearchParams();body.append('form-name','onboarding');
+    var d=datos();Object.keys(d).forEach(function(k){body.append(k,d[k])});
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body.toString()})
+      .then(function(r){if(!r.ok)throw new Error(r.status);try{localStorage.removeItem(KEY)}catch(e){}i=FIN;pinta()})
+      .catch(function(){b.disabled=false;b.textContent='Enviar';err.hidden=false;err.textContent='No se ha podido enviar. Revisa la conexión y vuelve a pulsar «Enviar». Tus respuestas siguen guardadas.'});
+  }
+  form.addEventListener('input',guardar);form.addEventListener('change',guardar);
+  form.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.tagName==='INPUT'&&e.target.type==='text'){e.preventDefault();avanza()}});
+  document.getElementById('atras').addEventListener('click',function(){if(i>0){i--;pinta();guardar()}});
+  document.getElementById('saltar').addEventListener('click',avanza);
+  document.getElementById('sigue').addEventListener('click',avanza);
+  cargar();pinta();
+})();
+</script>
+</body>
+</html>
