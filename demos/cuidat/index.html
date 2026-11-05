@@ -63,9 +63,9 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:.95;margin:0;text-
   mask:linear-gradient(#000 0 0) top/100% 14px no-repeat,radial-gradient(circle 12px at 12px 0,#000 97%,transparent) 0 14px/24px 12px repeat-x}
 
 /* ── portada ── */
-.portada .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,64px);align-items:center;padding-block:clamp(20px,4vw,48px) clamp(40px,6vw,80px)}
+.portada .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(24px,4vw,64px);align-items:center;padding-block:clamp(20px,4vw,48px) clamp(40px,6vw,80px)}
 .foto{position:relative;margin:0}
-.foto img{width:100%;height:min(80svh,760px);object-fit:cover;object-position:50% 62%;border:1px solid var(--tinta)}
+.foto img{width:100%;height:auto;aspect-ratio:1200/1316;object-fit:cover;object-position:30% 40%;border:1px solid var(--tinta)}
 .foto figcaption{font-size:13px;color:var(--tinta-2);margin-top:8px}
 .estado{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15px;margin-bottom:18px}
 .estado i{width:11px;height:11px;background:#9a9285;flex:none}
@@ -89,7 +89,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:.95;margin:0;text-
 @media(max-width:860px){
   .portada .wrap{grid-template-columns:1fr;padding-top:0}
   .portada .foto{order:-1;margin-inline:calc(var(--m) * -1)}
-  .foto img{height:56svh;border-inline:0;border-top:0}
+  .foto img{height:56svh;aspect-ratio:auto;border-inline:0;border-top:0}
   .foto figcaption{padding-inline:var(--m)}
   .datos{grid-template-columns:1fr}
   .datos a,.datos a+a{padding:12px 0;border-left:0;border-bottom:1px solid var(--filete)}
@@ -239,7 +239,7 @@ mark.falta{background:var(--toldo-3);color:var(--tinta);padding:0 4px}
       </div>
     </div>
     <figure class="foto">
-      <img src="fachada.webp" alt="Fachada de Herbolario CuidaT, con el toldo amarillo y el escaparate" width="720" height="1280" fetchpriority="high">
+      <img src="fachada.webp" alt="Fachada de Herbolario CuidaT, con el toldo amarillo y el escaparate" width="1200" height="1316" fetchpriority="high">
       <figcaption>Nuestra puerta, en la Avenida de las Estrellas.</figcaption>
     </figure>
   </div>
@@ -322,10 +322,11 @@ mark.falta{background:var(--toldo-3);color:var(--tinta);padding:0 4px}
 <section class="sec" id="resenas" aria-labelledby="t-resenas">
   <div class="wrap">
     <h2 id="t-resenas">Lo que dicen <em>los clientes</em></h2>
+    <p class="intro"><b>4,7 de 5</b> en Google, con 75 opiniones.</p>
     <div class="resenas">
-      <figure class="resena"><div class="estrellas" aria-hidden="true">★★★★★</div><blockquote><mark class="falta">Reseña real de Google</mark></blockquote><figcaption><mark class="falta">Nombre del cliente</mark> · Google</figcaption></figure>
-      <figure class="resena"><div class="estrellas" aria-hidden="true">★★★★★</div><blockquote><mark class="falta">Reseña real de Google</mark></blockquote><figcaption><mark class="falta">Nombre del cliente</mark> · Google</figcaption></figure>
-      <figure class="resena"><div class="estrellas" aria-hidden="true">★★★★★</div><blockquote><mark class="falta">Reseña real de Google</mark></blockquote><figcaption><mark class="falta">Nombre del cliente</mark> · Google</figcaption></figure>
+      <figure class="resena"><div class="estrellas" aria-label="5 estrellas">★★★★★</div><blockquote>Muchísimas gracias de corazón por el trato tan humano. Solía tomar muchos productos naturales pero Nuria me ayudó a darle coherencia y me asesoro genial.</blockquote><figcaption>Jose L. · Google</figcaption></figure>
+      <figure class="resena"><div class="estrellas" aria-label="5 estrellas">★★★★★</div><blockquote>La atención en el establecimiento es excepcional. No conocía el lugar, pero no me cabe duda de que volveré!</blockquote><figcaption>Mónica P. · Google</figcaption></figure>
+      <figure class="resena"><div class="estrellas" aria-label="5 estrellas">★★★★★</div><blockquote>Maravillosa la atención y los productos, seguro empezaré a ir a las clases que realizan para nuestro Bienestar ☺</blockquote><figcaption>Gema S. · Google</figcaption></figure>
     </div>
     <p style="margin-top:24px"><a class="enlace" href="https://maps.app.goo.gl/EDicUhem7B7Yi2yWA" target="_blank" rel="noopener">Ver todas las reseñas en Google</a></p>
   </div>
@@ -334,16 +335,16 @@ mark.falta{background:var(--toldo-3);color:var(--tinta);padding:0 4px}
 <section class="sec" id="conocenos" aria-labelledby="t-conocenos">
   <div class="wrap">
     <h2 id="t-conocenos">Quiénes <em>somos</em></h2>
-    <p class="intro"><mark class="falta">Un párrafo sobre vosotras: cómo empezó CuidaT, qué os mueve y qué vais a encontrar aquí.</mark></p>
+    <p class="intro">Somos Nuri y Rosa, hermanas. <mark class="falta">Un párrafo sobre vosotras: cómo empezó CuidaT, qué os mueve y qué vais a encontrar aquí.</mark></p>
     <div class="equipo">
       <figure class="persona">
-        <div class="retrato"><mark class="falta">Foto de Nuria</mark></div>
-        <h3>Nuria</h3>
+        <div class="retrato"><mark class="falta">Foto de Nuri</mark></div>
+        <h3>Nuri</h3>
         <p><mark class="falta">Qué hace en CuidaT y su formación, en dos o tres líneas.</mark></p>
       </figure>
       <figure class="persona">
-        <div class="retrato"><mark class="falta">Foto</mark></div>
-        <h3><mark class="falta">Nombre</mark></h3>
+        <div class="retrato"><mark class="falta">Foto de Rosa</mark></div>
+        <h3>Rosa</h3>
         <p><mark class="falta">Qué hace en CuidaT y su formación, en dos o tres líneas.</mark></p>
       </figure>
     </div>
