@@ -54,7 +54,7 @@
       return datos.productos.some(function (p) { return p.k === c[0]; });
     }));
     cont.innerHTML = cats.map(function (c, i) {
-      return '<button class="chip" data-cat="' + c[0] + '" aria-pressed="' + (filtro.cat === c[0]) + '"><span class="n">' + (i < 10 ? "0" + i : i) + "</span>" + esc(c[1]) + "</button>";
+      return '<button class="chip" data-cat="' + c[0] + '" aria-pressed="' + (filtro.cat === c[0]) + '">' + esc(c[1]) + "</button>";
     }).join("");
   }
 

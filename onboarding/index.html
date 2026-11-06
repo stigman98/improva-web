@@ -61,6 +61,14 @@ legend{padding:0}
 input[type=text],input[type=tel],textarea{width:100%;font:inherit;font-size:18px;color:var(--tinta);background:var(--blanco);border:0;border-bottom:2px solid var(--tinta);border-radius:0;padding:14px 2px 12px}
 input[type=text]:focus,input[type=tel]:focus,textarea:focus{outline:0;border-bottom-color:var(--rojo);background:#fff}
 textarea{min-height:140px;resize:vertical;line-height:1.5}
+.voz{display:inline-flex;align-items:center;gap:10px;margin-top:14px;font:inherit;font-weight:600;font-size:16px;background:none;border:0;border-bottom:2px solid var(--tinta);padding:6px 0;cursor:pointer;color:var(--tinta)}
+.voz i{width:12px;height:12px;background:var(--rojo);flex:none}
+.voz.on{color:var(--rojo);border-color:var(--rojo)}
+.voz.on i{animation:late 1s steps(2) infinite}
+@keyframes late{50%{opacity:.2}}
+.voz-nota[hidden]{display:none}
+.voz-nota{display:block;font-size:14px;color:var(--tinta-2);margin-top:6px}
+
 ::placeholder{color:rgba(44,24,16,.4)}
 .opciones{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));border-top:1px solid var(--filete);margin-bottom:16px}
 .opciones label{position:relative;display:flex;gap:12px;align-items:center;padding:13px 4px;border-bottom:1px solid var(--filete);cursor:pointer}
@@ -121,6 +129,7 @@ textarea{min-height:140px;resize:vertical;line-height:1.5}
     <ul class="reglas">
       <li><span class="d" id="r-preg">20</span><span>preguntas cortas, una cada vez.</span></li>
       <li><span class="d" id="r-min">12</span><span>minutos, más o menos. Arriba ves siempre lo que te queda.</span></li>
+      <li><span class="d">2</span><span>formas de contestar: escribiendo o hablando. Pulsa «Responder hablando» y cuéntamelo como si me mandaras un audio.</span></li>
       <li><span class="d">0</span><span>obligatorias. Si no sabes algo, pulsa «Saltar» y lo hablamos en persona.</span></li>
       <li><span class="d inf">∞</span><span>pausas. Se guarda solo en este móvil; puedes cerrar y seguir luego.</span></li>
     </ul>
@@ -200,7 +209,7 @@ textarea{min-height:140px;resize:vertical;line-height:1.5}
   <section class="etapa" data-bloque="El equipo" data-peso="45">
     <label class="q" for="q_equipo">¿Quién del equipo saldría en los vídeos, y cómo?</label>
     <p class="ayuda">Un nombre por línea: si sale con cara, solo con las manos o de espaldas, o si prefiere no salir. Se respeta siempre.</p>
-    <textarea id="q_equipo" name="equipo_videos" placeholder="Mina — sí, habla a cámara&#10;Almudena — sí, en osteopatía y pilates&#10;Dan — sí, mejor sin hablar&#10;…"></textarea>
+    <textarea id="q_equipo" name="equipo_videos" placeholder="Laura — sí, habla a cámara&#10;Pablo — sí, pero solo las manos&#10;Carmen — prefiere no salir&#10;…"></textarea>
   </section>
 
   <section class="etapa" data-bloque="El equipo" data-peso="25">
@@ -276,7 +285,7 @@ textarea{min-height:140px;resize:vertical;line-height:1.5}
     <label class="q" for="q_mas">¿Algo más que quieras contarme?</label>
     <p class="ayuda">Lo que se te haya quedado en el tintero. Si no, déjalo en blanco.</p>
     <textarea id="q_mas" name="algo_mas"></textarea>
-    <label class="consent"><input type="checkbox" id="acepto" name="acepto" value="Sí"><span>Acepto que Improva use estas respuestas para preparar nuestro contenido. No se comparten con nadie y puedo pedir que se borren escribiendo a hola@improva.es. <a href="/privacidad/" target="_blank">Política de privacidad</a>.</span></label>
+    <label class="consent"><input type="checkbox" id="acepto" name="acepto" value="Sí"><span>Acepto que Improva use estas respuestas para preparar nuestro contenido. No se comparten con nadie y puedo pedir que se borren escribiendo a <span data-c="se.avorpmi|aloh">hola (arroba) improva.es</span>. <a href="/privacidad/" target="_blank">Política de privacidad</a>.</span></label>
     <div class="error" id="error" hidden></div>
   </section>
 
@@ -332,7 +341,7 @@ textarea{min-height:140px;resize:vertical;line-height:1.5}
       cuenta.innerHTML='<b>'+i+'</b> de '+TOTAL+' · '+(i===TOTAL?'la última':'quedan unos '+min+' min');
       barra.style.width=((i-1)/TOTAL*100)+'%';
       var bl=etapas[i].dataset.bloque;var cab=etapas[i].querySelector('.bloque');
-      if(!cab){cab=document.createElement('p');cab.className='bloque';cab.innerHTML='<span class="n">'+String(i).padStart(2,'0')+'</span>'+bl;etapas[i].insertBefore(cab,etapas[i].firstChild)}}
+      if(!cab){cab=document.createElement('p');cab.className='bloque';cab.innerHTML=bl;etapas[i].insertBefore(cab,etapas[i].firstChild)}}
     at.hidden=i===0||i===FIN;sa.hidden=i===0||i>=TOTAL;
     si.textContent=i===0?'Empezar':i===TOTAL?'Enviar':'Siguiente';
     window.scrollTo(0,0);
@@ -356,6 +365,35 @@ textarea{min-height:140px;resize:vertical;line-height:1.5}
   document.getElementById('saltar').addEventListener('click',avanza);
   document.getElementById('sigue').addEventListener('click',avanza);
   cargar();pinta();
+})();
+</script>
+<script src="/correo.js" defer></script>
+<script>
+// Responder hablando: dicta al cuadro de texto con el reconocimiento de voz del navegador.
+(function(){
+  var R=window.SpeechRecognition||window.webkitSpeechRecognition;
+  var areas=[].slice.call(document.querySelectorAll('.etapa textarea'));
+  if(!R){areas.forEach(function(t){var p=document.createElement('span');p.className='voz-nota';p.textContent='Si prefieres hablar, pulsa el micrófono de tu teclado.';t.after(p)});return}
+  var rec=null, activa=null;
+  function para(){if(rec){try{rec.stop()}catch(e){}}}
+  areas.forEach(function(t){
+    var b=document.createElement('button');b.type='button';b.className='voz';b.innerHTML='<i></i><span>Responder hablando</span>';
+    var nota=document.createElement('span');nota.className='voz-nota';nota.hidden=true;nota.textContent='Te escucho. Habla con calma y pulsa otra vez para terminar. Luego puedes corregir el texto.';
+    t.after(b);b.after(nota);
+    b.addEventListener('click',function(){
+      if(activa===b){para();return}
+      para();
+      rec=new R();rec.lang='es-ES';rec.continuous=true;rec.interimResults=true;
+      var base=t.value?t.value.replace(/\s*$/,'')+' ':'';
+      rec.onresult=function(e){var fin='',tmp='';for(var k=0;k<e.results.length;k++){var x=e.results[k][0].transcript;if(e.results[k].isFinal)fin+=x;else tmp+=x}
+        t.value=base+fin+tmp;t.dispatchEvent(new Event('input',{bubbles:true}))};
+      rec.onend=function(){b.classList.remove('on');b.querySelector('span').textContent='Responder hablando';nota.hidden=true;activa=null;t.dispatchEvent(new Event('change',{bubbles:true}))};
+      rec.onerror=function(e){if(e.error==='not-allowed'){nota.hidden=false;nota.textContent='Para hablar, permite el micrófono. Si no, escribe o usa el micrófono del teclado.'}};
+      activa=b;b.classList.add('on');b.querySelector('span').textContent='Escuchando… pulsa para terminar';nota.hidden=false;
+      try{rec.start()}catch(e){}
+    });
+  });
+  document.addEventListener('click',function(e){if(activa&&(e.target.id==='sigue'||e.target.id==='saltar'||e.target.id==='atras'))para()});
 })();
 </script>
 </body>
