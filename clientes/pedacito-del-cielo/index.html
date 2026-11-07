@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Pedacito del Cielo · Panel de contenido</title>
+<meta name="theme-color" content="#6E8E83">
+<link rel="preload" href="f/atkinson-hyperlegible-next-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Panel de contenido de Pedacito del Cielo, hecho con su manual de marca:
+   verde #6E8E83, dorado #E0CC8A, crema #FAF7EC, tipografía Atkinson Hyperlegible Next. */
+@font-face{font-family:"Atkinson";src:url(f/atkinson-hyperlegible-next-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Atkinson";src:url(f/atkinson-hyperlegible-next-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Atkinson";src:url(f/atkinson-hyperlegible-next-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
+:root{--verde:#6E8E83;--verde-2:#56746A;--dorado:#E0CC8A;--crema:#FAF7EC;--tinta:#2B3430;--tinta-2:#5C6863;--filete:rgba(43,52,48,.18);--m:clamp(16px,4vw,40px)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:20px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--crema);color:var(--tinta);font:400 17px/1.55 "Atkinson",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;font-weight:700;line-height:1.08;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--verde-2);outline-offset:3px}
+[hidden]{display:none!important}
+
+/* portada */
+.portada{background:var(--verde);color:var(--crema);padding:clamp(28px,6vw,72px) var(--m) clamp(40px,7vw,88px)}
+.portada .in{max-width:980px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,64px);align-items:end}
+.portada img{width:clamp(150px,22vw,230px);height:auto;display:block}
+.portada .k{font-size:15px;color:var(--dorado);border-bottom:1px solid var(--dorado);display:inline-block;padding-bottom:6px;margin-bottom:18px}
+.portada h1{font-size:clamp(34px,5.4vw,60px)}
+.portada p{max-width:46ch;margin-top:16px;font-size:18px;color:rgba(250,247,236,.9)}
+.portada ol{list-style:none;padding:0;margin:26px 0 0;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(224,204,138,.6)}
+.portada li{padding:12px 14px 0 0;font-size:15px;color:rgba(250,247,236,.85)}
+.portada li b{display:block;color:var(--dorado);font-size:22px}
+@media(max-width:720px){.portada .in{grid-template-columns:1fr}.portada ol{grid-template-columns:1fr}.portada li{padding:10px 0;border-bottom:1px solid rgba(224,204,138,.3)}}
+
+/* estructura */
+.wrap{max-width:980px;margin:0 auto;padding:0 var(--m)}
+.bloque{padding:clamp(44px,7vw,80px) 0;border-bottom:1px solid var(--filete)}
+.cab{display:grid;grid-template-columns:200px 1fr;gap:clamp(16px,4vw,48px);margin-bottom:28px}
+.cab .n{font-size:15px;color:var(--verde-2);font-weight:600;border-top:2px solid var(--dorado);padding-top:10px}
+.cab h2{font-size:clamp(28px,4vw,42px)}
+.cab p{margin-top:12px;color:var(--tinta-2);max-width:56ch}
+.cuerpo{margin-left:calc(200px + clamp(16px,4vw,48px))}
+@media(max-width:820px){.cab{grid-template-columns:1fr;gap:10px}.cuerpo{margin-left:0}}
+
+/* lo que ya sabemos */
+.ficha{display:grid;grid-template-columns:repeat(2,1fr);border-top:2px solid var(--tinta)}
+.ficha div{padding:14px 16px 14px 0;border-bottom:1px solid var(--filete)}
+.ficha div:nth-child(odd){border-right:1px solid var(--filete)}
+.ficha div:nth-child(even){padding-left:16px}
+.ficha dt{font-size:14px;color:var(--tinta-2)}
+.ficha dd{margin:4px 0 0;font-weight:600}
+.muestras{display:flex;gap:8px;margin-top:6px}
+.muestras i{width:34px;height:22px;border:1px solid var(--filete)}
+@media(max-width:640px){.ficha{grid-template-columns:1fr}.ficha div:nth-child(odd){border-right:0}.ficha div:nth-child(even){padding-left:0}}
+
+/* preguntas */
+.p{padding:22px 0;border-top:1px solid var(--filete)}
+.p:first-child{border-top:0;padding-top:0}
+.p > label,.p legend{display:block;font-weight:700;font-size:20px;line-height:1.25;margin-bottom:6px;padding:0}
+.p .ayuda{color:var(--tinta-2);font-size:15px;margin-bottom:12px}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+textarea,input[type=text]{width:100%;background:#fff;border:1px solid var(--tinta);border-radius:0;padding:12px 14px;font-size:17px}
+textarea{min-height:110px;resize:vertical}
+.ops{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.ops.tres{grid-template-columns:repeat(3,minmax(0,1fr))}
+.ops label{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border:1px solid var(--filete);background:#fff;cursor:pointer;font-size:16px;line-height:1.35}
+.ops input{position:absolute;opacity:0;pointer-events:none}
+.ops .c{flex:none;width:18px;height:18px;border:1.5px solid var(--tinta);margin-top:1px;display:grid;place-items:center}
+.ops input[type=radio] + .c{border-radius:50%}
+.ops input:checked + .c{background:var(--verde);border-color:var(--verde)}
+.ops input:checked + .c::after{content:"";width:7px;height:7px;background:var(--crema)}
+.ops input[type=radio]:checked + .c::after{border-radius:50%}
+.ops label:has(input:checked){border-color:var(--verde);background:#F1F4F1}
+.ops input:focus-visible + .c{outline:3px solid var(--verde-2);outline-offset:2px}
+.grupo{font-size:14px;color:var(--tinta-2);margin:16px 0 8px;font-weight:600}
+@media(max-width:640px){.ops,.ops.tres{grid-template-columns:1fr}}
+
+/* pilares y guiones */
+.tarjeta{border-top:2px solid var(--tinta);padding:18px 0 22px}
+.tarjeta + .tarjeta{margin-top:10px}
+.tarjeta h3{font-size:22px}
+.tarjeta .ej{color:var(--tinta-2);margin:6px 0 14px}
+.guion{background:#fff;border-left:3px solid var(--dorado);padding:14px 16px;margin:10px 0 14px;font-size:16px}
+.guion b{display:block;font-size:13px;color:var(--verde-2);margin-top:8px}
+.guion b:first-child{margin-top:0}
+.nota{margin-top:10px}
+
+/* dictado */
+.voz{display:inline-flex;align-items:center;gap:10px;margin-top:10px;background:none;border:0;border-bottom:2px solid var(--verde);padding:4px 0;font-weight:600;font-size:15px;cursor:pointer;color:var(--verde-2)}
+.voz i{width:10px;height:10px;background:var(--verde)}
+.voz.on{color:#9B3D2E;border-color:#9B3D2E}
+.voz.on i{background:#9B3D2E;animation:late 1s steps(2) infinite}
+@keyframes late{50%{opacity:.25}}
+.voz-nota{display:block;font-size:14px;color:var(--tinta-2);margin-top:6px}
+.voz-nota[hidden]{display:none}
+
+/* envío */
+.final{background:var(--verde);color:var(--crema);padding:clamp(40px,7vw,72px) 0}
+.final h2{font-size:clamp(28px,4vw,40px)}
+.final p{margin:12px 0 24px;max-width:52ch;color:rgba(250,247,236,.9)}
+.enviar{background:var(--dorado);color:var(--tinta);border:0;padding:16px 26px;font-weight:700;font-size:18px;cursor:pointer}
+.enviar:hover{background:#EAD9A2}
+.enviar[disabled]{opacity:.6;cursor:wait}
+.error{margin-top:14px;background:#fff;color:#8A2E22;padding:10px 14px}
+.gracias h2{font-size:clamp(30px,4.4vw,46px)}
+.guardado{position:fixed;right:14px;bottom:14px;background:var(--tinta);color:var(--crema);font-size:13px;padding:6px 10px;opacity:0;transition:opacity .3s;pointer-events:none}
+.guardado.on{opacity:.9}
+.pie{padding:22px var(--m);font-size:13px;color:var(--tinta-2);text-align:center}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="portada">
+  <div class="in">
+    <img src="firma.png" alt="Pedacito del Cielo" width="271" height="160">
+    <div>
+      <span class="k">Pedacito del Cielo × Improva</span>
+      <h1>Vuestro panel de contenido</h1>
+      <p>Marta y Juli, aquí está todo lo que hemos preparado para empezar. Solo tenéis que decirnos qué os gusta, qué cambiaríais y unas pocas cosas que no vienen en el manual de marca.</p>
+      <ol>
+        <li><b>10 min</b>Lo que se tarda, más o menos.</li>
+        <li><b>Por voz</b>Donde veáis «Responder hablando», podéis contarlo como en un audio.</li>
+        <li><b>Sin prisa</b>Se guarda solo en este móvil. Podéis dejarlo y volver.</li>
+      </ol>
+    </div>
+  </div>
+</header>
+
+<form id="panel" name="panel-pedacito" method="POST" action="/clientes/pedacito-del-cielo/" data-netlify="true" netlify-honeypot="web">
+<input type="hidden" name="form-name" value="panel-pedacito">
+<div hidden aria-hidden="true"><input type="hidden" name="tema_1 (Tu ratito)" disabled><input type="hidden" name="tema_2 (Los santos)" disabled><input type="hidden" name="tema_3 (Así se hace)" disabled><input type="hidden" name="tema_4 (La comunidad)" disabled><input type="hidden" name="tema_5 (¿Cuál eres tú?)" disabled><input type="hidden" name="guion_1 (Aquí cada plato tiene nombre de santo)" disabled><input type="hidden" name="guion_1 (Aquí cada plato tiene nombre de santo) · nota" disabled><input type="hidden" name="guion_2 (Tu pedacito de lunes)" disabled><input type="hidden" name="guion_2 (Tu pedacito de lunes) · nota" disabled><input type="hidden" name="guion_3 (Hay más alegría en dar que en recibir)" disabled><input type="hidden" name="guion_3 (Hay más alegría en dar que en recibir) · nota" disabled><input type="hidden" name="guion_4 (Un día en Pedacito)" disabled><input type="hidden" name="guion_4 (Un día en Pedacito) · nota" disabled></div>
+<p hidden><label>No rellenar: <input name="web"></label></p>
+<main class="wrap">
+
+<section class="bloque">
+  <div class="cab">
+    <div class="n">Lo que ya sabemos</div>
+    <div><h2>Gracias al manual de marca, esto ya lo tenemos</h2><p>Lo seguiremos al pie de la letra en todo lo que publiquemos. Si algo no os encaja, decídnoslo abajo.</p></div>
+  </div>
+  <div class="cuerpo">
+    <dl class="ficha">
+      <div><dt>Colores</dt><dd>Verde, dorado y crema<span class="muestras"><i style="background:#6E8E83"></i><i style="background:#E0CC8A"></i><i style="background:#FAF7EC"></i></span></dd></div>
+      <div><dt>Lema</dt><dd>«Un ratito que sabe a cielo»</dd></div>
+      <div><dt>Tono</dt><dd>De tú, cercano, con lenguaje de acogida y gratitud</dd></div>
+      <div><dt>Símbolo</dt><dd>El querubín, con el arco y las nubes como recurso</dd></div>
+      <div><dt>Fotografía</dt><dd>El plato tal cual llega a la mesa, alternado con escenas reales del local</dd></div>
+      <div><dt>Precios</dt><dd>Visibles, para que elegir sea fácil</dd></div>
+    </dl>
+    <div class="p" style="margin-top:18px">
+      <label for="q_ajuste">¿Algo que corregir o añadir?</label>
+      <textarea id="q_ajuste" name="ajustes_marca" placeholder="Si todo está bien, déjalo en blanco."></textarea>
+    </div>
+  </div>
+</section>
+
+<section class="bloque">
+  <div class="cab">
+    <div class="n">Lo que buscáis</div>
+    <div><h2>¿En qué notaríais que las redes funcionan?</h2><p>Es lo que mediremos cada mes y lo que os enseñaremos en el informe, para que veáis con datos si merece la pena.</p></div>
+  </div>
+  <div class="cuerpo">
+    <fieldset class="p"><legend>Dentro de tres meses, nos gustaría ver…</legend>
+      <p class="ayuda">Marcad lo que más os importe.</p>
+      <div class="ops">
+        <label><input type="checkbox" name="objetivos" value="Clientes nuevos que dicen venir por Instagram"><span class="c"></span>Clientes nuevos que dicen venir por Instagram</label>
+        <label><input type="checkbox" name="objetivos" value="Más gente entre semana"><span class="c"></span>Más gente entre semana</label>
+        <label><input type="checkbox" name="objetivos" value="Encargos de tartas o pedidos por mensaje"><span class="c"></span>Encargos de tartas o pedidos por mensaje</label>
+        <label><input type="checkbox" name="objetivos" value="Clientes que repiten"><span class="c"></span>Clientes que repiten</label>
+        <label><input type="checkbox" name="objetivos" value="Que se reconozca la marca en Pinto"><span class="c"></span>Que se reconozca la marca en Pinto</label>
+        <label><input type="checkbox" name="objetivos" value="Una cuenta viva: seguidores, comentarios, mensajes"><span class="c"></span>Una cuenta viva: seguidores, comentarios, mensajes</label>
+      </div>
+    </fieldset>
+    <div class="p">
+      <label for="q_huecos">¿Qué días u horas está el local más tranquilo?</label>
+      <p class="ayuda">Ahí es donde el contenido puede traer más gente. Y nos sirve para saber cuándo grabar.</p>
+      <textarea id="q_huecos" name="huecos"></textarea>
+    </div>
+  </div>
+</section>
+
+<section class="bloque">
+  <div class="cab">
+    <div class="n">La carta</div>
+    <div><h2>¿Qué queréis que se pida más?</h2><p>Lo que marquéis será protagonista en los vídeos de producto de los jueves.</p></div>
+  </div>
+  <div class="cuerpo">
+    <fieldset class="p"><legend>Elegid hasta seis</legend>
+      <p class="grupo">Desayunos, tostas y brioches</p>
+      <div class="ops tres">
+        <label><input type="checkbox" name="platos" value="Croissant Santa Margarita"><span class="c"></span>Croissant Santa Margarita</label>
+        <label><input type="checkbox" name="platos" value="Croissant Santa Faustina"><span class="c"></span>Croissant Santa Faustina</label>
+        <label><input type="checkbox" name="platos" value="Croissant Santa Catalina"><span class="c"></span>Croissant Santa Catalina</label>
+        <label><input type="checkbox" name="platos" value="Tosta San José"><span class="c"></span>Tosta San José</label>
+        <label><input type="checkbox" name="platos" value="Tosta San Pío"><span class="c"></span>Tosta San Pío</label>
+        <label><input type="checkbox" name="platos" value="Tosta San Miguel"><span class="c"></span>Tosta San Miguel</label>
+        <label><input type="checkbox" name="platos" value="Tosta Santa Teresa"><span class="c"></span>Tosta Santa Teresa</label>
+        <label><input type="checkbox" name="platos" value="Focaccia San Ignacio"><span class="c"></span>Focaccia San Ignacio</label>
+        <label><input type="checkbox" name="platos" value="Focaccia San Francisco"><span class="c"></span>Focaccia San Francisco</label>
+        <label><input type="checkbox" name="platos" value="Brioche San Gabriel"><span class="c"></span>Brioche San Gabriel</label>
+        <label><input type="checkbox" name="platos" value="Brioche Santa Clara"><span class="c"></span>Brioche Santa Clara</label>
+      </div>
+      <p class="grupo">Bowls y bebidas especiales</p>
+      <div class="ops tres">
+        <label><input type="checkbox" name="platos" value="Açaí del Bosque"><span class="c"></span>Açaí del Bosque</label>
+        <label><input type="checkbox" name="platos" value="Océano Azul"><span class="c"></span>Océano Azul</label>
+        <label><input type="checkbox" name="platos" value="Tropical Sun"><span class="c"></span>Tropical Sun</label>
+        <label><input type="checkbox" name="platos" value="Dragon Fruit"><span class="c"></span>Dragon Fruit</label>
+        <label><input type="checkbox" name="platos" value="Matcha latte"><span class="c"></span>Matcha latte</label>
+        <label><input type="checkbox" name="platos" value="Ube latte"><span class="c"></span>Ube latte</label>
+      </div>
+      <p class="grupo">Dulces, tartas y helado</p>
+      <div class="ops tres">
+        <label><input type="checkbox" name="platos" value="Nube de Chocolate Blanco"><span class="c"></span>Nube de Chocolate Blanco</label>
+        <label><input type="checkbox" name="platos" value="Nube de Zanahoria"><span class="c"></span>Nube de Zanahoria</label>
+        <label><input type="checkbox" name="platos" value="Nube de Queso"><span class="c"></span>Nube de Queso</label>
+        <label><input type="checkbox" name="platos" value="Gofre Pedacito del Cielo"><span class="c"></span>Gofre Pedacito del Cielo</label>
+        <label><input type="checkbox" name="platos" value="Tabla para compartir"><span class="c"></span>Tabla para compartir</label>
+        <label><input type="checkbox" name="platos" value="Helado soft y fresas con nata"><span class="c"></span>Helado soft y fresas con nata</label>
+      </div>
+    </fieldset>
+    <div class="p">
+      <label for="q_plato_historia">¿Algún plato tiene una historia detrás?</label>
+      <p class="ayuda">Por qué lleva ese santo, de dónde sale la receta, un proveedor especial…</p>
+      <textarea id="q_plato_historia" name="historias_platos"></textarea>
+    </div>
+  </div>
+</section>
+
+<section class="bloque">
+  <div class="cab">
+    <div class="n">Los temas</div>
+    <div><h2>Cinco temas para hablar de Pedacito</h2><p>Lo que no os convenza, no lo hacemos.</p></div>
+  </div>
+  <div class="cuerpo" id="pilares"></div>
+</section>
+
+<section class="bloque">
+  <div class="cab">
+    <div class="n">Las primeras historias</div>
+    <div><h2>Los cuatro primeros martes</h2><p>Vídeos cortos con lo que hay detrás de Pedacito. No hace falta salir: basta una voz leyendo el texto, o el texto en pantalla.</p></div>
+  </div>
+  <div class="cuerpo" id="guiones"></div>
+</section>
+
+<section class="bloque">
+  <div class="cab">
+    <div class="n">La voz</div>
+    <div><h2>Cómo queréis que suene</h2></div>
+  </div>
+  <div class="cuerpo">
+    <fieldset class="p"><legend>¿Quién pone la voz a las historias?</legend>
+      <div class="ops">
+        <label><input type="radio" name="voz" value="Marta"><span class="c"></span>Marta, grabando el audio con el móvil</label>
+        <label><input type="radio" name="voz" value="Juli"><span class="c"></span>Juli</label>
+        <label><input type="radio" name="voz" value="Fani, de Improva"><span class="c"></span>Fani, de Improva</label>
+        <label><input type="radio" name="voz" value="Sin voz: texto en pantalla y música"><span class="c"></span>Sin voz: texto en pantalla y música</label>
+      </div>
+    </fieldset>
+    <fieldset class="p"><legend>¿Cuánto queréis que se note vuestra fe?</legend>
+      <p class="ayuda">Hoy está en los nombres de los santos, en el querubín y en la frase de la carta.</p>
+      <div class="ops">
+        <label><input type="radio" name="fe" value="Como un guiño, igual que en la carta"><span class="c"></span>Como un guiño, igual que en la carta</label>
+        <label><input type="radio" name="fe" value="Algo más presente, sin predicar"><span class="c"></span>Algo más presente, sin predicar</label>
+        <label><input type="radio" name="fe" value="Prefiero que no se mencione"><span class="c"></span>Prefiero que no se mencione</label>
+        <label><input type="radio" name="fe" value="Lo hablamos"><span class="c"></span>Lo hablamos</label>
+      </div>
+    </fieldset>
+    <fieldset class="p"><legend>¿Contamos algún día vuestra historia personal?</legend>
+      <p class="ayuda">De dónde venís y por qué abristeis Pedacito. Lo más personal es lo que más conecta, pero solo si os apetece.</p>
+      <div class="ops">
+        <label><input type="radio" name="historia_personal" value="Sí, más adelante"><span class="c"></span>Sí, más adelante</label>
+        <label><input type="radio" name="historia_personal" value="Solo cómo nació Pedacito"><span class="c"></span>Solo cómo nació Pedacito</label>
+        <label><input type="radio" name="historia_personal" value="Mejor no"><span class="c"></span>Mejor no</label>
+        <label><input type="radio" name="historia_personal" value="Lo hablamos"><span class="c"></span>Lo hablamos</label>
+      </div>
+    </fieldset>
+    <div class="p">
+      <label for="q_no">¿Hay algo que no queráis ver nunca en vuestras redes?</label>
+      <textarea id="q_no" name="no_hacer" placeholder="Bailes, tendencias, clientes en primer plano…"></textarea>
+    </div>
+    <div class="p">
+      <label for="q_ref">¿Qué cuentas de Instagram os gustan?</label>
+      <p class="ayuda">De cafeterías, de moda o de lo que sea. Vale con el nombre.</p>
+      <textarea id="q_ref" name="referentes"></textarea>
+    </div>
+  </div>
+</section>
+
+<section class="bloque">
+  <div class="cab">
+    <div class="n">Dos ideas</div>
+    <div><h2>Para que la gente vuelva</h2></div>
+  </div>
+  <div class="cuerpo">
+    <div class="tarjeta">
+      <h3>El santo del mes</h3>
+      <p class="ej">Un plato o una bebida que solo está ese mes. Da un motivo para venir y un tema para las redes.</p>
+      <div class="ops tres">
+        <label><input type="radio" name="idea_santo_mes" value="Me gusta"><span class="c"></span>Me gusta</label>
+        <label><input type="radio" name="idea_santo_mes" value="Lo hablamos"><span class="c"></span>Lo hablamos</label>
+        <label><input type="radio" name="idea_santo_mes" value="Mejor no"><span class="c"></span>Mejor no</label>
+      </div>
+    </div>
+    <div class="tarjeta">
+      <h3>Tarjeta de cliente</h3>
+      <p class="ej">Cada diez desayunos, uno de regalo. Os la diseñamos con vuestra marca.</p>
+      <div class="ops tres">
+        <label><input type="radio" name="idea_tarjeta" value="Me gusta"><span class="c"></span>Me gusta</label>
+        <label><input type="radio" name="idea_tarjeta" value="Lo hablamos"><span class="c"></span>Lo hablamos</label>
+        <label><input type="radio" name="idea_tarjeta" value="Mejor no"><span class="c"></span>Mejor no</label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloque">
+  <div class="cab">
+    <div class="n">El día a día</div>
+    <div><h2>Para organizarnos bien</h2></div>
+  </div>
+  <div class="cuerpo">
+    <div class="p">
+      <label for="q_rodaje">¿Qué día y a qué hora podemos grabar?</label>
+      <p class="ayuda">Con el local tranquilo y luz de día. Una sesión de unas tres horas al mes. Grabaremos lo que ya está hecho y lo que vayan pidiendo los clientes, para no desperdiciar nada.</p>
+      <input type="text" id="q_rodaje" name="rodaje">
+    </div>
+    <fieldset class="p"><legend>¿Quién sube las historias del día a día?</legend>
+      <div class="ops">
+        <label><input type="radio" name="historias_diarias" value="Nosotros, con vuestras plantillas"><span class="c"></span>Nosotros, con vuestras plantillas</label>
+        <label><input type="radio" name="historias_diarias" value="Os mandamos fotos y vídeos y las subís vosotros"><span class="c"></span>Os mandamos fotos y vídeos y las subís vosotros</label>
+        <label><input type="radio" name="historias_diarias" value="Un poco de cada"><span class="c"></span>Un poco de cada</label>
+        <label><input type="radio" name="historias_diarias" value="Lo hablamos"><span class="c"></span>Lo hablamos</label>
+      </div>
+    </fieldset>
+    <div class="p">
+      <label for="q_ok">¿Cómo preferís dar el visto bueno a las publicaciones?</label>
+      <p class="ayuda">Por ejemplo: por WhatsApp, todas juntas el domingo para la semana siguiente.</p>
+      <input type="text" id="q_ok" name="aprobacion">
+    </div>
+    <div class="p">
+      <label for="q_navidad">¿Preparáis algo para Navidad?</label>
+      <p class="ayuda">Horarios especiales, encargos de tartas, alguna novedad en la carta…</p>
+      <textarea id="q_navidad" name="navidad"></textarea>
+    </div>
+    <div class="p">
+      <label for="q_habituales">¿Tenéis clientes habituales a los que les haría ilusión salir?</label>
+      <p class="ayuda">Siempre con su permiso, que les pedimos nosotros.</p>
+      <textarea id="q_habituales" name="clientes_habituales"></textarea>
+    </div>
+    <div class="p">
+      <label for="q_mas">¿Algo más que queráis contarnos?</label>
+      <textarea id="q_mas" name="algo_mas"></textarea>
+    </div>
+  </div>
+</section>
+</main>
+
+<section class="final" id="final">
+  <div class="wrap">
+    <div id="antes">
+      <h2>¿Listo?</h2>
+      <p>Con esto preparamos el primer mes y os lo enseñamos antes de publicar nada. Podéis enviarlo aunque haya preguntas en blanco.</p>
+      <button type="submit" class="enviar" id="enviar">Enviar a Improva</button>
+      <div class="error" id="error" hidden></div>
+    </div>
+    <div class="gracias" id="gracias" hidden>
+      <h2>¡Gracias, Marta y Juli!</h2>
+      <p>Ya lo tenemos. En unos días os mandamos el plan del primer mes y la fecha del rodaje. Cualquier cosa, escribidnos por WhatsApp al 614 525 458.</p>
+    </div>
+  </div>
+</section>
+</form>
+
+<p class="pie">Hecho por Improva para Pedacito del Cielo · Solo para vosotros</p>
+<div class="guardado" id="guardado">Guardado</div>
+
+<script>
+(function(){
+  // ── contenido de los temas y guiones ──
+  var PILARES=[
+    ['Tu ratito','Momentos para venir que no sean el fin de semana.','«Tu pedacito de lunes»: café y croissant antes de entrar a trabajar.'],
+    ['Los santos','La carta contada como una colección.','«¿Por qué esta tosta se llama San Miguel?»'],
+    ['Así se hace','Manos y proceso, sin que tengáis que salir.','El gofre, de la plancha a la mesa.'],
+    ['La comunidad','Clientes habituales, siempre con su permiso.','El de las diez, que siempre pide flat white.'],
+    ['¿Cuál eres tú?','Preguntas que invitan a comentar.','«Dime qué croissant pides y te diré cómo eres.»']
+  ];
+  var GUIONES=[
+    ['Aquí cada plato tiene nombre de santo','¿Por qué tu tosta se llama San Miguel?','En Pedacito del Cielo, cada plato tiene nombre de santo. Santa Margarita, San José, Santa Faustina… No es casualidad. Queríamos que en cada mesa hubiera un pequeño recuerdo de por qué abrimos este sitio: para recibirte como en casa y regalarte un ratito que sepa a cielo. Así que la próxima vez que pidas, no solo eliges un desayuno. Eliges con quién compartes la mesa.'],
+    ['Tu pedacito de lunes','El lunes también puede saber a cielo.','Todavía queda un rato antes de entrar a trabajar. Un flat white, un croissant de masa madre y diez minutos solo para ti. No hace falta esperar al fin de semana para darte un capricho. A veces, lo que más se agradece es empezar el día con calma. Tu pedacito de lunes te espera en Pinto.'],
+    ['Hay más alegría en dar que en recibir','La frase que está en nuestra carta.','En la primera página de nuestra carta hay una frase: «Hay más alegría en dar que en recibir». Es la razón por la que existe Pedacito del Cielo. Cada café que servimos y cada plato que preparamos es nuestra forma de dar las gracias. Esta semana te proponemos lo mismo: invita a alguien a un ratito. A tu madre, a una amiga, a quien lo necesite. Seguro que se acuerda.'],
+    ['Un día en Pedacito','Un día en Pedacito del Cielo, en 30 segundos.','Sube la persiana. El primer café. Las fresas, recién cortadas. El primer gofre del día. Gente que llega y gente que se queda. Y al final, la última taza. Así es un día en Pedacito del Cielo. Mañana, otro ratito.']
+  ];
+  function esc(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function tres(name,vals){return '<div class="ops tres">'+vals.map(function(v){return '<label><input type="radio" name="'+name+'" value="'+esc(v)+'"><span class="c"></span>'+esc(v)+'</label>'}).join('')+'</div>'}
+  document.getElementById('pilares').innerHTML=PILARES.map(function(p,i){
+    return '<div class="tarjeta"><h3>'+esc(p[0])+'</h3><p class="ej">'+esc(p[1])+' Por ejemplo: '+esc(p[2])+'</p>'+tres('tema_'+(i+1)+' ('+p[0]+')',['Me gusta','Lo hablamos','Mejor no'])+'</div>';
+  }).join('');
+  document.getElementById('guiones').innerHTML=GUIONES.map(function(g,i){
+    var n='guion_'+(i+1)+' ('+g[0]+')';
+    return '<div class="tarjeta"><h3>'+esc(g[0])+'</h3><div class="guion"><b>En pantalla</b>'+esc(g[1])+'<b>Voz</b>'+esc(g[2])+'</div>'+tres(n,['Adelante','Cambiaría algo','Mejor no'])+'<textarea class="nota" name="'+esc(n)+' · nota" aria-label="Qué cambiaríais en «'+esc(g[0])+'»" placeholder="Si cambiaríais algo, contádnoslo aquí."></textarea></div>';
+  }).join('');
+
+  // ── guardado automático ──
+  var f=document.getElementById('panel'), KEY='improva-panel-pedacito', g=document.getElementById('guardado'), t;
+  function leer(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return{}}}
+  function guardar(){var d={};[].forEach.call(f.elements,function(el){if(!el.name||el.type==='hidden'||el.name==='web')return;if(el.type==='checkbox'||el.type==='radio'){if(el.checked)(d[el.name]=d[el.name]||[]).push(el.value)}else if(el.value)d[el.name]=el.value});
+    try{localStorage.setItem(KEY,JSON.stringify(d));g.classList.add('on');clearTimeout(t);t=setTimeout(function(){g.classList.remove('on')},1200)}catch(e){}}
+  var d=leer();[].forEach.call(f.elements,function(el){if(!el.name||!(el.name in d))return;if(el.type==='checkbox'||el.type==='radio')el.checked=d[el.name].indexOf(el.value)>-1;else el.value=d[el.name]});
+  f.addEventListener('input',guardar);f.addEventListener('change',guardar);
+
+  // ── máximo seis platos ──
+  f.addEventListener('change',function(e){if(e.target.name!=='platos')return;var c=f.querySelectorAll('input[name=platos]:checked');if(c.length>6){e.target.checked=false;guardar()}});
+
+  // ── envío a Netlify ──
+  f.addEventListener('submit',function(e){
+    e.preventDefault();var b=document.getElementById('enviar'),er=document.getElementById('error');b.disabled=true;b.textContent='Enviando…';er.hidden=true;
+    var datos={};[].forEach.call(f.elements,function(el){if(!el.name)return;if(el.type==='checkbox'||el.type==='radio'){if(el.checked)datos[el.name]=(datos[el.name]?datos[el.name]+' · ':'')+el.value}else datos[el.name]=el.value});
+    var body=Object.keys(datos).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(datos[k])}).join('&');
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body}).then(function(r){if(!r.ok)throw 0;
+      document.getElementById('antes').hidden=true;document.getElementById('gracias').hidden=false;try{localStorage.removeItem(KEY)}catch(e){}
+    }).catch(function(){b.disabled=false;b.textContent='Enviar a Improva';er.hidden=false;er.textContent='No se ha podido enviar. Revisa la conexión y prueba otra vez; tus respuestas siguen guardadas.'});
+  });
+
+  // ── responder hablando ──
+  var R=window.SpeechRecognition||window.webkitSpeechRecognition, rec=null, activa=null;
+  [].forEach.call(document.querySelectorAll('textarea'),function(ta){
+    if(!R){var p=document.createElement('span');p.className='voz-nota';p.textContent='Si preferís hablar, pulsad el micrófono del teclado.';ta.after(p);return}
+    var b=document.createElement('button');b.type='button';b.className='voz';b.innerHTML='<i></i><span>Responder hablando</span>';
+    var n=document.createElement('span');n.className='voz-nota';n.hidden=true;n.textContent='Os escuchamos. Pulsad otra vez para terminar; luego podéis corregir el texto.';
+    ta.after(b);b.after(n);
+    b.addEventListener('click',function(){
+      if(activa===b){try{rec.stop()}catch(e){}return}
+      if(rec){try{rec.stop()}catch(e){}}
+      rec=new R();rec.lang='es-ES';rec.continuous=true;rec.interimResults=true;
+      var base=ta.value?ta.value.replace(/\s*$/,'')+' ':'';
+      rec.onresult=function(e){var s='';for(var k=0;k<e.results.length;k++)s+=e.results[k][0].transcript;ta.value=base+s;guardar()};
+      rec.onend=function(){b.classList.remove('on');b.querySelector('span').textContent='Responder hablando';n.hidden=true;activa=null;guardar()};
+      rec.onerror=function(e){if(e.error==='not-allowed'){n.hidden=false;n.textContent='Para hablar, permitid el micrófono. Si no, usad el micrófono del teclado.'}};
+      activa=b;b.classList.add('on');b.querySelector('span').textContent='Escuchando… pulsa para terminar';n.hidden=false;try{rec.start()}catch(e){}
+    });
+  });
+})();
+</script>
+</body>
+</html>

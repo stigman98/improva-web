@@ -3,6 +3,7 @@ Allow: /
 Disallow: /cuestionario/
 Disallow: /onboarding/
 Disallow: /demos/
+Disallow: /clientes/
 Disallow: /r/
 Disallow: /firma/
 
