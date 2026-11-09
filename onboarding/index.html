@@ -115,8 +115,10 @@ textarea{min-height:140px;resize:vertical;line-height:1.5}
 </header>
 
 <main>
-<form name="onboarding" method="POST" action="/onboarding/" data-netlify="true" netlify-honeypot="bot-field" id="form" novalidate>
+<form name="onboarding" method="POST" action="/onboarding/" data-netlify="true" enctype="multipart/form-data" netlify-honeypot="bot-field" id="form" novalidate>
   <input type="hidden" name="form-name" value="onboarding">
+<p hidden><input type="file" name="audio_servicio_prioritario" accept="audio/*" tabindex="-1"><input type="file" name="audio_huecos" accept="audio/*" tabindex="-1"><input type="file" name="audio_oferta_nuevos" accept="audio/*" tabindex="-1"><input type="file" name="audio_preguntas_frecuentes" accept="audio/*" tabindex="-1"><input type="file" name="audio_miedos" accept="audio/*" tabindex="-1"><input type="file" name="audio_mitos" accept="audio/*" tabindex="-1"><input type="file" name="audio_consejo" accept="audio/*" tabindex="-1"><input type="file" name="audio_por_que_vuelven" accept="audio/*" tabindex="-1"><input type="file" name="audio_equipo_videos" accept="audio/*" tabindex="-1"><input type="file" name="audio_historia" accept="audio/*" tabindex="-1"><input type="file" name="audio_referentes" accept="audio/*" tabindex="-1"><input type="file" name="audio_no_grabar" accept="audio/*" tabindex="-1"><input type="file" name="audio_fechas" accept="audio/*" tabindex="-1"><input type="file" name="audio_colaboraciones" accept="audio/*" tabindex="-1"><input type="file" name="audio_contacto_dia_a_dia" accept="audio/*" tabindex="-1"><input type="file" name="audio_algo_mas" accept="audio/*" tabindex="-1"></p>
+
   <p class="oculto"><label>No rellenes esto: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
   <input type="hidden" name="cliente" id="cliente">
 
@@ -129,7 +131,7 @@ textarea{min-height:140px;resize:vertical;line-height:1.5}
     <ul class="reglas">
       <li><span class="d" id="r-preg">20</span><span>preguntas cortas, una cada vez.</span></li>
       <li><span class="d" id="r-min">12</span><span>minutos, más o menos. Arriba ves siempre lo que te queda.</span></li>
-      <li><span class="d">2</span><span>formas de contestar: escribiendo o hablando. Pulsa «Responder hablando» y cuéntamelo como si me mandaras un audio.</span></li>
+      <li><span class="d">2</span><span>formas de contestar con la voz: graba un audio con «Grabar un audio», o toca el recuadro y pulsa el micrófono del teclado para que se escriba solo.</span></li>
       <li><span class="d">0</span><span>obligatorias. Si no sabes algo, pulsa «Saltar» y lo hablamos en persona.</span></li>
       <li><span class="d inf">∞</span><span>pausas. Se guarda solo en este móvil; puedes cerrar y seguir luego.</span></li>
     </ul>
@@ -323,7 +325,7 @@ textarea{min-height:140px;resize:vertical;line-height:1.5}
   var n=new URLSearchParams(location.search).get('n');
   if(n){document.getElementById('cliente').value=n;document.getElementById('para-nombre').textContent=n;KEY+='-'+n}
 
-  function datos(){var o={};new FormData(form).forEach(function(v,k){if(k==='bot-field'||k==='form-name'||v==='')return;o[k]=o[k]?o[k]+' · '+v:v});return o}
+  function datos(){var o={};new FormData(form).forEach(function(v,k){if(k==='bot-field'||k==='form-name'||v===''||typeof v!=='string')return;o[k]=o[k]?o[k]+' · '+v:v});return o}
   function guardar(){try{localStorage.setItem(KEY,JSON.stringify({i:i,d:datos()}));document.getElementById('estado').textContent='Guardado'}catch(e){}}
   function cargar(){try{var s=JSON.parse(localStorage.getItem(KEY)||'null');if(!s)return;var d=s.d||{};
     Object.keys(d).forEach(function(k){if(k==='cliente')return;var els=form.querySelectorAll('[name="'+k+'"]');if(!els.length)return;
@@ -353,9 +355,10 @@ textarea{min-height:140px;resize:vertical;line-height:1.5}
     var err=document.getElementById('error'),b=document.getElementById('sigue');
     if(!document.getElementById('acepto').checked){err.hidden=false;err.textContent='Marca la casilla para poder enviarlo.';return}
     err.hidden=true;b.disabled=true;b.textContent='Enviando…';
-    var body=new URLSearchParams();body.append('form-name','onboarding');
+    var body=new FormData();body.append('form-name','onboarding');
     var d=datos();Object.keys(d).forEach(function(k){body.append(k,d[k])});
-    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body.toString()})
+    var A=window.__AUD||{};Object.keys(A).forEach(function(k){body.append('audio_'+k,A[k],k+(/mp4/.test(A[k].type)?'.m4a':'.webm'))});
+    fetch('/',{method:'POST',body:body})
       .then(function(r){if(!r.ok)throw new Error(r.status);try{localStorage.removeItem(KEY)}catch(e){}i=FIN;pinta()})
       .catch(function(){b.disabled=false;b.textContent='Enviar';err.hidden=false;err.textContent='No se ha podido enviar. Revisa la conexión y vuelve a pulsar «Enviar». Tus respuestas siguen guardadas.'});
   }
@@ -369,31 +372,39 @@ textarea{min-height:140px;resize:vertical;line-height:1.5}
 </script>
 <script src="/correo.js" defer></script>
 <script>
-// Responder hablando: dicta al cuadro de texto con el reconocimiento de voz del navegador.
+// Grabar un audio: nota de voz que se adjunta al envío. Y pista para dictar con el teclado.
 (function(){
-  var R=window.SpeechRecognition||window.webkitSpeechRecognition;
-  var areas=[].slice.call(document.querySelectorAll('.etapa textarea'));
-  if(!R){areas.forEach(function(t){var p=document.createElement('span');p.className='voz-nota';p.textContent='Si prefieres hablar, pulsa el micrófono de tu teclado.';t.after(p)});return}
-  var rec=null, activa=null;
-  function para(){if(rec){try{rec.stop()}catch(e){}}}
-  areas.forEach(function(t){
-    var b=document.createElement('button');b.type='button';b.className='voz';b.innerHTML='<i></i><span>Responder hablando</span>';
-    var nota=document.createElement('span');nota.className='voz-nota';nota.hidden=true;nota.textContent='Te escucho. Habla con calma y pulsa otra vez para terminar. Luego puedes corregir el texto.';
-    t.after(b);b.after(nota);
+  var AUD={};window.__AUD=AUD;
+  var puede=!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder);
+  function mmss(s){return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')}
+  [].forEach.call(document.querySelectorAll('.etapa textarea'),function(t){
+    var caja=document.createElement('div');t.after(caja);
+    var pista=document.createElement('span');pista.className='voz-nota';pista.textContent='Para que se escriba solo: toca el recuadro y pulsa el micrófono del teclado.';
+    if(!puede){caja.appendChild(pista);return}
+    var b=document.createElement('button');b.type='button';b.className='voz';b.innerHTML='<i></i><span>Grabar un audio</span>';
+    var nota=document.createElement('span');nota.className='voz-nota';nota.hidden=true;
+    caja.appendChild(b);caja.appendChild(nota);caja.appendChild(pista);
+    var rec=null,trozos=[],st=null,t0=0,reloj=null,pl=null,del=null;
     b.addEventListener('click',function(){
-      if(activa===b){para();return}
-      para();
-      rec=new R();rec.lang='es-ES';rec.continuous=true;rec.interimResults=true;
-      var base=t.value?t.value.replace(/\s*$/,'')+' ':'';
-      rec.onresult=function(e){var fin='',tmp='';for(var k=0;k<e.results.length;k++){var x=e.results[k][0].transcript;if(e.results[k].isFinal)fin+=x;else tmp+=x}
-        t.value=base+fin+tmp;t.dispatchEvent(new Event('input',{bubbles:true}))};
-      rec.onend=function(){b.classList.remove('on');b.querySelector('span').textContent='Responder hablando';nota.hidden=true;activa=null;t.dispatchEvent(new Event('change',{bubbles:true}))};
-      rec.onerror=function(e){if(e.error==='not-allowed'){nota.hidden=false;nota.textContent='Para hablar, permite el micrófono. Si no, escribe o usa el micrófono del teclado.'}};
-      activa=b;b.classList.add('on');b.querySelector('span').textContent='Escuchando… pulsa para terminar';nota.hidden=false;
-      try{rec.start()}catch(e){}
+      if(rec&&rec.state==='recording'){rec.stop();return}
+      navigator.mediaDevices.getUserMedia({audio:true}).then(function(s){
+        st=s;trozos=[];
+        var tipo=['audio/mp4','audio/webm;codecs=opus','audio/webm'].find(function(x){return MediaRecorder.isTypeSupported&&MediaRecorder.isTypeSupported(x)})||'';
+        rec=new MediaRecorder(s,tipo?{mimeType:tipo,audioBitsPerSecond:48000}:{});
+        rec.ondataavailable=function(e){if(e.data&&e.data.size)trozos.push(e.data)};
+        rec.onstop=function(){clearInterval(reloj);st.getTracks().forEach(function(x){x.stop()});b.classList.remove('on');b.querySelector('span').textContent='Grabar otro audio';
+          var blob=new Blob(trozos,{type:rec.mimeType||'audio/mp4'});AUD[t.name]=blob;
+          if(pl)pl.remove();if(del)del.remove();
+          pl=document.createElement('audio');pl.controls=true;pl.src=URL.createObjectURL(blob);pl.style.cssText='display:block;width:100%;margin-top:10px';caja.insertBefore(pl,pista);
+          del=document.createElement('button');del.type='button';del.className='voz';del.style.borderBottomWidth='1px';del.textContent='Borrar audio';caja.insertBefore(del,pista);
+          del.onclick=function(){delete AUD[t.name];pl.remove();del.remove();pl=del=null;b.querySelector('span').textContent='Grabar un audio';nota.hidden=true};
+          nota.hidden=false;nota.textContent='Audio guardado ('+mmss(Math.round((Date.now()-t0)/1000))+'). Se enviará con tus respuestas.'};
+        rec.start(1000);t0=Date.now();b.classList.add('on');nota.hidden=false;nota.textContent='Máximo 4 minutos por pregunta.';
+        b.querySelector('span').textContent='Grabando 0:00 · pulsa para terminar';
+        reloj=setInterval(function(){b.querySelector('span').textContent='Grabando '+mmss(Math.round((Date.now()-t0)/1000))+' · pulsa para terminar';if(Date.now()-t0>240000)rec.stop()},500);
+      }).catch(function(){nota.hidden=false;nota.textContent='Para grabar, permite el micrófono. Si no, pulsa el micrófono del teclado y se escribe solo.'});
     });
   });
-  document.addEventListener('click',function(e){if(activa&&(e.target.id==='sigue'||e.target.id==='saltar'||e.target.id==='atras'))para()});
 })();
 </script>
 </body>
