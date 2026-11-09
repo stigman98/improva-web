@@ -44,6 +44,14 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .voz.on{color:#9B3D2E;border-color:#9B3D2E}
 .voz.on i{background:#9B3D2E;animation:late 1s steps(2) infinite}
 @keyframes late{50%{opacity:.25}}
+.audio-x{}
+.audio{margin-top:14px}
+.grabar{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--verde);color:var(--verde-2);padding:11px 16px;font-weight:700;font-size:16px;cursor:pointer}
+.grabar i{width:12px;height:12px;border-radius:50%;background:#B5452F}
+.grabar.on{background:#B5452F;border-color:#B5452F;color:#fff}
+.grabar.on i{background:#fff;border-radius:0;animation:late 1s steps(2) infinite}
+.audio audio{display:block;width:100%;margin-top:10px}
+.audio .borrar{background:none;border:0;color:var(--tinta-2);text-decoration:underline;text-underline-offset:4px;cursor:pointer;font-size:15px;padding:0;margin-top:8px}
 .voz-nota{display:block;font-size:14px;color:var(--tinta-2);margin-top:6px}
 .nav{display:flex;align-items:center;gap:18px;margin-top:26px}
 .sig{background:var(--verde);color:var(--crema);border:0;padding:15px 26px;font-weight:700;font-size:18px;cursor:pointer}
@@ -63,8 +71,10 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 <header><span id="cuenta">Antes del rodaje</span><span>Improva</span></header>
 
 <main>
-<form id="f" name="pedacito-rodaje" method="POST" action="/clientes/pedacito-del-cielo/" data-netlify="true" netlify-honeypot="web" style="width:100%;display:flex;justify-content:center">
+<form id="f" name="pedacito-rodaje" method="POST" action="/clientes/pedacito-del-cielo/" data-netlify="true" enctype="multipart/form-data" netlify-honeypot="web" style="width:100%;display:flex;justify-content:center">
 <input type="hidden" name="form-name" value="pedacito-rodaje">
+
+<p hidden><input type="file" name="audio_rodaje_nota" accept="audio/*" tabindex="-1"><input type="file" name="audio_platos_a_impulsar" accept="audio/*" tabindex="-1"><input type="file" name="audio_lo_que_mas_piden" accept="audio/*" tabindex="-1"><input type="file" name="audio_historias_platos" accept="audio/*" tabindex="-1"><input type="file" name="audio_preparacion_a_mano" accept="audio/*" tabindex="-1"><input type="file" name="audio_navidad" accept="audio/*" tabindex="-1"><input type="file" name="audio_exito_redes" accept="audio/*" tabindex="-1"></p>
 <p hidden><label>No rellenar <input name="web"></label></p>
 
 <section class="paso portada" data-p="0">
@@ -73,7 +83,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   <p class="ayuda">Siete preguntas rápidas para preparar el rodaje. Así llegamos con todo pensado y os molestamos lo mínimo.</p>
   <ul>
     <li><b>Unos 5 minutos.</b> Si no sabes algo, sáltalo.</li>
-    <li><b>Puedes contestar con un audio.</b> Pulsa «Responder con un audio» y habla: se escribe solo.</li>
+    <li><b>Puedes contestar con un audio.</b> Pulsa «Grabar un audio», habla y pulsa otra vez para terminar. O escribe, si lo prefieres.</li>
     <li><b>Se guarda en tu móvil.</b> Puedes dejarlo y seguir luego.</li>
   </ul>
   <div class="nav"><button type="button" class="sig">Empezar</button></div>
@@ -156,27 +166,46 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   f.addEventListener('input',guardar);f.addEventListener('change',guardar);
   // envío
   function enviar(){var b=pasos[7].querySelector('.sig'),er=document.getElementById('error');b.disabled=true;b.textContent='Enviando…';er.hidden=true;
-    var o={};[].forEach.call(f.elements,function(el){if(!el.name)return;if(el.type==='checkbox'||el.type==='radio'){if(el.checked)o[el.name]=(o[el.name]?o[el.name]+' · ':'')+el.value}else o[el.name]=el.value});
-    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:Object.keys(o).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(o[k])}).join('&')})
+    var fd=new FormData();var o={};[].forEach.call(f.elements,function(el){if(!el.name||el.type==='file')return;if(el.type==='checkbox'||el.type==='radio'){if(el.checked)o[el.name]=(o[el.name]?o[el.name]+' · ':'')+el.value}else o[el.name]=el.value});
+    Object.keys(o).forEach(function(k){fd.append(k,o[k])});
+    var A=window.__AUD||{};Object.keys(A).forEach(function(k){var ext=/mp4/.test(A[k].type)?'m4a':'webm';fd.append('audio_'+k,A[k],k+'.'+ext)});
+    fetch('/',{method:'POST',body:fd})
     .then(function(r){if(!r.ok)throw 0;try{localStorage.removeItem(KEY);localStorage.removeItem(KEY+'-p')}catch(e){}ver(8)})
-    .catch(function(){b.disabled=false;b.textContent='Enviar';er.hidden=false;er.textContent='No se ha podido enviar. Revisa la conexión y prueba otra vez: tus respuestas siguen guardadas.'})}
-  // responder hablando
-  var R=window.SpeechRecognition||window.webkitSpeechRecognition,rec=null,act=null;
+    .catch(function(){b.disabled=false;b.textContent='Enviar';er.hidden=false;er.textContent='No se ha podido enviar. Revisa la conexión y prueba otra vez: tus respuestas siguen aquí.'})}
+  // grabar un audio (MediaRecorder): el audio se adjunta al envío
+  var AUD={};
+  var puede=!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder);
   [].forEach.call(document.querySelectorAll('textarea'),function(t){
-    if(!R){var s=document.createElement('span');s.className='voz-nota';s.textContent='Si prefieres contestar con un audio, pulsa el micrófono del teclado.';t.after(s);return}
-    var b=document.createElement('button');b.type='button';b.className='voz';b.innerHTML='<i></i><span>Responder con un audio</span>';
-    var n=document.createElement('span');n.className='voz-nota';n.hidden=true;n.textContent='Te escuchamos. Pulsa otra vez para terminar; luego puedes corregir el texto.';
-    t.after(b);b.after(n);
+    var caja=document.createElement('div');caja.className='audio';t.after(caja);
+    if(!puede){caja.innerHTML='<span class="voz-nota">Si prefieres hablar, pulsa el micrófono del teclado y se escribe solo.</span>';return}
+    var b=document.createElement('button');b.type='button';b.className='grabar';b.innerHTML='<i></i><span>Grabar un audio</span>';
+    var nota=document.createElement('span');nota.className='voz-nota';nota.hidden=true;
+    caja.appendChild(b);caja.appendChild(nota);
+    var rec=null,trozos=[],stream=null,t0=0,reloj=null,player=null,borrar=null;
+    function mmss(s){return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')}
+    function parar(){if(rec&&rec.state!=='inactive')rec.stop();}
     b.addEventListener('click',function(){
-      if(act===b){try{rec.stop()}catch(e){}return}
-      if(rec){try{rec.stop()}catch(e){}}
-      rec=new R();rec.lang='es-ES';rec.continuous=true;rec.interimResults=true;
-      var base=t.value?t.value.replace(/\s*$/,'')+' ':'';
-      rec.onresult=function(e){var s='';for(var k=0;k<e.results.length;k++)s+=e.results[k][0].transcript;t.value=base+s;guardar()};
-      rec.onend=function(){b.classList.remove('on');b.querySelector('span').textContent='Responder con un audio';n.hidden=true;act=null;guardar()};
-      rec.onerror=function(e){if(e.error==='not-allowed'){n.hidden=false;n.textContent='Para hablar, permite el micrófono. Si no, usa el micrófono del teclado.'}};
-      act=b;b.classList.add('on');b.querySelector('span').textContent='Escuchando… pulsa para terminar';n.hidden=false;try{rec.start()}catch(e){}});
+      if(rec&&rec.state==='recording'){parar();return}
+      navigator.mediaDevices.getUserMedia({audio:true}).then(function(st){
+        stream=st;trozos=[];
+        var tipo=['audio/mp4','audio/webm;codecs=opus','audio/webm'].find(function(x){return MediaRecorder.isTypeSupported&&MediaRecorder.isTypeSupported(x)})||'';
+        rec=new MediaRecorder(st,tipo?{mimeType:tipo,audioBitsPerSecond:48000}:{});
+        rec.ondataavailable=function(e){if(e.data&&e.data.size)trozos.push(e.data)};
+        rec.onstop=function(){clearInterval(reloj);stream.getTracks().forEach(function(x){x.stop()});
+          b.classList.remove('on');b.querySelector('span').textContent='Grabar otro audio';
+          var blob=new Blob(trozos,{type:rec.mimeType||'audio/mp4'});AUD[t.name]=blob;
+          if(player)player.remove();if(borrar)borrar.remove();
+          player=document.createElement('audio');player.controls=true;player.src=URL.createObjectURL(blob);caja.appendChild(player);
+          borrar=document.createElement('button');borrar.type='button';borrar.className='borrar';borrar.textContent='Borrar audio';caja.appendChild(borrar);
+          borrar.onclick=function(){delete AUD[t.name];player.remove();borrar.remove();player=borrar=null;b.querySelector('span').textContent='Grabar un audio';nota.hidden=true};
+          nota.hidden=false;nota.textContent='Audio guardado ('+mmss(Math.round((Date.now()-t0)/1000))+'). Se enviará con tus respuestas.'};
+        rec.start(1000);t0=Date.now();b.classList.add('on');nota.hidden=false;
+        reloj=setInterval(function(){b.querySelector('span').textContent='Grabando '+mmss(Math.round((Date.now()-t0)/1000))+' · pulsa para terminar';if(Date.now()-t0>240000)parar()},500);
+        b.querySelector('span').textContent='Grabando 0:00 · pulsa para terminar';nota.textContent='Máximo 4 minutos por pregunta.';
+      }).catch(function(){nota.hidden=false;nota.textContent='Para grabar, permite el micrófono. Si no, pulsa el micrófono del teclado y se escribe solo.'});
+    });
   });
+  window.__AUD=AUD;
 })();
 </script>
 </body>
