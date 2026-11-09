@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Pedacito del Cielo · Antes del rodaje</title>
+<title>Pedacito del Cielo · Preparando el contenido</title>
 <meta name="theme-color" content="#6E8E83">
 <style>
 @font-face{font-family:"Atkinson";src:url(f/atkinson-hyperlegible-next-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
@@ -68,7 +68,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 </head>
 <body>
 <div class="barra" aria-hidden="true"><i id="barra"></i></div>
-<header><span id="cuenta">Antes del rodaje</span><span>Improva</span></header>
+<header><span id="cuenta">Preparando el contenido</span><span>Improva</span></header>
 
 <main>
 <form id="f" name="pedacito-rodaje" method="POST" action="/clientes/pedacito-del-cielo/" data-netlify="true" enctype="multipart/form-data" netlify-honeypot="web" style="width:100%;display:flex;justify-content:center">
@@ -80,7 +80,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 <section class="paso portada" data-p="0">
   <img src="firma.png" alt="Pedacito del Cielo" width="271" height="160">
   <h1>Hola, Marta</h1>
-  <p class="ayuda">Siete preguntas rápidas para preparar el rodaje. Así llegamos con todo pensado y os molestamos lo mínimo.</p>
+  <p class="ayuda">Siete preguntas rápidas para preparar el contenido. Así llegamos con todo pensado y os molestamos lo mínimo.</p>
   <ul>
     <li><b>Unos 5 minutos.</b> Si no sabes algo, déjalo en blanco.</li>
     <li><b>Puedes contestar con un audio.</b> Pulsa «Grabar un audio», habla y pulsa otra vez para terminar.</li>
@@ -91,15 +91,15 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 </section>
 
 <section class="paso" data-p="1" hidden>
-  <fieldset><legend class="q">¿Os vienen bien estos dos días para grabar?</legend>
-  <p class="ayuda">Iríamos los dos, a la hora más tranquila del local, para sacar distintos tipos de contenido.</p>
+  <fieldset><legend class="q">¿Os vienen bien estos dos días para pasarnos?</legend>
+  <p class="ayuda">Nos pasaríamos los dos días, a la hora más tranquila del local, para sacar contenido variado.</p>
   <div class="ops">
     <label><input type="radio" name="dias_rodaje" value="Sí, los dos días"><span class="c"></span>Sí, miércoles desde las 17:00 y jueves desde las 16:00</label>
     <label><input type="radio" name="dias_rodaje" value="Solo el miércoles"><span class="c"></span>Solo el miércoles</label>
     <label><input type="radio" name="dias_rodaje" value="Solo el jueves"><span class="c"></span>Solo el jueves</label>
     <label><input type="radio" name="dias_rodaje" value="Mejor otro momento"><span class="c"></span>Mejor otro momento (cuéntanos abajo)</label>
   </div></fieldset>
-  <textarea name="rodaje_nota" aria-label="Algo sobre el rodaje" placeholder="Si quieres decirnos algo del rodaje, aquí." style="min-height:90px"></textarea>
+  <textarea name="rodaje_nota" aria-label="Algo sobre esos días" placeholder="Si quieres decirnos algo sobre esos días, aquí." style="min-height:90px"></textarea>
 </section>
 
 <section class="paso" data-p="2" hidden>
@@ -141,7 +141,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
 <section class="paso" data-p="8" hidden>
   <h1>¡Gracias, Marta!</h1>
-  <p class="ayuda">Ya lo tenemos. Con esto preparamos el rodaje y os contamos el plan antes de ir. Cualquier cosa, escríbenos por WhatsApp al 614 525 458.</p>
+  <p class="ayuda">Ya lo tenemos. Con esto preparamos el contenido y os contamos el plan antes de ir. Cualquier cosa, escríbenos por WhatsApp al 614 525 458.</p>
 </section>
 </form>
 </main>
@@ -155,7 +155,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   });
   function ver(k){pasos[i].hidden=true;i=k;pasos[i].hidden=false;
     document.getElementById('barra').style.width=(Math.min(i,TOT)/TOT*100)+'%';
-    document.getElementById('cuenta').textContent=i===0?'Antes del rodaje':(i>TOT?'Enviado':'Pregunta '+i+' de '+TOT);
+    document.getElementById('cuenta').textContent=i===0?'Preparando el contenido':(i>TOT?'Enviado':'Pregunta '+i+' de '+TOT);
     var t=pasos[i].querySelector('textarea');if(t&&innerWidth>700)t.focus({preventScroll:true});scrollTo(0,0);try{localStorage.setItem(KEY+'-p',i)}catch(e){}}
   f.addEventListener('click',function(e){
     if(e.target.classList.contains('atras')){ver(Math.max(0,i-1));return}
