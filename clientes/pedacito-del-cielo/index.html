@@ -73,7 +73,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   <p class="ayuda">Siete preguntas rápidas para preparar el rodaje. Así llegamos con todo pensado y os molestamos lo mínimo.</p>
   <ul>
     <li><b>Unos 5 minutos.</b> Si no sabes algo, sáltalo.</li>
-    <li><b>Puedes contestar hablando.</b> Pulsa «Responder hablando» y cuéntalo como en un audio: se escribe solo.</li>
+    <li><b>Puedes contestar con un audio.</b> Pulsa «Responder con un audio» y habla: se escribe solo.</li>
     <li><b>Se guarda en tu móvil.</b> Puedes dejarlo y seguir luego.</li>
   </ul>
   <div class="nav"><button type="button" class="sig">Empezar</button></div>
@@ -122,16 +122,9 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 </section>
 
 <section class="paso" data-p="7" hidden>
-  <fieldset><legend class="q">¿Qué os haría más ilusión que pasara gracias a las redes?</legend>
-  <p class="ayuda">Marca lo que quieras.</p>
-  <div class="ops">
-    <label><input type="checkbox" name="ilusion" value="Caras nuevas que nos han descubierto en Instagram"><span class="c"></span>Ver caras nuevas que nos han descubierto en Instagram</label>
-    <label><input type="checkbox" name="ilusion" value="Más ambiente entre semana"><span class="c"></span>Más ambiente entre semana</label>
-    <label><input type="checkbox" name="ilusion" value="Más encargos de tartas"><span class="c"></span>Más encargos de tartas</label>
-    <label><input type="checkbox" name="ilusion" value="Que la gente repita y se sienta como en casa"><span class="c"></span>Que la gente repita y se sienta como en casa</label>
-    <label><input type="checkbox" name="ilusion" value="Que en Pinto se hable de Pedacito"><span class="c"></span>Que en Pinto se hable de Pedacito</label>
-  </div></fieldset>
-  <textarea name="ilusion_otra" aria-label="Otra cosa" placeholder="Otra cosa…" style="min-height:80px"></textarea>
+  <label class="q" for="q7">Imagina que es dentro de unos meses y Pedacito va genial. ¿Qué está pasando?</label>
+  <p class="ayuda">Cuéntanoslo como lo imagines, con tus palabras. Nos ayuda a saber hacia dónde remar.</p>
+  <textarea id="q7" name="pedacito_va_genial"></textarea>
   <div class="error" id="error" hidden></div>
 </section>
 
@@ -170,8 +163,8 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   // responder hablando
   var R=window.SpeechRecognition||window.webkitSpeechRecognition,rec=null,act=null;
   [].forEach.call(document.querySelectorAll('textarea'),function(t){
-    if(!R){var s=document.createElement('span');s.className='voz-nota';s.textContent='Si prefieres hablar, pulsa el micrófono del teclado.';t.after(s);return}
-    var b=document.createElement('button');b.type='button';b.className='voz';b.innerHTML='<i></i><span>Responder hablando</span>';
+    if(!R){var s=document.createElement('span');s.className='voz-nota';s.textContent='Si prefieres contestar con un audio, pulsa el micrófono del teclado.';t.after(s);return}
+    var b=document.createElement('button');b.type='button';b.className='voz';b.innerHTML='<i></i><span>Responder con un audio</span>';
     var n=document.createElement('span');n.className='voz-nota';n.hidden=true;n.textContent='Te escuchamos. Pulsa otra vez para terminar; luego puedes corregir el texto.';
     t.after(b);b.after(n);
     b.addEventListener('click',function(){
@@ -180,7 +173,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       rec=new R();rec.lang='es-ES';rec.continuous=true;rec.interimResults=true;
       var base=t.value?t.value.replace(/\s*$/,'')+' ':'';
       rec.onresult=function(e){var s='';for(var k=0;k<e.results.length;k++)s+=e.results[k][0].transcript;t.value=base+s;guardar()};
-      rec.onend=function(){b.classList.remove('on');b.querySelector('span').textContent='Responder hablando';n.hidden=true;act=null;guardar()};
+      rec.onend=function(){b.classList.remove('on');b.querySelector('span').textContent='Responder con un audio';n.hidden=true;act=null;guardar()};
       rec.onerror=function(e){if(e.error==='not-allowed'){n.hidden=false;n.textContent='Para hablar, permite el micrófono. Si no, usa el micrófono del teclado.'}};
       act=b;b.classList.add('on');b.querySelector('span').textContent='Escuchando… pulsa para terminar';n.hidden=false;try{rec.start()}catch(e){}});
   });
