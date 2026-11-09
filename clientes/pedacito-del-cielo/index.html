@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Pedacito del Cielo · Antes del rodaje</title>
+<meta name="theme-color" content="#6E8E83">
+<style>
+@font-face{font-family:"Atkinson";src:url(f/atkinson-hyperlegible-next-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Atkinson";src:url(f/atkinson-hyperlegible-next-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Atkinson";src:url(f/atkinson-hyperlegible-next-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
+:root{--verde:#6E8E83;--verde-2:#56746A;--dorado:#E0CC8A;--crema:#FAF7EC;--tinta:#2B3430;--tinta-2:#5C6863;--filete:rgba(43,52,48,.18)}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--crema);color:var(--tinta);font:400 18px/1.5 "Atkinson",system-ui,sans-serif;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--verde-2);outline-offset:3px}
+[hidden]{display:none!important}
+.barra{height:4px;background:rgba(110,142,131,.2)}
+.barra i{display:block;height:100%;width:0;background:var(--verde);transition:width .35s}
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;font-size:14px;color:var(--tinta-2)}
+header img{height:38px;width:auto;background:var(--verde);padding:4px 8px}
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:12px 20px 24px}
+.paso{width:100%;max-width:600px;animation:entra .35s ease}
+@keyframes entra{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.n{font-size:14px;color:var(--verde-2);font-weight:600;margin-bottom:10px}
+h1,.q{font-weight:700;line-height:1.2;margin:0 0 10px;font-size:clamp(25px,6vw,34px);display:block}
+.ayuda{color:var(--tinta-2);font-size:16px;margin:0 0 18px}
+textarea{width:100%;min-height:130px;background:#fff;border:1px solid var(--tinta);border-radius:0;padding:12px 14px;font-size:17px;resize:vertical}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+.ops{display:grid;gap:8px;margin-bottom:14px}
+.ops label{display:flex;gap:12px;align-items:center;padding:13px 14px;border:1px solid var(--filete);background:#fff;cursor:pointer;font-size:17px;line-height:1.3}
+.ops input{position:absolute;opacity:0;pointer-events:none}
+.ops .c{flex:none;width:19px;height:19px;border:1.5px solid var(--tinta);display:grid;place-items:center}
+.ops input[type=radio]+.c{border-radius:50%}
+.ops input:checked+.c{background:var(--verde);border-color:var(--verde)}
+.ops input:checked+.c::after{content:"";width:7px;height:7px;background:var(--crema)}
+.ops input[type=radio]:checked+.c::after{border-radius:50%}
+.ops label:has(input:checked){border-color:var(--verde);background:#F1F4F1}
+.ops input:focus-visible+.c{outline:3px solid var(--verde-2);outline-offset:2px}
+.voz{display:inline-flex;align-items:center;gap:10px;margin-top:12px;background:none;border:0;border-bottom:2px solid var(--verde);padding:4px 0;font-weight:700;font-size:16px;cursor:pointer;color:var(--verde-2)}
+.voz i{width:11px;height:11px;background:var(--verde)}
+.voz.on{color:#9B3D2E;border-color:#9B3D2E}
+.voz.on i{background:#9B3D2E;animation:late 1s steps(2) infinite}
+@keyframes late{50%{opacity:.25}}
+.voz-nota{display:block;font-size:14px;color:var(--tinta-2);margin-top:6px}
+.nav{display:flex;align-items:center;gap:18px;margin-top:26px}
+.sig{background:var(--verde);color:var(--crema);border:0;padding:15px 26px;font-weight:700;font-size:18px;cursor:pointer}
+.sig:hover{background:var(--verde-2)}
+.sig[disabled]{opacity:.6;cursor:wait}
+.atras{background:none;border:0;color:var(--tinta-2);text-decoration:underline;text-underline-offset:4px;cursor:pointer;font-size:16px;padding:0}
+.portada img{width:170px;height:auto;background:var(--verde);padding:16px 18px;margin-bottom:24px;display:block}
+.portada ul{list-style:none;padding:0;margin:18px 0 0;border-top:1px solid var(--filete)}
+.portada li{padding:10px 0;border-bottom:1px solid var(--filete);font-size:16px;color:var(--tinta-2)}
+.portada li b{color:var(--tinta)}
+.error{margin-top:14px;background:#fff;color:#8A2E22;padding:10px 14px;border-left:3px solid #8A2E22}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="barra" aria-hidden="true"><i id="barra"></i></div>
+<header><span id="cuenta">Antes del rodaje</span><span>Improva</span></header>
+
+<main>
+<form id="f" name="pedacito-rodaje" method="POST" action="/clientes/pedacito-del-cielo/" data-netlify="true" netlify-honeypot="web" style="width:100%;display:flex;justify-content:center">
+<input type="hidden" name="form-name" value="pedacito-rodaje">
+<p hidden><label>No rellenar <input name="web"></label></p>
+
+<section class="paso portada" data-p="0">
+  <img src="firma.png" alt="Pedacito del Cielo" width="271" height="160">
+  <h1>Hola, Marta</h1>
+  <p class="ayuda">Siete preguntas rápidas para preparar el rodaje. Así llegamos con todo pensado y os molestamos lo mínimo.</p>
+  <ul>
+    <li><b>Unos 5 minutos.</b> Si no sabes algo, sáltalo.</li>
+    <li><b>Puedes contestar hablando.</b> Pulsa «Responder hablando» y cuéntalo como en un audio: se escribe solo.</li>
+    <li><b>Se guarda en tu móvil.</b> Puedes dejarlo y seguir luego.</li>
+  </ul>
+  <div class="nav"><button type="button" class="sig">Empezar</button></div>
+</section>
+
+<section class="paso" data-p="1" hidden>
+  <fieldset><legend class="q">¿Os vienen bien estos dos días para grabar?</legend>
+  <p class="ayuda">Iríamos los dos, a la hora más tranquila del local, para sacar distintos tipos de contenido.</p>
+  <div class="ops">
+    <label><input type="radio" name="dias_rodaje" value="Sí, los dos días"><span class="c"></span>Sí, miércoles desde las 17:00 y jueves desde las 16:00</label>
+    <label><input type="radio" name="dias_rodaje" value="Solo el miércoles"><span class="c"></span>Solo el miércoles</label>
+    <label><input type="radio" name="dias_rodaje" value="Solo el jueves"><span class="c"></span>Solo el jueves</label>
+    <label><input type="radio" name="dias_rodaje" value="Mejor otro momento"><span class="c"></span>Mejor otro momento (cuéntanos abajo)</label>
+  </div></fieldset>
+  <textarea name="rodaje_nota" aria-label="Algo sobre el rodaje" placeholder="Si quieres decirnos algo del rodaje, aquí." style="min-height:90px"></textarea>
+</section>
+
+<section class="paso" data-p="2" hidden>
+  <label class="q" for="q2">¿Qué platos o bebidas te gustaría que la gente pidiera más?</label>
+  <p class="ayuda">Serán los protagonistas de los primeros vídeos.</p>
+  <textarea id="q2" name="platos_a_impulsar"></textarea>
+</section>
+
+<section class="paso" data-p="3" hidden>
+  <label class="q" for="q3">¿Qué es lo que más os piden y lo que más os preguntan?</label>
+  <p class="ayuda">Cada pregunta que se repite es una idea de vídeo.</p>
+  <textarea id="q3" name="lo_que_mas_piden"></textarea>
+</section>
+
+<section class="paso" data-p="4" hidden>
+  <label class="q" for="q4">¿Algún plato tiene una historia detrás?</label>
+  <p class="ayuda">Por qué lleva el nombre de ese santo, de dónde sale la receta, un ingrediente especial…</p>
+  <textarea id="q4" name="historias_platos"></textarea>
+</section>
+
+<section class="paso" data-p="5" hidden>
+  <label class="q" for="q5">¿Qué preparáis a mano, y a qué hora?</label>
+  <p class="ayuda">Las tartas, los gofres, las fresas… Son los momentos más bonitos para grabar.</p>
+  <textarea id="q5" name="preparacion_a_mano"></textarea>
+</section>
+
+<section class="paso" data-p="6" hidden>
+  <label class="q" for="q6">¿Preparáis algo para Navidad?</label>
+  <p class="ayuda">Encargos de tartas, horarios especiales, alguna novedad en la carta…</p>
+  <textarea id="q6" name="navidad"></textarea>
+</section>
+
+<section class="paso" data-p="7" hidden>
+  <fieldset><legend class="q">¿Qué os haría más ilusión que pasara gracias a las redes?</legend>
+  <p class="ayuda">Marca lo que quieras.</p>
+  <div class="ops">
+    <label><input type="checkbox" name="ilusion" value="Caras nuevas que nos han descubierto en Instagram"><span class="c"></span>Ver caras nuevas que nos han descubierto en Instagram</label>
+    <label><input type="checkbox" name="ilusion" value="Más ambiente entre semana"><span class="c"></span>Más ambiente entre semana</label>
+    <label><input type="checkbox" name="ilusion" value="Más encargos de tartas"><span class="c"></span>Más encargos de tartas</label>
+    <label><input type="checkbox" name="ilusion" value="Que la gente repita y se sienta como en casa"><span class="c"></span>Que la gente repita y se sienta como en casa</label>
+    <label><input type="checkbox" name="ilusion" value="Que en Pinto se hable de Pedacito"><span class="c"></span>Que en Pinto se hable de Pedacito</label>
+  </div></fieldset>
+  <textarea name="ilusion_otra" aria-label="Otra cosa" placeholder="Otra cosa…" style="min-height:80px"></textarea>
+  <div class="error" id="error" hidden></div>
+</section>
+
+<section class="paso" data-p="8" hidden>
+  <h1>¡Gracias, Marta!</h1>
+  <p class="ayuda">Ya lo tenemos. Con esto preparamos el rodaje y os contamos el plan antes de ir. Cualquier cosa, escríbenos por WhatsApp al 614 525 458.</p>
+</section>
+</form>
+</main>
+
+<script>
+(function(){
+  var f=document.getElementById('f'),pasos=[].slice.call(document.querySelectorAll('.paso')),i=0,TOT=7,KEY='improva-pedacito-rodaje';
+  // navegación en cada pregunta
+  pasos.forEach(function(p,k){if(k<1||k>7)return;var n=document.createElement('div');n.className='nav';
+    n.innerHTML='<button type="button" class="sig">'+(k===7?'Enviar':'Siguiente')+'</button><button type="button" class="atras">Atrás</button>';p.appendChild(n);
+  });
+  function ver(k){pasos[i].hidden=true;i=k;pasos[i].hidden=false;
+    document.getElementById('barra').style.width=(Math.min(i,TOT)/TOT*100)+'%';
+    document.getElementById('cuenta').textContent=i===0?'Antes del rodaje':(i>TOT?'Enviado':'Pregunta '+i+' de '+TOT);
+    var t=pasos[i].querySelector('textarea');if(t&&innerWidth>700)t.focus({preventScroll:true});scrollTo(0,0);try{localStorage.setItem(KEY+'-p',i)}catch(e){}}
+  f.addEventListener('click',function(e){
+    if(e.target.classList.contains('atras')){ver(Math.max(0,i-1));return}
+    if(e.target.classList.contains('sig')){if(i===7)enviar();else ver(i+1)}});
+  // guardado
+  function guardar(){var d={};[].forEach.call(f.elements,function(el){if(!el.name||el.type==='hidden'||el.name==='web')return;if(el.type==='checkbox'||el.type==='radio'){if(el.checked)(d[el.name]=d[el.name]||[]).push(el.value)}else if(el.value)d[el.name]=el.value});try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}}
+  try{var d=JSON.parse(localStorage.getItem(KEY)||'{}');[].forEach.call(f.elements,function(el){if(!el.name||!(el.name in d))return;if(el.type==='checkbox'||el.type==='radio')el.checked=d[el.name].indexOf(el.value)>-1;else el.value=d[el.name]});
+    var p=+localStorage.getItem(KEY+'-p');if(p>0&&p<=TOT)ver(p)}catch(e){}
+  f.addEventListener('input',guardar);f.addEventListener('change',guardar);
+  // envío
+  function enviar(){var b=pasos[7].querySelector('.sig'),er=document.getElementById('error');b.disabled=true;b.textContent='Enviando…';er.hidden=true;
+    var o={};[].forEach.call(f.elements,function(el){if(!el.name)return;if(el.type==='checkbox'||el.type==='radio'){if(el.checked)o[el.name]=(o[el.name]?o[el.name]+' · ':'')+el.value}else o[el.name]=el.value});
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:Object.keys(o).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(o[k])}).join('&')})
+    .then(function(r){if(!r.ok)throw 0;try{localStorage.removeItem(KEY);localStorage.removeItem(KEY+'-p')}catch(e){}ver(8)})
+    .catch(function(){b.disabled=false;b.textContent='Enviar';er.hidden=false;er.textContent='No se ha podido enviar. Revisa la conexión y prueba otra vez: tus respuestas siguen guardadas.'})}
+  // responder hablando
+  var R=window.SpeechRecognition||window.webkitSpeechRecognition,rec=null,act=null;
+  [].forEach.call(document.querySelectorAll('textarea'),function(t){
+    if(!R){var s=document.createElement('span');s.className='voz-nota';s.textContent='Si prefieres hablar, pulsa el micrófono del teclado.';t.after(s);return}
+    var b=document.createElement('button');b.type='button';b.className='voz';b.innerHTML='<i></i><span>Responder hablando</span>';
+    var n=document.createElement('span');n.className='voz-nota';n.hidden=true;n.textContent='Te escuchamos. Pulsa otra vez para terminar; luego puedes corregir el texto.';
+    t.after(b);b.after(n);
+    b.addEventListener('click',function(){
+      if(act===b){try{rec.stop()}catch(e){}return}
+      if(rec){try{rec.stop()}catch(e){}}
+      rec=new R();rec.lang='es-ES';rec.continuous=true;rec.interimResults=true;
+      var base=t.value?t.value.replace(/\s*$/,'')+' ':'';
+      rec.onresult=function(e){var s='';for(var k=0;k<e.results.length;k++)s+=e.results[k][0].transcript;t.value=base+s;guardar()};
+      rec.onend=function(){b.classList.remove('on');b.querySelector('span').textContent='Responder hablando';n.hidden=true;act=null;guardar()};
+      rec.onerror=function(e){if(e.error==='not-allowed'){n.hidden=false;n.textContent='Para hablar, permite el micrófono. Si no, usa el micrófono del teclado.'}};
+      act=b;b.classList.add('on');b.querySelector('span').textContent='Escuchando… pulsa para terminar';n.hidden=false;try{rec.start()}catch(e){}});
+  });
+})();
+</script>
+</body>
+</html>
