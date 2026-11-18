@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arrancamos · Improva</title>
+<meta name="description" content="Unas preguntas para preparar el contenido de tu negocio.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F0E8D8">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&display=swap" rel="stylesheet">
+<style>
+:root{--papel:#F0E8D8;--papel-2:#E6DBC5;--blanco:#FBF7EF;--rojo:#C0241A;--rojo-2:#9C1C14;--tinta:#2C1810;--tinta-2:rgba(44,24,16,.64);--filete:rgba(44,24,16,.22)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--papel);color:var(--tinta);font:400 17px/1.5 Switzer,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100svh}
+:focus-visible{outline:3px solid var(--rojo);outline-offset:3px}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:3px;text-decoration-color:var(--rojo)}
+.d{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;line-height:.9;letter-spacing:.005em}
+
+/* cabecera: logo, cliente y contador */
+.top{position:sticky;top:0;z-index:5;background:var(--papel);border-bottom:2px solid var(--tinta)}
+.top .in{max-width:720px;margin:0 auto;padding:max(14px,env(safe-area-inset-top)) 20px 12px;display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.logo i{width:12px;height:12px;background:var(--rojo);display:block}
+.logo span{font-family:"Bebas Neue",Impact,sans-serif;font-size:24px;letter-spacing:.03em;color:var(--rojo);line-height:1}
+.cuenta{font-size:13px;color:var(--tinta-2);font-variant-numeric:tabular-nums;text-align:right}
+.cuenta b{color:var(--tinta);font-weight:600}
+.barra{height:4px;background:var(--papel-2)}
+.barra i{display:block;height:100%;width:0;background:var(--rojo);transition:width .4s ease}
+
+main{max-width:720px;margin:0 auto;padding:28px 20px calc(130px + env(safe-area-inset-bottom))}
+.etapa{display:none}
+.etapa.on{display:block;animation:entra .3s ease}
+@keyframes entra{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* portada */
+.hola h1{font-size:clamp(56px,15vw,104px);text-transform:uppercase;margin:6px 0 18px}
+.hola .para{font-size:13px;color:var(--tinta-2);text-transform:uppercase;letter-spacing:.08em}
+.hola .para b{color:var(--tinta);font-weight:600;letter-spacing:0;text-transform:none;font-size:15px}
+.hola p{max-width:52ch;margin-bottom:12px}
+.reglas{list-style:none;border-top:1px solid var(--filete);margin:22px 0 0;max-width:52ch}
+.reglas li{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--filete);align-items:baseline}
+.reglas .d{font-size:30px;color:var(--rojo)}
+.reglas .inf{font-family:Switzer,system-ui,sans-serif;font-weight:500;font-size:28px;line-height:1}
+
+/* pregunta */
+.bloque{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--tinta-2);display:flex;gap:10px;align-items:baseline;border-bottom:1px solid var(--filete);padding-bottom:10px;margin-bottom:22px}
+.bloque .n{font-family:"Bebas Neue",sans-serif;font-size:20px;letter-spacing:.02em;color:var(--rojo)}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend{padding:0}
+.q{display:block;font-size:clamp(25px,5.4vw,34px);line-height:1.18;font-weight:600;letter-spacing:-.01em;max-width:26ch;margin-bottom:10px}
+.ayuda{color:var(--tinta-2);max-width:52ch;margin-bottom:20px}
+input[type=text],input[type=tel],textarea{width:100%;font:inherit;font-size:18px;color:var(--tinta);background:var(--blanco);border:0;border-bottom:2px solid var(--tinta);border-radius:0;padding:14px 2px 12px}
+input[type=text]:focus,input[type=tel]:focus,textarea:focus{outline:0;border-bottom-color:var(--rojo);background:#fff}
+textarea{min-height:140px;resize:vertical;line-height:1.5}
+.voz{display:inline-flex;align-items:center;gap:10px;margin-top:14px;font:inherit;font-weight:600;font-size:16px;background:none;border:0;border-bottom:2px solid var(--tinta);padding:6px 0;cursor:pointer;color:var(--tinta)}
+.voz i{width:12px;height:12px;background:var(--rojo);flex:none}
+.voz.on{color:var(--rojo);border-color:var(--rojo)}
+.voz.on i{animation:late 1s steps(2) infinite}
+@keyframes late{50%{opacity:.2}}
+.voz-nota[hidden]{display:none}
+.voz-nota{display:block;font-size:14px;color:var(--tinta-2);margin-top:6px}
+
+::placeholder{color:rgba(44,24,16,.4)}
+.opciones{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));border-top:1px solid var(--filete);margin-bottom:16px}
+.opciones label{position:relative;display:flex;gap:12px;align-items:center;padding:13px 4px;border-bottom:1px solid var(--filete);cursor:pointer}
+.opciones input{position:absolute;opacity:0;width:1px;height:1px}
+.opciones .caja{width:20px;height:20px;border:2px solid var(--tinta);flex:0 0 auto;display:grid;place-items:center}
+.opciones input[type=radio]+.caja{border-radius:50%}
+.opciones input:checked+.caja{background:var(--tinta)}
+.opciones input:checked+.caja::after{content:"";width:8px;height:8px;background:var(--papel)}
+.opciones input[type=radio]:checked+.caja::after{border-radius:50%}
+.opciones input:focus-visible+.caja{outline:3px solid var(--rojo);outline-offset:2px}
+.opciones label:hover .caja{border-color:var(--rojo)}
+.consent{display:flex;gap:12px;align-items:flex-start;font-size:15px;margin-top:24px;max-width:56ch}
+.consent input{width:22px;height:22px;accent-color:var(--rojo);flex:0 0 auto;margin-top:2px}
+.error{border-left:4px solid var(--rojo);padding:10px 14px;margin-top:18px;color:var(--rojo);font-weight:600;background:var(--blanco)}
+.oculto{position:absolute;left:-9999px}
+
+/* final */
+.fin h2{font-size:clamp(52px,14vw,92px);text-transform:uppercase;margin:6px 0 18px}
+.fin p{max-width:50ch;margin-bottom:12px}
+.sello{display:inline-block;margin-top:26px;font-family:"Bebas Neue",sans-serif;font-size:16px;letter-spacing:.18em;color:var(--rojo);border:2px solid var(--rojo);padding:5px 12px;transform:rotate(-2deg)}
+
+/* pie */
+.pie{position:fixed;left:0;right:0;bottom:0;background:var(--papel);border-top:2px solid var(--tinta);z-index:5}
+.pie .in{max-width:720px;margin:0 auto;padding:12px 20px calc(12px + env(safe-area-inset-bottom));display:flex;gap:14px;align-items:center}
+.btn{font:inherit;font-weight:600;font-size:17px;border:2px solid var(--tinta);border-radius:0;padding:13px 22px;cursor:pointer;background:var(--tinta);color:var(--papel)}
+.btn:hover{background:var(--rojo);border-color:var(--rojo);color:#fff}
+.btn[disabled]{opacity:.5;cursor:default}
+.enlace{font:inherit;font-size:15px;background:none;border:0;color:var(--tinta);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:6px 2px}
+.enlace:hover{text-decoration-thickness:3px;text-decoration-color:var(--rojo)}
+.enlace[hidden]{display:none}
+.estado{flex:1;font-size:13px;color:var(--tinta-2);text-align:right}
+.tecla{font-size:12px;color:var(--tinta-2);margin-top:12px}
+@media (max-width:520px){.tecla{display:none}.btn{padding:13px 18px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="in">
+    <a class="logo" href="https://improva.es/" aria-label="Improva"><i></i><span>IMPROVA</span></a>
+    <span class="cuenta" id="cuenta" aria-live="polite"></span>
+  </div>
+  <div class="barra" aria-hidden="true"><i id="barra"></i></div>
+</header>
+
+<main>
+<form name="onboarding-profesional" method="POST" action="/onboarding/profesional/" data-netlify="true" enctype="multipart/form-data" netlify-honeypot="bot-field" id="form" novalidate>
+  <input type="hidden" name="form-name" value="onboarding-profesional">
+<p hidden><input type="file" name="audio_formacion" accept="audio/*" tabindex="-1"><input type="file" name="audio_que_haces" accept="audio/*" tabindex="-1"><input type="file" name="audio_prioridad" accept="audio/*" tabindex="-1"><input type="file" name="audio_preguntas_frecuentes" accept="audio/*" tabindex="-1"><input type="file" name="audio_mitos" accept="audio/*" tabindex="-1"><input type="file" name="audio_por_que_vuelven" accept="audio/*" tabindex="-1"><input type="file" name="audio_donde" accept="audio/*" tabindex="-1"><input type="file" name="audio_otros_redes" accept="audio/*" tabindex="-1"><input type="file" name="audio_no_mostrar" accept="audio/*" tabindex="-1"><input type="file" name="audio_algo_mas" accept="audio/*" tabindex="-1"></p>
+
+  <p class="oculto"><label>No rellenes esto: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+  <input type="hidden" name="cliente" id="cliente">
+
+  <!-- portada -->
+  <section class="etapa hola on" data-tipo="portada">
+    <p class="para">Para <b id="para-nombre">ti</b></p>
+    <h1 class="d">Hablemos de ti</h1>
+    <p>Antes de grabar nada, quiero conocer bien tu trabajo: qué haces, con quién y cómo te gusta contarlo.</p>
+    <p>Con tus respuestas preparo las ideas de contenido para ti.</p>
+    <ul class="reglas">
+      <li><span class="d" id="r-preg">20</span><span>preguntas cortas, una cada vez.</span></li>
+      <li><span class="d" id="r-min">12</span><span>minutos, más o menos. Arriba ves siempre lo que te queda.</span></li>
+      <li><span class="d">2</span><span>formas de contestar con la voz: graba un audio con «Grabar un audio», o toca el recuadro y pulsa el micrófono del teclado para que se escriba solo.</span></li>
+      <li><span class="d">0</span><span>obligatorias. Si no sabes algo, pulsa «Saltar» y lo hablamos en persona.</span></li>
+      <li><span class="d inf">∞</span><span>pausas. Se guarda solo en este móvil; puedes cerrar y seguir luego.</span></li>
+    </ul>
+  </section>
+
+  <section class="etapa" data-bloque="Tu trabajo" data-peso="15">
+    <label class="q" for="q_tu" style="margin-bottom:20px">¿Cómo te llamas?</label>
+    <input type="text" id="q_tu" name="tu_nombre">
+  </section>
+
+  <section class="etapa" data-bloque="Tu trabajo" data-peso="30">
+    <label class="q" for="q_formacion">¿Cuál es tu formación?</label>
+    <p class="ayuda">Tu titulación y los cursos o especialidades de los que estés más orgullosa.</p>
+    <textarea id="q_formacion" name="formacion"></textarea>
+  </section>
+
+  <section class="etapa" data-bloque="Tu trabajo" data-peso="45">
+    <label class="q" for="q_que">Cuéntame qué haces, como se lo contarías a una paciente nueva.</label>
+    <p class="ayuda">Sin tecnicismos, como si te lo preguntara alguien en la sala de espera.</p>
+    <textarea id="q_que" name="que_haces"></textarea>
+  </section>
+
+  <section class="etapa" data-bloque="Tu trabajo" data-peso="20">
+    <fieldset><legend class="q">¿Con quién trabajas sobre todo?</legend>
+    <p class="ayuda">Marca todo lo que quieras.</p>
+    <div class="opciones">
+      <label><input type="checkbox" name="publico" value="Premenopausia y perimenopausia"><span class="caja"></span>Premenopausia y perimenopausia</label>
+      <label><input type="checkbox" name="publico" value="Menopausia y posmenopausia"><span class="caja"></span>Menopausia y posmenopausia</label>
+      <label><input type="checkbox" name="publico" value="Reglas dolorosas o irregulares"><span class="caja"></span>Reglas dolorosas o irregulares</label>
+      <label><input type="checkbox" name="publico" value="Embarazo y posparto"><span class="caja"></span>Embarazo y posparto</label>
+      <label><input type="checkbox" name="publico" value="Suelo pélvico"><span class="caja"></span>Suelo pélvico</label>
+      <label><input type="checkbox" name="publico" value="Espalda, cuello o mandíbula"><span class="caja"></span>Espalda, cuello o mandíbula</label>
+      <label><input type="checkbox" name="publico" value="Deportistas"><span class="caja"></span>Deportistas</label>
+      <label><input type="checkbox" name="publico" value="Bebés y niños"><span class="caja"></span>Bebés y niños</label>
+    </div></fieldset>
+    <input type="text" name="publico_otro" placeholder="Otro, o un matiz" aria-label="Otro, o un matiz">
+  </section>
+
+  <section class="etapa" data-bloque="Tu trabajo" data-peso="35">
+    <label class="q" for="q_prioridad">¿Qué te gustaría que se conociera primero de tu trabajo?</label>
+    <p class="ayuda">Un tratamiento, un tipo de paciente o una idea que te gustaría que la gente entendiera.</p>
+    <textarea id="q_prioridad" name="prioridad"></textarea>
+  </section>
+
+  <section class="etapa" data-bloque="Tus pacientes" data-peso="40">
+    <label class="q" for="q_preguntas">¿Qué te preguntan siempre en la primera consulta?</label>
+    <p class="ayuda">Las dudas y los miedos con los que llegan.</p>
+    <textarea id="q_preguntas" name="preguntas_frecuentes"></textarea>
+  </section>
+
+  <section class="etapa" data-bloque="Tus pacientes" data-peso="35">
+    <label class="q" for="q_mitos">¿Qué creencias te encuentras más a menudo?</label>
+    <p class="ayuda">Lo que la gente da por hecho y no es así.</p>
+    <textarea id="q_mitos" name="mitos"></textarea>
+  </section>
+
+  <section class="etapa" data-bloque="Tus pacientes" data-peso="30">
+    <label class="q" for="q_vuelven">¿Por qué vuelven tus pacientes? ¿Qué te dicen?</label>
+    <p class="ayuda">Con sus palabras, si te acuerdas de alguna frase.</p>
+    <textarea id="q_vuelven" name="por_que_vuelven"></textarea>
+  </section>
+
+  <section class="etapa" data-bloque="Dónde y cómo" data-peso="25">
+    <label class="q" for="q_donde">¿Dónde atiendes y qué días estás en Fisio'S &amp; Wellness?</label>
+    <p class="ayuda">Si también trabajas en otros centros, a domicilio u online, cuéntalo.</p>
+    <textarea id="q_donde" name="donde"></textarea>
+  </section>
+
+  <section class="etapa" data-bloque="Dónde y cómo" data-peso="15">
+    <fieldset><legend class="q">¿Cómo te piden cita?</legend>
+    <div class="opciones">
+      <label><input type="checkbox" name="reservas" value="App de Fisio'S &amp; Wellness"><span class="caja"></span>App de Fisio'S &amp; Wellness</label>
+      <label><input type="checkbox" name="reservas" value="WhatsApp"><span class="caja"></span>WhatsApp</label>
+      <label><input type="checkbox" name="reservas" value="Instagram"><span class="caja"></span>Instagram</label>
+      <label><input type="checkbox" name="reservas" value="Teléfono"><span class="caja"></span>Teléfono</label>
+    </div></fieldset>
+    <input type="text" name="reservas_otro" placeholder="Otra forma" aria-label="Otra forma">
+  </section>
+
+  <section class="etapa" data-bloque="Tus redes" data-peso="15">
+    <label class="q" for="q_cuentas" style="margin-bottom:20px">¿Tienes cuenta propia en redes?</label>
+    <p class="ayuda">Pon tu @ de Instagram, TikTok o la que uses. Si no tienes, déjalo en blanco.</p>
+    <input type="text" id="q_cuentas" name="cuentas" placeholder="@">
+  </section>
+
+  <section class="etapa" data-bloque="Tus redes" data-peso="15">
+    <fieldset><legend class="q">¿Dónde te gustaría que saliera tu contenido?</legend>
+    <div class="opciones">
+      <label><input type="checkbox" name="donde_publicar" value="En la cuenta de Fisio'S &amp; Wellness"><span class="caja"></span>En la cuenta de Fisio'S &amp; Wellness</label>
+      <label><input type="checkbox" name="donde_publicar" value="En mi cuenta"><span class="caja"></span>En mi cuenta</label>
+      <label><input type="checkbox" name="donde_publicar" value="En las dos"><span class="caja"></span>En las dos</label>
+    </div></fieldset>
+  </section>
+
+  <section class="etapa" data-bloque="Tus redes" data-peso="25">
+    <label class="q" for="q_otros">¿Te ayuda alguien más con tus redes? ¿En qué parte?</label>
+    <p class="ayuda">Así nos coordinamos y no repetimos trabajo.</p>
+    <textarea id="q_otros" name="otros_redes"></textarea>
+  </section>
+
+  <section class="etapa" data-bloque="Tus redes" data-peso="15">
+    <fieldset><legend class="q">¿Cómo te ves delante de la cámara?</legend>
+    <p class="ayuda">Marca lo que te encaje. Se respeta siempre.</p>
+    <div class="opciones">
+      <label><input type="checkbox" name="camara" value="Hablo a cámara sin problema"><span class="caja"></span>Hablo a cámara sin problema</label>
+      <label><input type="checkbox" name="camara" value="Mejor con las manos trabajando"><span class="caja"></span>Mejor con las manos trabajando</label>
+      <label><input type="checkbox" name="camara" value="Solo con mi voz"><span class="caja"></span>Solo con mi voz</label>
+      <label><input type="checkbox" name="camara" value="Prefiero no salir"><span class="caja"></span>Prefiero no salir</label>
+    </div></fieldset>
+  </section>
+
+  <section class="etapa" data-bloque="Tus redes" data-peso="25">
+    <label class="q" for="q_no">¿Hay algo que no quieras que se diga o se enseñe?</label>
+    <p class="ayuda">Técnicas, zonas del cuerpo, temas o cualquier cosa que prefieras dejar fuera.</p>
+    <textarea id="q_no" name="no_mostrar"></textarea>
+  </section>
+
+  <section class="etapa" data-bloque="Tus redes" data-peso="20">
+    <label class="q" for="q_mas">¿Algo más que quieras contarme?</label>
+    <p class="ayuda">Lo que se te haya quedado en el tintero. Si no, déjalo en blanco.</p>
+    <textarea id="q_mas" name="algo_mas"></textarea>
+    <label class="consent"><input type="checkbox" id="acepto" name="acepto" value="Sí"><span>Acepto que Improva use estas respuestas para preparar nuestro contenido. No se comparten con nadie y puedo pedir que se borren escribiendo a <span data-c="se.avorpmi|aloh">hola (arroba) improva.es</span>. <a href="/privacidad/" target="_blank">Política de privacidad</a>.</span></label>
+    <div class="error" id="error" hidden></div>
+  </section>
+
+  <!-- fin -->
+  <section class="etapa fin" data-tipo="fin" id="fin">
+    <h2 class="d">Hecho. Gracias.</h2>
+    <p>Ya tengo tus respuestas. Con ellas preparo las ideas de contenido y te las enseño antes de grabar nada.</p>
+    <p>Si te acuerdas de algo más, escríbeme por WhatsApp al 614 525 458.</p>
+    <span class="sello">IMPROVA · ESTUDIO DIGITAL</span>
+  </section>
+</form>
+</main>
+
+<nav class="pie" id="pie">
+  <div class="in">
+    <button class="enlace" type="button" id="atras" hidden>Atrás</button>
+    <span class="estado" id="estado"></span>
+    <button class="enlace" type="button" id="saltar" hidden>Saltar</button>
+    <button class="btn" type="button" id="sigue">Empezar</button>
+  </div>
+</nav>
+
+<script>
+(function(){
+  var form=document.getElementById('form');
+  var etapas=[].slice.call(document.querySelectorAll('.etapa'));
+  var preguntas=etapas.filter(function(e){return !e.dataset.tipo});
+  var TOTAL=preguntas.length, FIN=etapas.length-1, i=0;
+  var KEY='improva-onboarding-profesional';
+  var segTotal=preguntas.reduce(function(s,e){return s+(+e.dataset.peso||30)},0);
+  document.getElementById('r-preg').textContent=TOTAL;
+  document.getElementById('r-min').textContent=Math.max(1,Math.round(segTotal/60));
+
+  // nombre del cliente desde el enlace: improva.es/onboarding/?n=Fisio'S%20%26%20Wellness
+  var n=new URLSearchParams(location.search).get('n');
+  if(n){document.getElementById('cliente').value=n;document.getElementById('para-nombre').textContent=n;KEY+='-'+n}
+
+  function datos(){var o={};new FormData(form).forEach(function(v,k){if(k==='bot-field'||k==='form-name'||v===''||typeof v!=='string')return;o[k]=o[k]?o[k]+' · '+v:v});return o}
+  function guardar(){try{localStorage.setItem(KEY,JSON.stringify({i:i,d:datos()}));document.getElementById('estado').textContent='Guardado'}catch(e){}}
+  function cargar(){try{var s=JSON.parse(localStorage.getItem(KEY)||'null');if(!s)return;var d=s.d||{};
+    Object.keys(d).forEach(function(k){if(k==='cliente')return;var els=form.querySelectorAll('[name="'+k+'"]');if(!els.length)return;
+      if(els[0].type==='checkbox'||els[0].type==='radio'){var vals=String(d[k]).split(' · ');els.forEach(function(e){e.checked=vals.indexOf(e.value)>-1})}
+      else{els[0].value=d[k]}});
+    if(s.i>0&&s.i<FIN){i=s.i}}catch(e){}}
+  function restante(){var s=0;for(var k=Math.max(i,1);k<=TOTAL;k++){s+=(+etapas[k].dataset.peso||30)}return s}
+  function pinta(){
+    etapas.forEach(function(e,k){e.classList.toggle('on',k===i)});
+    var cuenta=document.getElementById('cuenta'),barra=document.getElementById('barra');
+    var at=document.getElementById('atras'),sa=document.getElementById('saltar'),si=document.getElementById('sigue');
+    if(i===0){cuenta.innerHTML=TOTAL+' preguntas · unos '+Math.round(segTotal/60)+' min';barra.style.width='0'}
+    else if(i===FIN){cuenta.textContent='Enviado';barra.style.width='100%';document.getElementById('pie').hidden=true}
+    else{var min=Math.max(1,Math.round(restante()/60));
+      cuenta.innerHTML='<b>'+i+'</b> de '+TOTAL+' · '+(i===TOTAL?'la última':'quedan unos '+min+' min');
+      barra.style.width=((i-1)/TOTAL*100)+'%';
+      var bl=etapas[i].dataset.bloque;var cab=etapas[i].querySelector('.bloque');
+      if(!cab){cab=document.createElement('p');cab.className='bloque';cab.innerHTML=bl;etapas[i].insertBefore(cab,etapas[i].firstChild)}}
+    at.hidden=i===0||i===FIN;sa.hidden=i===0||i>=TOTAL;
+    si.textContent=i===0?'Empezar':i===TOTAL?'Enviar':'Siguiente';
+    window.scrollTo(0,0);
+    var campo=etapas[i].querySelector('textarea,input[type=text]');
+    if(campo&&i>0&&i<FIN&&window.matchMedia('(min-width:700px)').matches){setTimeout(function(){campo.focus({preventScroll:true})},50)}
+  }
+  function avanza(){if(i<TOTAL){i++;pinta();guardar();return}enviar()}
+  function enviar(){
+    var err=document.getElementById('error'),b=document.getElementById('sigue');
+    if(!document.getElementById('acepto').checked){err.hidden=false;err.textContent='Marca la casilla para poder enviarlo.';return}
+    err.hidden=true;b.disabled=true;b.textContent='Enviando…';
+    var body=new FormData();body.append('form-name','onboarding-profesional');
+    var d=datos();Object.keys(d).forEach(function(k){body.append(k,d[k])});
+    var A=window.__AUD||{};Object.keys(A).forEach(function(k){body.append('audio_'+k,A[k],k+(/mp4/.test(A[k].type)?'.m4a':'.webm'))});
+    fetch('/',{method:'POST',body:body})
+      .then(function(r){if(!r.ok)throw new Error(r.status);try{localStorage.removeItem(KEY)}catch(e){}i=FIN;pinta()})
+      .catch(function(){b.disabled=false;b.textContent='Enviar';err.hidden=false;err.textContent='No se ha podido enviar. Revisa la conexión y vuelve a pulsar «Enviar». Tus respuestas siguen guardadas.'});
+  }
+  form.addEventListener('input',guardar);form.addEventListener('change',guardar);
+  form.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.tagName==='INPUT'&&e.target.type==='text'){e.preventDefault();avanza()}});
+  document.getElementById('atras').addEventListener('click',function(){if(i>0){i--;pinta();guardar()}});
+  document.getElementById('saltar').addEventListener('click',avanza);
+  document.getElementById('sigue').addEventListener('click',avanza);
+  cargar();pinta();
+})();
+</script>
+<script src="/correo.js" defer></script>
+<script>
+// Grabar un audio: nota de voz que se adjunta al envío. Y pista para dictar con el teclado.
+(function(){
+  var AUD={};window.__AUD=AUD;
+  var puede=!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder);
+  function mmss(s){return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')}
+  [].forEach.call(document.querySelectorAll('.etapa textarea'),function(t){
+    var caja=document.createElement('div');t.after(caja);
+    var pista=document.createElement('span');pista.className='voz-nota';pista.textContent='Para que se escriba solo: toca el recuadro y pulsa el micrófono del teclado.';
+    if(!puede){caja.appendChild(pista);return}
+    var b=document.createElement('button');b.type='button';b.className='voz';b.innerHTML='<i></i><span>Grabar un audio</span>';
+    var nota=document.createElement('span');nota.className='voz-nota';nota.hidden=true;
+    caja.appendChild(b);caja.appendChild(nota);caja.appendChild(pista);
+    var rec=null,trozos=[],st=null,t0=0,reloj=null,pl=null,del=null;
+    b.addEventListener('click',function(){
+      if(rec&&rec.state==='recording'){rec.stop();return}
+      navigator.mediaDevices.getUserMedia({audio:true}).then(function(s){
+        st=s;trozos=[];
+        var tipo=['audio/mp4','audio/webm;codecs=opus','audio/webm'].find(function(x){return MediaRecorder.isTypeSupported&&MediaRecorder.isTypeSupported(x)})||'';
+        rec=new MediaRecorder(s,tipo?{mimeType:tipo,audioBitsPerSecond:48000}:{});
+        rec.ondataavailable=function(e){if(e.data&&e.data.size)trozos.push(e.data)};
+        rec.onstop=function(){clearInterval(reloj);st.getTracks().forEach(function(x){x.stop()});b.classList.remove('on');b.querySelector('span').textContent='Grabar otro audio';
+          var blob=new Blob(trozos,{type:rec.mimeType||'audio/mp4'});AUD[t.name]=blob;
+          if(pl)pl.remove();if(del)del.remove();
+          pl=document.createElement('audio');pl.controls=true;pl.src=URL.createObjectURL(blob);pl.style.cssText='display:block;width:100%;margin-top:10px';caja.insertBefore(pl,pista);
+          del=document.createElement('button');del.type='button';del.className='voz';del.style.borderBottomWidth='1px';del.textContent='Borrar audio';caja.insertBefore(del,pista);
+          del.onclick=function(){delete AUD[t.name];pl.remove();del.remove();pl=del=null;b.querySelector('span').textContent='Grabar un audio';nota.hidden=true};
+          nota.hidden=false;nota.textContent='Audio guardado ('+mmss(Math.round((Date.now()-t0)/1000))+'). Se enviará con tus respuestas.'};
+        rec.start(1000);t0=Date.now();b.classList.add('on');nota.hidden=false;nota.textContent='Máximo 4 minutos por pregunta.';
+        b.querySelector('span').textContent='Grabando 0:00 · pulsa para terminar';
+        reloj=setInterval(function(){b.querySelector('span').textContent='Grabando '+mmss(Math.round((Date.now()-t0)/1000))+' · pulsa para terminar';if(Date.now()-t0>240000)rec.stop()},500);
+      }).catch(function(){nota.hidden=false;nota.textContent='Para grabar, permite el micrófono. Si no, pulsa el micrófono del teclado y se escribe solo.'});
+    });
+  });
+})();
+</script>
+</body>
+</html>
