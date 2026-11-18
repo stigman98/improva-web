@@ -7,7 +7,7 @@
 @font-face{font-family:"Jost";src:url(fuentes/jost-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
 
 :root{
-  --papel:#FAF7EF; --papel-2:#F1EBDC; --toldo:#D9C35A; --oro:#D9BC4E; --oro-texto:#7E6210;
+  --papel:#FAF7EF; --papel-2:#F1EBDC; --toldo:#F4B21C; --oro:#D9BC4E; --oro-texto:#7E6210;
   --tinta:#1E1B16; --tinta-2:#5B544A; --hoja:#4F6B57; --filete:rgba(30,27,22,.18);
   --serif:"Cormorant Garamond", Georgia, "Times New Roman", serif;
   --sans:"Jost", "Futura", "Century Gothic", system-ui, sans-serif;
@@ -28,7 +28,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1;margin:0}
 .demo::before{content:"Prueba ·";font-weight:600;margin-right:6px;color:var(--toldo)}
 
 /* barra con el toldo */
-.top{position:sticky;top:0;z-index:30;background:var(--papel);border-bottom:1px solid var(--tinta)}
+.top{position:sticky;top:0;z-index:30;background:var(--papel);border-bottom:4px solid #F4B21C}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:60px}
 .top .logo img{height:34px;width:auto;display:block}
 .top .volver{font-size:15px;font-weight:600;color:var(--papel);background:var(--tinta);padding:9px 14px;text-decoration:none}

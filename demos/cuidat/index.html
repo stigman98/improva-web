@@ -6,29 +6,30 @@
 <meta name="robots" content="noindex">
 <title>Herbolario CuidaT · Parla Este</title>
 <meta name="description" content="Herbolario CuidaT en Parla Este: productos naturales con asesoramiento, clases de yoga, pilates y meditación, y gabinete con dietista, masajes, acupuntura y reiki.">
-<meta name="theme-color" content="#FBF6EA">
+<meta name="theme-color" content="#FFF8EA">
 <link rel="preload" href="../cuidat-tienda/fuentes/cormorant-garamond-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../cuidat-tienda/fuentes/jost-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 /* CuidaT · web de presentación.
-   Sale del propio local: el toldo amarillo de la fachada, el rótulo de serifa del cartel
-   y el trazo amarillo del logo. Esquinas rectas, sin sombras ni degradados. */
+   Sale del propio local: el amarillo del toldo, el ladrillo de la fachada, el rótulo de serifa
+   y el trazo del logo. De la botica, las etiquetas de los tarros con su banda de color
+   y la cinta de productos que corre como un rótulo. Esquinas rectas, sin sombras ni degradados. */
 @font-face{font-family:"Cormorant Garamond";src:url(../cuidat-tienda/fuentes/cormorant-garamond-latin-600-normal.woff2) format("woff2");font-weight:600;font-style:normal;font-display:swap}
 @font-face{font-family:"Cormorant Garamond";src:url(../cuidat-tienda/fuentes/cormorant-garamond-latin-600-italic.woff2) format("woff2");font-weight:600;font-style:italic;font-display:swap}
 @font-face{font-family:"Jost";src:url(../cuidat-tienda/fuentes/jost-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Jost";src:url(../cuidat-tienda/fuentes/jost-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
 @font-face{font-family:"Jost";src:url(../cuidat-tienda/fuentes/jost-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
 :root{
-  --papel:#FBF6EA; --crema:#F3E8CC; --tinta:#17140F; --tinta-2:#4F483D; --filete:rgba(23,20,15,.2);
-  --toldo:#EBA91A; --toldo-2:#C9870A; --toldo-3:#F6C344; --hoja:#2D6A47;
+  --papel:#FFF8EA; --crema:#FBEFD2; --tinta:#1A1610; --tinta-2:#4E473B; --filete:rgba(26,22,16,.18);
+  --sol:#F4B21C; --sol-claro:#FFD15C; --hoja:#1F7A4A; --hoja-oscura:#155C37; --ladrillo:#C7562E;
   --serif:"Cormorant Garamond", Georgia, "Times New Roman", serif;
   --sans:"Jost", "Futura", "Century Gothic", system-ui, sans-serif;
-  --m:clamp(16px,4vw,48px);
+  --m:clamp(18px,4.5vw,52px);
   color-scheme:light;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--papel);color:var(--tinta);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+html{overflow-x:clip;scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--papel);color:var(--tinta);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit;text-underline-offset:4px;text-decoration-thickness:1px}
 a:hover{text-decoration-thickness:2px}
@@ -36,131 +37,170 @@ button{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--hoja);outline-offset:3px}
 [hidden]{display:none!important}
 h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:.95;margin:0;text-wrap:balance}
-.wrap{max-width:1180px;margin:0 auto;padding-inline:var(--m)}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:var(--m)}
+.hojita{display:inline-block;width:.9em;height:.55em;vertical-align:.05em;flex:none}
 
 /* ── cabecera ── */
-.cab{position:sticky;top:0;z-index:40;background:var(--papel);border-bottom:4px solid var(--toldo)}
-.cab .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
-.cab .logo img{height:40px;width:auto}
+.cab{position:sticky;top:0;z-index:40;background:var(--papel);border-bottom:4px solid var(--sol)}
+.cab .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:66px}
+.cab .logo img{height:42px;width:auto}
 .menu{display:flex;align-items:center;gap:clamp(14px,2vw,28px);font-weight:500;font-size:15px}
 .menu a{text-decoration:none;white-space:nowrap}
 .menu a:hover{text-decoration:underline}
-.menu .wa{background:var(--tinta);color:var(--papel);padding:10px 16px;text-decoration:none}
-.menu .wa:hover{background:var(--hoja);text-decoration:none}
+.menu .wa{background:var(--hoja);color:#fff;padding:10px 16px;text-decoration:none}
+.menu .wa:hover{background:var(--hoja-oscura);text-decoration:none}
 .abrir{display:none;background:none;border:0;border-bottom:2px solid var(--tinta);padding:4px 0;font-weight:600;cursor:pointer}
-@media(max-width:900px){
+@media(max-width:920px){
   .abrir{display:block}
-  .menu{display:none;position:absolute;left:0;right:0;top:68px;flex-direction:column;align-items:stretch;gap:0;background:var(--papel);border-bottom:1px solid var(--tinta);font-size:19px}
+  .menu{display:none;position:absolute;left:0;right:0;top:70px;flex-direction:column;align-items:stretch;gap:0;background:var(--papel);border-bottom:4px solid var(--sol);font-size:20px}
   .menu.on{display:flex}
-  .menu a{padding:15px var(--m);border-top:1px solid var(--filete)}
+  .menu a{padding:16px var(--m);border-top:1px solid var(--filete)}
   .menu .wa{text-align:left}
 }
 
-/* toldo de la fachada: franjas y borde ondulado */
-
 /* ── portada ── */
-.portada .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(24px,4vw,64px);align-items:center;padding-block:clamp(20px,4vw,48px) clamp(40px,6vw,80px)}
+.portada{position:relative}
+.portada .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:center;padding-block:clamp(24px,4vw,56px) clamp(36px,5vw,64px)}
 .foto{position:relative;margin:0}
-.foto img{width:100%;height:auto;aspect-ratio:1086/1448;object-fit:cover;object-position:30% 40%;border:1px solid var(--tinta)}
+.foto img{width:100%;height:auto;aspect-ratio:1086/1448;object-fit:cover;object-position:30% 40%;border:2px solid var(--tinta)}
 .foto figcaption{font-size:13px;color:var(--tinta-2);margin-top:8px}
-.estado{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15px;margin-bottom:18px}
-.estado i{width:11px;height:11px;background:#9a9285;flex:none}
-.estado.abierto i{background:var(--hoja)}
-.portada h1{font-size:clamp(58px,9.5vw,132px);letter-spacing:-.01em}
-.portada h1 span{display:block}
-.portada h1 .marca{position:relative;display:inline-block;font-style:italic;z-index:0}
-.portada h1 .marca svg{position:absolute;left:-12%;top:34%;width:128%;height:.5em;z-index:-1}
-.portada .desc{font-size:clamp(18px,1.6vw,21px);max-width:40ch;margin:22px 0 28px;color:var(--tinta-2)}
-.acciones{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center}
-.cita{display:inline-flex;align-items:center;gap:14px;background:var(--toldo);color:var(--tinta);text-decoration:none;font:600 19px var(--sans);padding:17px 24px;border:2px solid var(--tinta)}
-.cita svg{width:26px;height:14px;transition:transform .2s}
-.cita:hover{background:var(--toldo-3)}
-.cita:hover svg{transform:translateX(5px)}
+/* sello redondo, como una pegatina en el escaparate */
+.sello{position:absolute;right:-18px;bottom:46px;width:132px;height:132px;border-radius:50%;background:var(--sol);color:var(--tinta);border:2px solid var(--tinta);display:grid;place-items:center;text-align:center;transform:rotate(-9deg);z-index:2}
+.sello b{display:block;font:600 italic 24px/1 var(--serif)}
+.sello span{display:block;font-size:11px;font-weight:600;line-height:1.2;margin-top:3px;padding-inline:26px}
+.sello.cerrado{background:var(--papel)}
+.sello svg{position:absolute;inset:6px;width:calc(100% - 12px);height:calc(100% - 12px);animation:gira 28s linear infinite}
+.sello svg text{font:600 10.5px var(--sans);letter-spacing:2.6px;text-transform:uppercase;fill:var(--tinta)}
+@keyframes gira{to{transform:rotate(360deg)}}
+.antetitulo{font:600 15px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--hoja);display:flex;align-items:center;gap:10px;margin:0 0 6px}
+.portada h1{font-size:clamp(92px,15vw,196px);line-height:.82;letter-spacing:-.02em}
+.portada h1 .marca{position:relative;display:inline-block;font-style:italic;z-index:0;padding-right:.08em}
+.portada h1 .marca svg{position:absolute;left:-14%;top:38%;width:130%;height:.46em;z-index:-1}
+.portada h1 .marca svg path{fill:var(--sol);clip-path:inset(0 100% 0 0);animation:pinta 1s cubic-bezier(.6,0,.2,1) .25s forwards}
+@keyframes pinta{to{clip-path:inset(0 0 0 0)}}
+.portada .desc{font-size:clamp(18px,1.7vw,21px);max-width:38ch;margin:26px 0 28px;color:var(--tinta-2)}
+.acciones{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center}
+.cita{display:inline-flex;align-items:center;gap:12px;background:var(--hoja);color:#fff;text-decoration:none;font:600 20px var(--sans);padding:19px 28px;border:2px solid var(--tinta);box-shadow:6px 6px 0 var(--sol);transition:transform .15s,box-shadow .15s}
+.cita svg{width:24px;height:24px;flex:none}
+.cita:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--sol)}
+.cita:active{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--sol)}
 .enlace{font-weight:600;font-size:17px}
-.datos{display:grid;grid-template-columns:repeat(3,1fr);margin-top:36px;border-top:1px solid var(--tinta)}
+.datos{display:grid;grid-template-columns:repeat(3,1fr);margin-top:38px;border-top:2px solid var(--tinta)}
 .datos a{display:block;padding:14px 14px 4px 0;text-decoration:none;font-size:15px;line-height:1.35}
 .datos a+a{padding-left:14px;border-left:1px solid var(--filete)}
-.datos b{display:block;font-family:var(--serif);font-size:24px;font-weight:600}
+.datos b{display:block;font-family:var(--serif);font-size:25px;font-weight:600}
 .datos a:hover span{text-decoration:underline}
-@media(max-width:860px){
-  .portada .wrap{grid-template-columns:1fr;padding-top:0}
+@media(max-width:880px){
+  .portada .wrap{grid-template-columns:1fr;padding-top:0;gap:22px}
   .portada .foto{order:-1;margin-inline:calc(var(--m) * -1)}
-  .foto img{height:56svh;aspect-ratio:auto;border-inline:0;border-top:0}
+  .foto img{height:58svh;aspect-ratio:auto;border-inline:0;border-top:0}
   .foto figcaption{padding-inline:var(--m)}
+  .sello{right:14px;bottom:52px;width:122px;height:122px}
+  .sello b{font-size:21px}
+  .sello span{font-size:10.5px;padding-inline:24px}
   .datos{grid-template-columns:1fr}
   .datos a,.datos a+a{padding:12px 0;border-left:0;border-bottom:1px solid var(--filete)}
-  .cita{width:100%;justify-content:space-between}
+  .cita{width:100%;justify-content:center}
 }
 
+/* ── cinta de productos ── */
+.cinta{background:var(--hoja);color:var(--sol-claro);border-block:2px solid var(--tinta);overflow:hidden;white-space:nowrap}
+.cinta .pista{display:inline-flex;animation:corre 40s linear infinite;padding-block:14px}
+.cinta span{font:600 italic clamp(22px,2.6vw,30px)/1 var(--serif);padding-inline:18px;display:inline-flex;align-items:center;gap:36px}
+.cinta .hojita{color:var(--sol);width:1.1em;height:.7em}
+@keyframes corre{to{transform:translateX(-50%)}}
+.cinta:hover .pista{animation-play-state:paused}
+
 /* ── secciones ── */
-.sec{padding-block:clamp(56px,8vw,104px);border-top:1px solid var(--tinta)}
-.sec h2{font-size:clamp(46px,7vw,92px);margin-bottom:18px}
-.sec h2 em{color:inherit}
-.intro{max-width:56ch;color:var(--tinta-2);margin:0 0 34px;font-size:18px}
+.sec{padding-block:clamp(60px,8vw,108px)}
+.sec h2{font-size:clamp(50px,7.5vw,100px);margin-bottom:16px}
+.intro{max-width:54ch;color:var(--tinta-2);margin:0 0 38px;font-size:18px}
 
-/* reservar: banda del color del toldo */
-.reservar{background:var(--toldo);border-top:1px solid var(--tinta)}
-.reservar .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,4vw,56px);align-items:end}
-.reservar h2 em{color:var(--tinta)}
-.reservar .intro{color:var(--tinta)}
-.opciones{display:grid;gap:12px}
-.opcion{display:grid;grid-template-columns:1fr auto;align-items:center;gap:6px 18px;background:var(--tinta);color:var(--papel);text-decoration:none;padding:22px 24px}
-.opcion b{font:600 clamp(30px,3.6vw,44px)/1 var(--serif)}
-.opcion span{grid-column:1;color:rgba(251,246,234,.78);font-size:16px}
-.opcion svg{grid-row:1/3;grid-column:2;width:40px;height:20px;transition:transform .2s}
+/* lo que hay dentro: etiquetas de tarro de botica */
+.etiquetas{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(22px,3vw,40px);align-items:start;padding-top:8px}
+.etiqueta{position:relative;background:#fff;border:2px solid var(--tinta);outline:1px solid var(--tinta);outline-offset:-9px;padding:0 0 26px;transform:rotate(var(--r,0deg));transition:transform .25s}
+.etiqueta:hover{transform:rotate(0deg) translateY(-4px)}
+.etiqueta:nth-child(1){--r:-1.6deg;--banda:var(--sol)}
+.etiqueta:nth-child(2){--r:1.2deg;--banda:var(--hoja);margin-top:30px}
+.etiqueta:nth-child(3){--r:-.6deg;--banda:var(--ladrillo);margin-top:12px}
+.etiqueta .banda{background:var(--banda);color:var(--tinta);margin:13px 13px 0;padding:10px 16px;font:600 13px var(--sans);letter-spacing:.14em;text-transform:uppercase;display:flex;justify-content:space-between}
+.etiqueta:nth-child(2) .banda,.etiqueta:nth-child(3) .banda{color:#fff}
+.etiqueta h3{font-size:clamp(46px,5vw,64px);font-style:italic;padding:22px 28px 6px}
+.etiqueta p{margin:0;padding:0 28px;color:var(--tinta-2);font-size:16px}
+.etiqueta ul{list-style:none;margin:16px 28px 22px;padding:14px 0 0;border-top:1px dashed var(--tinta)}
+.etiqueta li{display:flex;align-items:center;gap:10px;padding:3px 0;font-weight:500}
+.etiqueta li .hojita{color:var(--hoja)}
+.etiqueta a.ir{display:block;margin:0 28px;padding:13px 16px;background:var(--tinta);color:#fff;text-decoration:none;font-weight:600;text-align:center}
+.etiqueta a.ir:hover{background:var(--hoja)}
+@media(max-width:880px){
+  .etiquetas{grid-template-columns:1fr;gap:28px}
+  .etiqueta:nth-child(2),.etiqueta:nth-child(3){margin-top:0}
+}
+.aviso{font-size:14px;color:var(--tinta-2);margin-top:36px;max-width:70ch}
+
+/* reservar */
+.reservar{background:var(--sol);border-block:2px solid var(--tinta)}
+.reservar .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,4vw,60px);align-items:center}
+.reservar .intro{color:var(--tinta);margin-bottom:0}
+.opciones{display:grid;gap:14px}
+.opcion{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:4px 18px;background:var(--tinta);color:#fff;text-decoration:none;padding:22px 26px;border:2px solid var(--tinta);transition:background .15s}
+.opcion svg{grid-row:1/3;width:38px;height:38px;color:var(--sol)}
+.opcion b{font:600 clamp(32px,3.6vw,46px)/1 var(--serif)}
+.opcion span{color:rgba(255,255,255,.82);font-size:16px}
+.opcion span u{text-decoration:underline;text-underline-offset:3px;color:#fff;font-weight:600}
 .opcion:hover{background:var(--hoja)}
-.opcion:hover svg{transform:translateX(6px)}
-.llamar{margin:14px 0 0;font-size:16px}
-@media(max-width:860px){.reservar .wrap{grid-template-columns:1fr}}
+.llamar{margin:16px 0 0;font-size:17px}
+@media(max-width:880px){.reservar .wrap{grid-template-columns:1fr}}
 
-/* lo que hay en el local: filas como una lista de botica */
-.filas{border-top:2px solid var(--tinta)}
-.fila{display:grid;grid-template-columns:minmax(180px,1fr) 2fr auto;gap:10px 32px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--filete)}
-.fila h3{font-size:clamp(36px,4.4vw,56px)}
-.fila p{margin:0;color:var(--tinta-2)}
-.fila .que{display:block;margin-top:6px;color:var(--tinta);font-weight:500}
-.fila a{font-weight:600;white-space:nowrap}
-@media(max-width:760px){.fila{grid-template-columns:1fr}}
-.aviso{font-size:14px;color:var(--tinta-2);margin-top:22px;max-width:70ch}
-
-/* visítanos: horario, dirección y teléfono */
+/* ven a vernos */
 .visita{background:var(--crema)}
 .tres{display:grid;grid-template-columns:1.3fr 1fr 1fr;border-top:2px solid var(--tinta)}
-.tres > div{padding:22px 24px 6px 0}
-.tres > div+div{padding-left:24px;border-left:1px solid var(--filete)}
-.tres h3{font-size:34px;margin-bottom:12px}
+.tres > div{padding:24px 26px 6px 0}
+.tres > div+div{padding-left:26px;border-left:1px solid var(--filete)}
+.tres h3{font-size:36px;margin-bottom:12px}
 .tabla{width:100%;border-collapse:collapse}
-.tabla td{padding:7px 0;border-bottom:1px solid var(--filete);font-size:16px}
+.tabla td{padding:8px 0;border-bottom:1px solid var(--filete);font-size:16px}
 .tabla td:last-child{text-align:right}
 .tabla tr.hoy td{font-weight:600;color:var(--hoja)}
-.grande{font:600 30px/1.1 var(--serif);text-decoration:none;display:inline-block;margin-bottom:8px}
+.tabla tr.hoy td:first-child::before{content:"Hoy · ";color:var(--ladrillo)}
+.grande{font:600 34px/1.1 var(--serif);text-decoration:none;display:inline-block;margin-bottom:8px}
 .tres p{margin:0 0 14px}
-@media(max-width:860px){.tres{grid-template-columns:1fr}.tres > div,.tres > div+div{padding:22px 0;border-left:0;border-bottom:1px solid var(--filete)}}
+@media(max-width:880px){.tres{grid-template-columns:1fr}.tres > div,.tres > div+div{padding:22px 0;border-left:0;border-bottom:1px solid var(--filete)}}
 
 /* reseñas */
-.resenas{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--tinta)}
-.resena{margin:0;padding:24px 24px 24px 0}
-.resena+.resena{padding-left:24px;border-left:1px solid var(--filete)}
-.resena blockquote{margin:0 0 14px;font:600 italic clamp(22px,2.2vw,27px)/1.25 var(--serif)}
-.resena blockquote::before{content:"«";color:var(--toldo-2)}
-.resena blockquote::after{content:"»";color:var(--toldo-2)}
-.resena figcaption{font-size:15px;color:var(--tinta-2)}
-.estrellas{color:var(--toldo-2);letter-spacing:2px;margin-bottom:10px}
-mark.falta{background:var(--toldo-3);color:var(--tinta);padding:0 4px}
-@media(max-width:860px){.resenas{grid-template-columns:1fr}.resena,.resena+.resena{padding:22px 0;border-left:0;border-bottom:1px solid var(--filete)}}
+.nota-google{display:flex;align-items:baseline;gap:14px;margin:0 0 30px}
+.nota-google b{font:600 clamp(72px,9vw,120px)/.8 var(--serif);color:var(--hoja)}
+.nota-google span{font-size:17px;color:var(--tinta-2)}
+.nota-google .estrellas{display:block;font-size:22px;color:var(--sol);letter-spacing:3px}
+.resenas{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.resena{margin:0;padding:26px 26px 22px;background:#fff;border:2px solid var(--tinta);position:relative}
+.resena:nth-child(2){background:var(--crema)}
+.resena blockquote{margin:0 0 16px;font:600 italic clamp(23px,2.2vw,28px)/1.25 var(--serif)}
+.resena blockquote::before{content:"“";display:block;font:600 72px/.6 var(--serif);color:var(--sol);margin-bottom:6px}
+.resena figcaption{font-size:15px;color:var(--tinta-2);font-weight:500}
+@media(max-width:880px){
+  .resenas{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-inline:calc(var(--m) * -1);padding-inline:var(--m);scrollbar-width:none}
+  .resenas::-webkit-scrollbar{display:none}
+  .resena{flex:0 0 84%;scroll-snap-align:start}
+}
 
-/* conócenos */
-.equipo{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(20px,3vw,40px);margin-top:10px}
+/* quiénes somos */
+.conocenos{background:var(--papel);border-top:2px solid var(--tinta)}
+.hueco{position:relative;display:grid;place-items:center;text-align:center;border:2px dashed var(--tinta);background:repeating-linear-gradient(135deg,var(--crema) 0 14px,#F6E5BC 14px 28px);color:var(--tinta);padding:24px}
+.hueco b{display:block;font:600 italic clamp(26px,3vw,36px)/1.05 var(--serif)}
+.hueco small{display:block;font-size:14px;color:var(--tinta-2);margin-top:6px}
+.hueco.juntas{aspect-ratio:16/8;margin-bottom:clamp(28px,4vw,48px)}
+.equipo{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(22px,3vw,44px)}
 .persona{margin:0}
-.persona .retrato{aspect-ratio:4/5;background:var(--crema);border:1px solid var(--tinta);display:grid;place-items:center;text-align:center;padding:20px;color:var(--tinta-2);font-size:15px}
-.persona h3{font-size:clamp(34px,3.6vw,46px);margin:16px 0 6px}
+.persona .hueco{aspect-ratio:4/5}
+.persona h3{font-size:clamp(40px,4vw,54px);margin:18px 0 6px;font-style:italic}
 .persona p{margin:0;color:var(--tinta-2);max-width:46ch}
-@media(max-width:700px){.equipo{grid-template-columns:1fr}}
+.falta{background:var(--sol-claro);color:var(--tinta);padding:1px 5px}
+@media(max-width:700px){.equipo{grid-template-columns:1fr}.hueco.juntas{aspect-ratio:4/3}}
 
 /* recorrido por el local */
-.rec-tit{padding-block:clamp(48px,7vw,88px) 28px}
-.rec-tit h2{font-size:clamp(40px,6vw,76px)}
+.rec-tit{padding-block:clamp(56px,7vw,96px) 28px}
+.rec-tit h2{font-size:clamp(44px,6.4vw,84px)}
 .recorrido{position:relative;height:720svh;background:#14110d}
 .escena{position:sticky;top:0;height:100svh;overflow:hidden}
 #fondo,#lienzo{position:absolute;inset:0;width:100%;height:100%}
@@ -168,43 +208,51 @@ mark.falta{background:var(--toldo-3);color:var(--tinta);padding:0 4px}
 .sombra{position:absolute;inset:0;background:rgba(14,11,8,.28);pointer-events:none}
 .capitulo{position:absolute;left:var(--m);right:var(--m);bottom:calc(10svh + 64px + env(safe-area-inset-bottom,0px));color:#fff;opacity:0;transform:translateY(20px);transition:opacity .45s,transform .45s;pointer-events:none;max-width:520px}
 .capitulo.on{opacity:1;transform:none;pointer-events:auto}
-.capitulo .k{font:600 16px var(--sans);color:var(--toldo-3);margin-bottom:6px}
+.capitulo .k{font:600 16px var(--sans);color:var(--sol-claro);margin-bottom:6px}
 .capitulo h3{font-style:italic;font-size:clamp(44px,11vw,80px);margin:0 0 10px;color:#fff}
 .capitulo p{margin:0;font-size:18px;max-width:34ch;background:rgba(14,11,8,.55);padding:6px 10px;display:inline-block}
 .progreso{position:absolute;right:14px;top:50%;transform:translateY(-50%);display:grid;gap:10px}
 .progreso span{width:8px;height:8px;background:rgba(255,255,255,.35);transition:background .3s}
-.progreso span.on{background:var(--toldo)}
-.carga{position:absolute;left:0;top:0;height:3px;background:var(--toldo);width:0;transition:width .2s;z-index:3}
+.progreso span.on{background:var(--sol)}
+.carga{position:absolute;left:0;top:0;height:3px;background:var(--sol);width:0;transition:width .2s;z-index:3}
 @media(min-width:900px){
   .capitulo{bottom:auto;top:50%;transform:translateY(calc(-50% + 20px));max-width:440px}
   .capitulo.on{transform:translateY(-50%)}
 }
 
 /* pie */
-.pie{background:var(--tinta);color:var(--papel);padding-block:40px 30px}
+.pie{background:var(--tinta);color:var(--papel);padding-block:44px 30px;border-top:6px solid var(--sol)}
 .pie .wrap{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px}
-.pie p{margin:0 0 6px;font-size:15px;color:rgba(251,246,234,.82)}
+.pie p{margin:0 0 6px;font-size:15px;color:rgba(255,248,234,.82)}
 .pie nav{display:grid;gap:6px;font-size:15px}
-.pie .firma{grid-column:1/-1;border-top:1px solid rgba(251,246,234,.2);padding-top:16px;font-size:13px;color:rgba(251,246,234,.6)}
+.pie .firma{grid-column:1/-1;border-top:1px solid rgba(255,248,234,.2);padding-top:16px;font-size:13px;color:rgba(255,248,234,.6)}
 @media(max-width:760px){.pie .wrap{grid-template-columns:1fr}}
 
 /* barra de acciones fija en el móvil */
 .movil{display:none}
-@media(max-width:860px){
-  .movil{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--tinta);padding-bottom:env(safe-area-inset-bottom,0px);border-top:3px solid var(--toldo)}
+@media(max-width:880px){
+  .movil{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--tinta);padding-bottom:env(safe-area-inset-bottom,0px);border-top:3px solid var(--sol)}
   .movil a{color:var(--papel);text-decoration:none;text-align:center;font-weight:600;font-size:15px;padding:15px 4px}
-  .movil a+a{border-left:1px solid rgba(251,246,234,.2)}
-  .movil a.wa{background:var(--toldo);color:var(--tinta)}
+  .movil a+a{border-left:1px solid rgba(255,248,234,.2)}
+  .movil a.wa{background:var(--hoja);color:#fff}
   body{padding-bottom:calc(54px + env(safe-area-inset-bottom,0px))}
 }
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}html{scroll-behavior:auto}
+  .portada h1 .marca svg path{clip-path:none}
+  .cinta .pista{transform:none}
+}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="hoja" viewBox="0 0 48 28"><path d="M2 14C12 2 30 0 46 6 38 22 18 28 2 14Z" fill="currentColor"/><path d="M4 14C18 12 30 10 44 7" stroke="#fff" stroke-opacity=".55" stroke-width="1.6" fill="none"/></symbol>
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.7-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></symbol>
+</svg>
 
 <header class="cab">
   <div class="wrap">
-    <a class="logo" href="#inicio" aria-label="Herbolario CuidaT, inicio"><img src="logo.webp" alt="Herbolario CuidaT" width="112" height="40"></a>
+    <a class="logo" href="#inicio" aria-label="Herbolario CuidaT, inicio"><img src="logo.webp" alt="Herbolario CuidaT" width="118" height="42"></a>
     <button class="abrir" id="abrir" aria-expanded="false" aria-controls="menu">Menú</button>
     <nav class="menu" id="menu" aria-label="Principal">
       <a href="#horario">Horario</a>
@@ -221,11 +269,11 @@ mark.falta{background:var(--toldo-3);color:var(--tinta);padding:0 4px}
 <section class="portada" id="inicio" aria-labelledby="t-inicio">
   <div class="wrap">
     <div>
-      <div class="estado" id="estado"><i></i><span>Horario de la tienda</span></div>
-      <h1 id="t-inicio"><span>Herbolario</span> <span class="marca">CuidaT<svg viewBox="0 0 400 60" preserveAspectRatio="none" aria-hidden="true"><path d="M10 14 C70 6 150 10 230 8 S350 4 392 10 L384 16 L396 22 L380 28 L394 36 L378 42 L390 50 C300 54 200 50 120 54 S30 52 6 48 L18 40 L2 33 L16 26 L4 20 Z" fill="#E6CF6A"/><path d="M40 30 H360" stroke="#D9BC4E" stroke-width="3" opacity=".5"/></svg></span></h1>
-      <p class="desc">Productos naturales con consejo de verdad, clases de yoga, pilates y meditación, y un gabinete con dietista, masajes, acupuntura y reiki. Todo en el mismo local de Parla Este.</p>
+      <p class="antetitulo"><svg class="hojita" aria-hidden="true"><use href="#hoja"/></svg>Herbolario en Parla Este</p>
+      <h1 id="t-inicio"><span class="marca">CuidaT<svg viewBox="0 0 400 60" preserveAspectRatio="none" aria-hidden="true"><path d="M10 14 C70 6 150 10 230 8 S350 4 392 10 L384 16 L396 22 L380 28 L394 36 L378 42 L390 50 C300 54 200 50 120 54 S30 52 6 48 L18 40 L2 33 L16 26 L4 20 Z"/></svg></span></h1>
+      <p class="desc">Productos naturales con consejo de verdad, clases de yoga, pilates y meditación, y un gabinete con dietista, masajes, acupuntura y reiki. Todo en el mismo local.</p>
       <div class="acciones">
-        <a class="cita" href="#reservar">Reservar cita <svg viewBox="0 0 26 14" aria-hidden="true"><path d="M0 7h23M17 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></a>
+        <a class="cita" href="#reservar"><svg aria-hidden="true"><use href="#wa"/></svg>Reservar cita</a>
         <a class="enlace" href="../cuidat-tienda/">Ver la tienda online</a>
       </div>
       <div class="datos">
@@ -236,8 +284,65 @@ mark.falta{background:var(--toldo-3);color:var(--tinta);padding:0 4px}
     </div>
     <figure class="foto">
       <img src="fachada.webp" alt="Fachada de Herbolario CuidaT, con el toldo amarillo y el escaparate" width="1086" height="1448" fetchpriority="high">
+      <div class="sello" id="sello" aria-live="polite">
+        <svg viewBox="0 0 120 120" aria-hidden="true"><defs><path id="circulo" d="M60 60m-48 0a48 48 0 1 1 96 0a48 48 0 1 1-96 0"/></defs><text><textPath href="#circulo">· Herbolario CuidaT · Parla Este </textPath></text></svg>
+        <div><b id="sello-t">Abierto</b><span id="sello-s">hasta las 20:30</span></div>
+      </div>
       <figcaption>Nuestra puerta, en la Avenida de las Estrellas.</figcaption>
     </figure>
+  </div>
+</section>
+
+<div class="cinta" aria-hidden="true">
+  <div class="pista">
+    <span>Infusiones <svg class="hojita"><use href="#hoja"/></svg> Aceites esenciales <svg class="hojita"><use href="#hoja"/></svg> Yoga <svg class="hojita"><use href="#hoja"/></svg> Cosmética natural <svg class="hojita"><use href="#hoja"/></svg> Pilates <svg class="hojita"><use href="#hoja"/></svg> Dietista <svg class="hojita"><use href="#hoja"/></svg> Complementos <svg class="hojita"><use href="#hoja"/></svg> Meditación <svg class="hojita"><use href="#hoja"/></svg> Masajes <svg class="hojita"><use href="#hoja"/></svg> Baños de gong <svg class="hojita"><use href="#hoja"/></svg> Acupuntura <svg class="hojita"><use href="#hoja"/></svg> Reiki <svg class="hojita"><use href="#hoja"/></svg></span>
+    <span>Infusiones <svg class="hojita"><use href="#hoja"/></svg> Aceites esenciales <svg class="hojita"><use href="#hoja"/></svg> Yoga <svg class="hojita"><use href="#hoja"/></svg> Cosmética natural <svg class="hojita"><use href="#hoja"/></svg> Pilates <svg class="hojita"><use href="#hoja"/></svg> Dietista <svg class="hojita"><use href="#hoja"/></svg> Complementos <svg class="hojita"><use href="#hoja"/></svg> Meditación <svg class="hojita"><use href="#hoja"/></svg> Masajes <svg class="hojita"><use href="#hoja"/></svg> Baños de gong <svg class="hojita"><use href="#hoja"/></svg> Acupuntura <svg class="hojita"><use href="#hoja"/></svg> Reiki <svg class="hojita"><use href="#hoja"/></svg></span>
+  </div>
+</div>
+
+<section class="sec" id="servicios" aria-labelledby="t-servicios">
+  <div class="wrap">
+    <h2 id="t-servicios">Lo que hay <em>dentro</em></h2>
+    <p class="intro">Desde la calle parece solo un herbolario. Pasa y verás todo lo demás.</p>
+    <div class="etiquetas">
+      <article class="etiqueta">
+        <div class="banda"><span>La tienda</span><span>Parla</span></div>
+        <h3>Herbolario</h3>
+        <p>Productos naturales con asesoramiento personalizado. Si no sabes qué elegir, te ayudamos según lo que buscas.</p>
+        <ul>
+          <li><svg class="hojita" aria-hidden="true"><use href="#hoja"/></svg>Infusiones</li>
+          <li><svg class="hojita" aria-hidden="true"><use href="#hoja"/></svg>Complementos</li>
+          <li><svg class="hojita" aria-hidden="true"><use href="#hoja"/></svg>Aceites esenciales</li>
+          <li><svg class="hojita" aria-hidden="true"><use href="#hoja"/></svg>Cosmética natural</li>
+        </ul>
+        <a class="ir" href="../cuidat-tienda/">Comprar online</a>
+      </article>
+      <article class="etiqueta">
+        <div class="banda"><span>La sala</span><span>En grupo</span></div>
+        <h3>Clases</h3>
+        <p>En la sala grande, con grupos reducidos y todo el material incluido.</p>
+        <ul>
+          <li><svg class="hojita" aria-hidden="true"><use href="#hoja"/></svg>Yoga</li>
+          <li><svg class="hojita" aria-hidden="true"><use href="#hoja"/></svg>Pilates</li>
+          <li><svg class="hojita" aria-hidden="true"><use href="#hoja"/></svg>Meditación y baños de gong</li>
+          <li><svg class="hojita" aria-hidden="true"><use href="#hoja"/></svg>Talleres</li>
+        </ul>
+        <a class="ir" href="https://wa.me/34604815133?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20clase" target="_blank" rel="noopener">Reservar clase</a>
+      </article>
+      <article class="etiqueta">
+        <div class="banda"><span>El gabinete</span><span>Con cita</span></div>
+        <h3>Gabinete</h3>
+        <p>Sesiones individuales con cita previa, en una cabina tranquila.</p>
+        <ul>
+          <li><svg class="hojita" aria-hidden="true"><use href="#hoja"/></svg>Dietista</li>
+          <li><svg class="hojita" aria-hidden="true"><use href="#hoja"/></svg>Acupuntura</li>
+          <li><svg class="hojita" aria-hidden="true"><use href="#hoja"/></svg>Masajes</li>
+          <li><svg class="hojita" aria-hidden="true"><use href="#hoja"/></svg>Reiki</li>
+        </ul>
+        <a class="ir" href="https://wa.me/34604815133?text=Hola%2C%20quiero%20pedir%20cita%20en%20el%20gabinete" target="_blank" rel="noopener">Pedir cita</a>
+      </article>
+    </div>
+    <p class="aviso">Nuestros productos y terapias acompañan tu bienestar y no sustituyen el consejo de un profesional sanitario.</p>
   </div>
 </section>
 
@@ -249,36 +354,11 @@ mark.falta{background:var(--toldo-3);color:var(--tinta);padding:0 4px}
     </div>
     <div>
       <div class="opciones">
-        <a class="opcion" href="https://wa.me/34604815133?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20clase" target="_blank" rel="noopener"><b>Una clase</b><span>Yoga, pilates, meditación o baño de gong</span><svg viewBox="0 0 40 20" aria-hidden="true"><path d="M0 10h36M28 2l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></a>
-        <a class="opcion" href="https://wa.me/34604815133?text=Hola%2C%20quiero%20pedir%20cita%20en%20el%20gabinete" target="_blank" rel="noopener"><b>El gabinete</b><span>Dietista, masajes, acupuntura o reiki</span><svg viewBox="0 0 40 20" aria-hidden="true"><path d="M0 10h36M28 2l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></a>
+        <a class="opcion" href="https://wa.me/34604815133?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20clase" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg><b>Una clase</b><span>Yoga, pilates, meditación o gong · <u>Reservar</u></span></a>
+        <a class="opcion" href="https://wa.me/34604815133?text=Hola%2C%20quiero%20pedir%20cita%20en%20el%20gabinete" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg><b>El gabinete</b><span>Dietista, masajes, acupuntura o reiki · <u>Pedir cita</u></span></a>
       </div>
       <p class="llamar">¿Prefieres llamar? <a href="tel:+34604815133"><b>604 815 133</b></a></p>
     </div>
-  </div>
-</section>
-
-<section class="sec" id="servicios" aria-labelledby="t-servicios">
-  <div class="wrap">
-    <h2 id="t-servicios">Lo que hay <em>dentro</em></h2>
-    <p class="intro">Desde la calle parece solo un herbolario. Pasa y verás todo lo demás.</p>
-    <div class="filas">
-      <div class="fila">
-        <h3>Herbolario</h3>
-        <p>Productos naturales con asesoramiento personalizado. Si no sabes qué elegir, te ayudamos según lo que buscas.<span class="que">Infusiones · Complementos · Aceites esenciales · Cosmética natural</span></p>
-        <a href="../cuidat-tienda/">Comprar online</a>
-      </div>
-      <div class="fila">
-        <h3>Clases</h3>
-        <p>En la sala grande, con grupos reducidos y todo el material incluido.<span class="que">Yoga · Pilates · Meditación · Baños de gong · Talleres</span></p>
-        <a href="https://wa.me/34604815133?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20clase" target="_blank" rel="noopener">Reservar clase</a>
-      </div>
-      <div class="fila">
-        <h3>Gabinete</h3>
-        <p>Sesiones individuales con cita previa, en una cabina tranquila.<span class="que">Dietista · Acupuntura · Masajes · Reiki</span></p>
-        <a href="https://wa.me/34604815133?text=Hola%2C%20quiero%20pedir%20cita%20en%20el%20gabinete" target="_blank" rel="noopener">Pedir cita</a>
-      </div>
-    </div>
-    <p class="aviso">Nuestros productos y terapias acompañan tu bienestar y no sustituyen el consejo de un profesional sanitario.</p>
   </div>
 </section>
 
@@ -318,34 +398,35 @@ mark.falta{background:var(--toldo-3);color:var(--tinta);padding:0 4px}
 <section class="sec" id="resenas" aria-labelledby="t-resenas">
   <div class="wrap">
     <h2 id="t-resenas">Lo que dicen <em>los clientes</em></h2>
-    <p class="intro"><b>4,7 de 5</b> en Google, con 75 opiniones.</p>
+    <div class="nota-google"><b>4,7</b><span><i class="estrellas" aria-hidden="true">★★★★★</i>de 5 en Google, con 75 opiniones</span></div>
     <div class="resenas">
-      <figure class="resena"><div class="estrellas" aria-label="5 estrellas">★★★★★</div><blockquote>Muchísimas gracias de corazón por el trato tan humano. Solía tomar muchos productos naturales pero Nuria me ayudó a darle coherencia y me asesoro genial.</blockquote><figcaption>Jose L. · Google</figcaption></figure>
-      <figure class="resena"><div class="estrellas" aria-label="5 estrellas">★★★★★</div><blockquote>La atención en el establecimiento es excepcional. No conocía el lugar, pero no me cabe duda de que volveré!</blockquote><figcaption>Mónica P. · Google</figcaption></figure>
-      <figure class="resena"><div class="estrellas" aria-label="5 estrellas">★★★★★</div><blockquote>Maravillosa la atención y los productos, seguro empezaré a ir a las clases que realizan para nuestro Bienestar ☺</blockquote><figcaption>Gema S. · Google</figcaption></figure>
+      <figure class="resena"><blockquote>Muchísimas gracias de corazón por el trato tan humano. Solía tomar muchos productos naturales pero Nuria me ayudó a darle coherencia y me asesoro genial.</blockquote><figcaption>Jose L. · Google</figcaption></figure>
+      <figure class="resena"><blockquote>La atención en el establecimiento es excepcional. No conocía el lugar, pero no me cabe duda de que volveré!</blockquote><figcaption>Mónica P. · Google</figcaption></figure>
+      <figure class="resena"><blockquote>Maravillosa la atención y los productos, seguro empezaré a ir a las clases que realizan para nuestro Bienestar ☺</blockquote><figcaption>Gema S. · Google</figcaption></figure>
     </div>
-    <p style="margin-top:24px"><a class="enlace" href="https://maps.app.goo.gl/EDicUhem7B7Yi2yWA" target="_blank" rel="noopener">Ver todas las reseñas en Google</a></p>
+    <p style="margin-top:28px"><a class="enlace" href="https://maps.app.goo.gl/EDicUhem7B7Yi2yWA" target="_blank" rel="noopener">Ver todas las reseñas en Google</a></p>
   </div>
 </section>
 
-<section class="sec" id="conocenos" aria-labelledby="t-conocenos">
+<section class="sec conocenos" id="conocenos" aria-labelledby="t-conocenos">
   <div class="wrap">
     <h2 id="t-conocenos">Quiénes <em>somos</em></h2>
-    <p class="intro">Somos Nuri y Rosa, hermanas. <mark class="falta">Un párrafo sobre vosotras: cómo empezó CuidaT, qué os mueve y qué vais a encontrar aquí.</mark></p>
+    <p class="intro">Somos Nuria y Rosa, hermanas. <span class="falta">Aquí va un párrafo vuestro: cómo empezó CuidaT, qué os mueve y qué va a encontrar quien entre.</span></p>
+    <div class="hueco juntas"><div><b>Aquí va vuestra foto, las dos juntas</b><small>Mejor en la tienda, entre las estanterías</small></div></div>
     <div class="equipo">
       <figure class="persona">
-        <div class="retrato"><mark class="falta">Foto de Nuri</mark></div>
-        <h3>Nuri</h3>
-        <p><mark class="falta">Qué hace en CuidaT y su formación, en dos o tres líneas.</mark></p>
+        <div class="hueco"><div><b>Aquí va la foto de Nuria</b><small>Vertical, de medio cuerpo</small></div></div>
+        <h3>Nuria</h3>
+        <p><span class="falta">Qué hace en CuidaT y su formación, en dos o tres líneas.</span></p>
       </figure>
       <figure class="persona">
-        <div class="retrato"><mark class="falta">Foto de Rosa</mark></div>
+        <div class="hueco"><div><b>Aquí va la foto de Rosa</b><small>Vertical, de medio cuerpo</small></div></div>
         <h3>Rosa</h3>
-        <p><mark class="falta">Qué hace en CuidaT y su formación, en dos o tres líneas.</mark></p>
+        <p><span class="falta">Qué hace en CuidaT y su formación, en dos o tres líneas.</span></p>
       </figure>
     </div>
   </div>
-  <div class="wrap rec-tit">
+<div class="wrap rec-tit">
     <h2>Recorre <em>el local</em></h2>
     <p class="intro" style="margin:0">Desliza y entra con nosotras: la tienda, la sala, el vestuario y el gabinete.</p>
   </div>
@@ -363,6 +444,7 @@ mark.falta{background:var(--toldo-3);color:var(--tinta);padding:0 4px}
       <div class="progreso" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
     </div>
   </div>
+
 </section>
 </main>
 
@@ -405,12 +487,18 @@ mark.falta{background:var(--toldo-3);color:var(--tinta);padding:0 4px}
   const hhmm=m=>Math.floor(m/60)+':'+String(m%60).padStart(2,'0');
   function estado(){
     const now=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Madrid'}));
-    const d=now.getDay(), m=now.getHours()*60+now.getMinutes(), e=document.getElementById('estado');
+    const d=now.getDay(), m=now.getHours()*60+now.getMinutes();
     const tramo=(H[d]||[]).find(([a,b])=>m>=a&&m<b);
-    let txt;
-    if(tramo){txt='Abierto ahora · cierra a las '+hhmm(tramo[1]);}
-    else{const sig=(H[d]||[]).find(([a])=>a>m); txt=sig?'Cerrado ahora · abrimos a las '+hhmm(sig[0]):'Cerrado ahora';}
-    e.classList.toggle('abierto',!!tramo);e.querySelector('span').textContent=txt;
+    const sello=document.getElementById('sello'), t=document.getElementById('sello-t'), sub=document.getElementById('sello-s');
+    if(tramo){t.textContent='Abierto';sub.textContent='hasta las '+hhmm(tramo[1]);}
+    else{
+      const sig=(H[d]||[]).find(([a])=>a>m);
+      let txt='';
+      if(sig){txt='abrimos a las '+hhmm(sig[0]);}
+      else{for(let k=1;k<8;k++){const dd=(d+k)%7;if((H[dd]||[]).length){txt=(k===1?'mañana a las ':'el '+['domingo','lunes','martes','miércoles','jueves','viernes','sábado'][dd]+' a las ')+hhmm(H[dd][0][0]);break;}}}
+      t.textContent='Cerrado';sub.textContent=txt;
+    }
+    sello.classList.toggle('cerrado',!tramo);
     const hoy=H[d]||[];document.getElementById('hoy').textContent='Hoy: '+(hoy.length?hoy.map(([a,b])=>hhmm(a)+'–'+hhmm(b)).join(' y '):'cerrado');
     document.querySelectorAll('#tabla tr').forEach(tr=>tr.classList.toggle('hoy',+tr.dataset.d===d));
   }
