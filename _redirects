@@ -1,3 +1,8 @@
+# Dominio de Pedacito del Cielo (alias de este proyecto en Netlify)
+https://www.pedacitodelcielo.es/*  https://pedacitodelcielo.es/:splat  301!
+http://www.pedacitodelcielo.es/*   https://pedacitodelcielo.es/:splat  301!
+https://pedacitodelcielo.es/*      /sitios/pedacitodelcielo/:splat     200!
+
 # Enlaces de reseñas de Google (QR y NFC). Se pueden cambiar sin reimprimir nada.
 /r/cuidat      https://search.google.com/local/writereview?placeid=ChIJIeETmCb1QQ0RGgsxBhzHG4I  302
 /r/yurilashes  /r/pendiente/  302
